@@ -1,4 +1,4 @@
-"""Generate deterministic, synthetic sample data for the portfolio repo.
+﻿"""Generate deterministic, synthetic sample data for the portfolio repo.
 
 The samples mirror the column names and dtypes of the Work_ming v5 result
 tables, but **no value is a real historical record**. They exist so that the
@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import io
 import json
+import shutil
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -301,6 +302,7 @@ def ensure_basemap() -> None:
         china = china[["ADMIN", "geometry"]].copy()
         china["source"] = "Natural Earth 1:110m admin-0 (public domain)"
         china.to_file(target, driver="GeoJSON")
+        shutil.rmtree(OUT / "_ne_tmp", ignore_errors=True)
         print(f"basemap written: {target}")
     except Exception as exc:  # network or GDAL issue
         print(f"basemap download failed ({exc}); writing a coarse synthetic placeholder")
@@ -321,3 +323,4 @@ if __name__ == "__main__":
     make_supplementary()
     ensure_basemap()
     print("sample data written to", OUT)
+
