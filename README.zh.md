@@ -62,8 +62,20 @@ python scripts/fig2_mechanism.py
 python scripts/fig3_framework.py
 ```
 
-- 图件脚本读取 `I:\L\Work_ming\output` 下的结果表，输出 PDF + SVG + 600 dpi PNG。
+- 图件脚本从 `MING_OUTPUT`（默认 `output/`）读取结果表，输出 PDF + SVG + 600 dpi PNG。
 - 统一风格模块：`style/ming_style.py`。
+- 代码结构：[src/README.md](src/README.md)；图件规范：[docs/figure_plan.md](docs/figure_plan.md)。
+
+### 合成样例数据
+
+真实事件表不公开，仓库提供同列名的**合成样例**：`data/sample/`（随机种子 `20261113`）。
+
+```bash
+python scripts/make_sample_data.py
+python scripts/run_sample_figures.py   # 输出到 figures/sample/
+```
+
+样例图会带“synthetic sample”标注；详见 [data/sample/README.md](data/sample/README.md)。
 
 ## 局限
 

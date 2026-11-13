@@ -1,4 +1,4 @@
-"""Figure 3 — graphical abstract: from sparse historical records to
+﻿"""Figure 3 — graphical abstract: from sparse historical records to
 spatially explicit causal evidence.
 
 This is the portfolio hero: it uses the real data objects (event points,
@@ -7,6 +7,7 @@ This is the portfolio hero: it uses the real data objects (event points,
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -26,6 +27,7 @@ z = pd.read_excel(ms.OUTPUT / "clustered_levels.xlsx")
 j = pd.read_excel(ms.OUTPUT / "clustered_jinshi.xlsx")
 grid = pd.read_csv(ms.OUTPUT / "grid_data_enriched.csv")
 gwr = pd.read_excel(ms.OUTPUT / "gwr_coefficients.xlsx")
+gg = pd.read_excel(ms.OUTPUT / "grid_granger_causality.xlsx")
 prov = ms.load_provinces()
 
 z = z.dropna(subset=["x", "y", "level"])
@@ -67,8 +69,10 @@ titles = [
     "3 · Infer & explain",
 ]
 subtitles = [
-    "CHGIS · famine records · paleoclimate",
-    "1° grid × 114 years · 288 cells",
+    "synthetic event tables · sample basemap"
+    if os.environ.get("MING_SAMPLE") == "1"
+    else "CHGIS · famine records · paleoclimate",
+    f"1° grid × 114 years · {len(cell)} cells",
     "Granger · GWR · GeoDetector",
 ]
 
@@ -207,7 +211,7 @@ axC.text(
 axC.text(
     0.01,
     0.03,
-    "125/158 GWR grids significant\n56/135 Granger grids FDR-significant",
+    f"{int(gwr['gwr_sig'].sum())}/{len(gwr)} GWR grids significant\n{int(gg['gc_z_to_j_fdr_sig'].sum())}/{len(gg)} Granger grids FDR-significant",
     transform=axC.transAxes,
     fontsize=5.4,
     color="#333333",
@@ -256,10 +260,15 @@ fig.text(
     fontweight="bold",
     color="#111111",
 )
+subtitle = (
+    "Synthetic sample data — for code verification only"
+    if os.environ.get("MING_SAMPLE") == "1"
+    else f"Ming dynasty famines and Jinshi, 1521–1619  ·  {len(z):,} events  ·  {len(j):,} graduates  ·  {len(cell)} grid cells"
+)
 fig.text(
     0.5,
     0.885,
-    "Ming dynasty famines and Jinshi, 1521–1619  ·  5,736 events  ·  911 graduates  ·  288 grid cells",
+    subtitle,
     ha="center",
     va="center",
     fontsize=6.2,
@@ -268,3 +277,6 @@ fig.text(
 
 paths = ms.save(fig, "fig3_framework")
 print("\n".join(str(p) for p in paths))
+
+
+

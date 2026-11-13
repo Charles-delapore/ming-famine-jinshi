@@ -1,4 +1,4 @@
-"""Figure 2 — grid-level evidence for the famine–Jinshi relationship.
+﻿"""Figure 2 — grid-level evidence for the famine–Jinshi relationship.
 
 Panels separate three different questions:
 A  How well does the local model fit? (GWR local R²)
@@ -11,6 +11,7 @@ No panel treats a p-value as an effect size; counts and q values are labelled.
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -172,7 +173,7 @@ axC.grid(axis="y", visible=False)
 axC.text(
     0.99,
     0.04,
-    "denominator = 135 grids",
+    f"denominator = {len(gg)} grids",
     transform=axC.transAxes,
     ha="right",
     va="bottom",
@@ -221,15 +222,16 @@ axD.text(
 )
 ms.panel_label(axD, "D")
 
-fig.text(
-    0.01,
-    0.005,
-    "Data: Work_ming v5 outputs (GWR, grid Granger, multiscale LASSO models, GeoDetector). "
-    "FDR = Benjamini–Hochberg across grids within each method.",
-    fontsize=6,
-    color="#777777",
-)
+if os.environ.get("MING_SAMPLE") == "1":
+    note = ("Synthetic sample data for code verification — not historical records. "
+            "FDR = Benjamini–Hochberg across grids within each method.")
+else:
+    note = ("Data: Work_ming v5 outputs (GWR, grid Granger, multiscale LASSO models, "
+            "GeoDetector). FDR = Benjamini–Hochberg across grids within each method.")
+fig.text(0.01, 0.005, note, fontsize=6, color="#777777")
 
 paths = ms.save(fig, "fig2_mechanism")
 print("\n".join(str(p) for p in paths))
+
+
 

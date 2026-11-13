@@ -1,4 +1,4 @@
-"""Figure 1 — spatial pattern and temporal context of Ming famines and Jinshi.
+﻿"""Figure 1 — spatial pattern and temporal context of Ming famines and Jinshi.
 
 Core claim: famine events form broad river-basin belts while Jinshi are
 concentrated in the southeast; the two distributions overlap only partially.
@@ -11,6 +11,7 @@ the explicitly labelled 5-year moving average.
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -227,7 +228,7 @@ axC2.set_xticks(np.arange(1520, 1621, 20))
 axC2.text(
     0.99,
     0.92,
-    "exam years only; n = 911",
+    f"exam years only; n = {len(j):,}",
     transform=axC2.transAxes,
     ha="right",
     va="top",
@@ -295,15 +296,16 @@ ms.panel_label(axD, "D")
 # ---------------------------------------------------------------------------
 # Provenance note
 # ---------------------------------------------------------------------------
-fig.text(
-    0.01,
-    0.005,
-    "Data: CHGIS v6; Ming famine records; Ming Jinshi database. "
-    "Projection: Web Mercator. Moving average: 5-year centred window.",
-    fontsize=6,
-    color="#777777",
-)
+if os.environ.get("MING_SAMPLE") == "1":
+    note = ("Synthetic sample data for code verification — not historical records. "
+            "Basemap: Natural Earth 1:110m (public domain).")
+else:
+    note = ("Data: CHGIS v6; Ming famine records; Ming Jinshi database. "
+            "Projection: Web Mercator. Moving average: 5-year centred window.")
+fig.text(0.01, 0.005, note, fontsize=6, color="#777777")
 
 paths = ms.save(fig, "fig1_patterns")
 print("\n".join(str(p) for p in paths))
+
+
 

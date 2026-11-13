@@ -1,4 +1,4 @@
-"""Shared visual system for the Ming famine / Jinshi portfolio figures.
+﻿"""Shared visual system for the Ming famine / Jinshi portfolio figures.
 
 Design rules
 ------------
@@ -43,14 +43,14 @@ JINSHI_CMAP = LinearSegmentedColormap.from_list(
 )
 DIVERGING = "RdBu_r"
 
-ROOT = Path(os.environ.get("MING_ROOT", r"I:\L\Work_ming"))
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(os.environ.get("MING_ROOT", PROJECT_ROOT))
 OUTPUT = Path(os.environ.get("MING_OUTPUT", ROOT / "output"))
-DATA = Path(os.environ.get("MING_DATA", ROOT / "workbase" / "002数据"))
-PROVINCE_SHP = DATA / "地图书明代灾荒" / "province.shp"
+DATA = Path(os.environ.get("MING_DATA", ROOT / "data" / "raw"))
+PROVINCE_SHP = Path(os.environ.get("MING_BASEMAP", DATA / "province.shp"))
+SAMPLE_BASEMAP = PROJECT_ROOT / "data" / "sample" / "basemap_china.geojson"
 
-FIG_DIR = Path(
-    os.environ.get("MING_FIG_DIR", Path(__file__).resolve().parents[1] / "figures")
-)
+FIG_DIR = Path(os.environ.get("MING_FIG_DIR", PROJECT_ROOT / "figures"))
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -120,16 +120,27 @@ def save(fig, name: str, formats=("pdf", "png", "svg"), dpi: int = 600) -> list[
 
 
 def load_provinces():
+    """Load a basemap from MING_BASEMAP, DATA/province.shp, or the sample.
+
+    Returns None when no basemap is available; style_map then draws the data on
+    a clean background. This keeps the figure scripts runnable with the
+    synthetic sample data and without redistributing the CHGIS basemap.
+    """
     import geopandas as gpd
 
-    g = gpd.read_file(PROVINCE_SHP).to_crs(3857)
-    return g
+    candidates = [Path(os.environ["MING_BASEMAP"]) if os.environ.get("MING_BASEMAP") else None,
+                  PROVINCE_SHP, SAMPLE_BASEMAP]
+    for candidate in candidates:
+        if candidate and Path(candidate).exists():
+            return gpd.read_file(candidate).to_crs(3857)
+    return None
 
 
 def style_map(ax, provinces, extent=None, add_ticks=False):
-    provinces.plot(
-        ax=ax, facecolor="#FBFBFB", edgecolor="#D0D0D0", linewidth=0.35, zorder=1
-    )
+    if provinces is not None:
+        provinces.plot(
+            ax=ax, facecolor="#FBFBFB", edgecolor="#D0D0D0", linewidth=0.35, zorder=1
+        )
     if extent is not None:
         ax.set_xlim(extent[0], extent[1])
         ax.set_ylim(extent[2], extent[3])
@@ -157,5 +168,6 @@ def map_annotation(ax, x, y, text, **kw):
         style="italic",
         **kw,
     )
+
 
 

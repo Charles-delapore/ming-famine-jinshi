@@ -1,0 +1,5 @@
+# Optional: only needed for the CGAN augmentation branch.
+# cgan_augment.py imports TensorFlow first and falls back to PyTorch.
+# Install one of the two, not necessarily both.
+tensorflow>=2.16
+torch>=2.2

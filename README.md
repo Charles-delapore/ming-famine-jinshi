@@ -104,12 +104,31 @@ python scripts/fig2_mechanism.py
 python scripts/fig3_framework.py
 ```
 
-- Figure scripts read the result tables in `I:\L\Work_ming\output` and write
-  PDF + SVG + 600 dpi PNG to `figures/`.
+- Analysis layer: `src/` (module map in [src/README.md](src/README.md)); the
+  14-step orchestrator is `run_pipeline.py`.
+- Full dependencies: `requirements-analysis.txt`; the optional CGAN branch is
+  in `requirements-ml.txt`.
+
+- Figure scripts read result tables from `MING_OUTPUT` (default: `output/`) and
+  write PDF + SVG + 600 dpi PNG to `figures/`.
 - The shared style module is `style/ming_style.py`.
 - Design rationale: [docs/design_notes.md](docs/design_notes.md).
-- Data sources and transformations are recorded in the figure footnotes and in
-  `FIGURE_PLAN.md`.
+- Figure contracts and style rules: [docs/figure_plan.md](docs/figure_plan.md).
+- Data sources and transformations are recorded in the figure footnotes.
+
+### Synthetic sample data
+
+The real event tables are private, so the repository ships a **synthetic** sample
+with identical columns: `data/sample/` (seed `20261113`). It exercises the code
+and figure layout without redistributing historical records or the CHGIS basemap.
+
+```bash
+python scripts/make_sample_data.py
+python scripts/run_sample_figures.py   # writes figures/sample/
+```
+
+The sample figures carry a “synthetic sample” footnote. See
+[data/sample/README.md](data/sample/README.md) for provenance and limitations.
 
 ## Limitations
 
