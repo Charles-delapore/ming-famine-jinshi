@@ -5,6 +5,8 @@
 
 ![Graphical abstract](figures/fig3_framework.png)
 
+**Live gallery:** <https://charles-delapore.github.io/ming-famine-jinshi/>
+
 > **Scope.** Personal research project (Ming dynasty historical GIS). Code and
 > figures are reproducible from the raw event tables; historical data are not
 > redistributed in this repository.
@@ -140,4 +142,5 @@ econometrics and explainable ML.
 
 *If you use the figure style or the pipeline, cite the data sources (CHGIS,
 Mann et al. 2009, Schneider et al. 2015) and this repository.*
+
 
