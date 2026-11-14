@@ -128,8 +128,9 @@ step, not a rank filter.
 
 - Elite Jinshi in 1521–1619: **2,853** records (2,841 with coordinates).
 - The 911 layer is **not** a random sample and **not** a rank-complete sample.
-- Any figure or model that uses the 911 layer must be labelled provisional
-  until the pipeline is re-run on the normalized rank field.
+- It is retained only as an audit; the v0.3 figures use the normalized elite
+  (2,841). The direct sensitivity check is in
+  [`corrected_robustness.md`](corrected_robustness.md).
 
 ## 7. Normalization rule
 

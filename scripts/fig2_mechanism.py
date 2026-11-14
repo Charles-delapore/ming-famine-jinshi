@@ -102,6 +102,7 @@ axA.text(
     color="#555555",
     ha="left",
     va="top",
+    bbox=dict(facecolor="white", alpha=0.82, edgecolor="none", pad=1.6),
 )
 ms.panel_label(axA, "A")
 fk.add_scale_north(axA)
@@ -232,8 +233,10 @@ if os.environ.get("MING_SAMPLE") == "1":
     note = ("Synthetic sample data for code verification — not historical records. "
             "FDR = Benjamini–Hochberg across grids within each method.")
 else:
-    note = ("Data: Work_ming v5 outputs (GWR, grid Granger, multiscale LASSO models, "
-            "GeoDetector). FDR = Benjamini–Hochberg across grids within each method. "
+    note = (f"Data: v0.3 grid panel (normalized 1甲/2甲 Jinshi extension). "
+            f"GWR n={len(gwr)}; Granger FDR {granger_sig}/{len(gg)}; "
+            "multiscale LASSO + GeoDetector. "
+            "FDR = Benjamini–Hochberg across grids within each method. "
             "Scale bars approximate at map-centre latitude.")
 fig.text(0.01, 0.005, note, fontsize=6, color="#777777")
 

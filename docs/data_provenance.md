@@ -24,8 +24,9 @@ absence of 3甲 are artefacts of this filter. Corrected elite denominator for
 1521–1619: **2,853 records (2,841 with coordinates)**. Details, counts and the
 normalization rule are in [`jinshi_provenance.md`](jinshi_provenance.md).
 
-**Any figure or model using the 911 layer is provisional** until the pipeline is
-re-run on the normalized rank field.
+**The 911 layer is retained only as an audit.** The v0.3 figures and grid
+models use the normalized elite extension; the v0.2/v0.3 sensitivity check is in
+[`corrected_robustness.md`](corrected_robustness.md).
 
 ## Redistribution
 

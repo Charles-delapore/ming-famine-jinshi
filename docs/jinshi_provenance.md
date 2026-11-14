@@ -94,9 +94,12 @@ published layer starts in 1523.
 3. **Cluster sizes of exactly 100** come from `max_cluster_size=100`; they are
    truncated partitions, not natural clusters.
 4. **The 911 layer cannot support** statements about exam-year composition,
-   regional shares of all Jinshi, or "elite Jinshi" as a whole. Granger, GWR and
-   GeoDetector results that use the 911-derived grid counts are **conditional
-   on this defective subset** and must be labelled provisional.
+   regional shares of all Jinshi, or "elite Jinshi" as a whole. It is **not**
+   the input to the grid models: those use a broader series
+   (`ming_general` + elite extension). A direct v0.2/v0.3 comparison is in
+   [`corrected_robustness.md`](corrected_robustness.md): FDR discovery moves
+   from 56/135 to 48/135, GWR coefficients agree at r = 0.991, and the median
+   significant lag shifts from 11 to 6.5 years.
 
 ## 6. Corrected denominator
 

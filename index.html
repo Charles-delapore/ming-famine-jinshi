@@ -48,7 +48,7 @@
 
   <h1>Famines and Imperial Exams in Ming China, 1521–1619</h1>
   <p class="sub">A reproducible spatiotemporal analysis of <strong>5,736 famine records</strong>
-  and <strong>911 Jinshi records</strong> (Arabic-coded 1甲/2甲 subset) on a 1° grid × 114-year panel — from event
+  and <strong>2,841 Jinshi records</strong> (normalized 1甲/2甲 elite) on a 1° grid × 114-year panel — from event
   points to spatially explicit causal evidence.</p>
 
   <div class="links">
@@ -66,9 +66,9 @@
 
   <div class="stats">
     <div class="stat"><b>5,736</b><span>famine events, 1522–1619</span></div>
-    <div class="stat"><b>911</b><span>Jinshi records (1甲/2甲 subset), 1523–1619</span></div>
-    <div class="stat"><b>288</b><span>1° grid cells × 114 years</span></div>
-    <div class="stat"><b>56/135</b><span>FDR-significant Granger grids</span></div>
+    <div class="stat"><b>2,841</b><span>Jinshi records (1甲/2甲 elite), 1523–1619</span></div>
+    <div class="stat"><b>291</b><span>1° grid cells × 114 years</span></div>
+    <div class="stat"><b>48/135</b><span>FDR-significant Granger grids</span></div>
   </div>
 
   <h2>The question</h2>
@@ -102,15 +102,15 @@
   <div class="figure">
     <img src="figures/fig1_patterns.png" alt="Figure 1: famine and Jinshi maps, time series, GWR">
     <div class="cap"><b>Figure 1 — Pattern and heterogeneity.</b> (A) 5,736 famine events by
-    severity; (B) 911 Jinshi records (provisional subset); (C) aligned temporal context (exam years only for Jinshi);
-    (D) GWR coefficients, 125/158 grids significant. Basemap: CHGIS v6; Web Mercator.
+    severity; (B) 2,841 Jinshi records; (C) aligned temporal context (exam years only for Jinshi);
+    (D) GWR coefficients, 123/159 grids significant. Basemap: CHGIS v6; Web Mercator.
     <a href="figures/fig1_patterns.pdf">PDF</a></div>
   </div>
 
   <div class="figure">
     <img src="figures/fig2_mechanism.png" alt="Figure 2: GWR R2, Granger FDR map, horizon bars, GeoDetector">
     <div class="cap"><b>Figure 2 — Grid-level mechanism.</b> (A) GWR local R²; (B) FDR-significant
-    famine→Jinshi grids (56/135); (C) discovery across horizons (9/0/0); (D) GeoDetector q.
+    famine→Jinshi grids (48/135); (C) discovery across horizons (8/0/0); (D) GeoDetector q.
     Granger is predictive, not mechanistic, causality.
     <a href="figures/fig2_mechanism.pdf">PDF</a></div>
   </div>
@@ -118,8 +118,15 @@
   <div class="figure">
     <img src="figures/fig4_distribution.png" alt="Figure 4: GWR coefficient, famine severity, exam-year distributions">
     <div class="cap"><b>Figure 4 — Statistical companion.</b> (A) GWR coefficient distribution;
-    (B) famine severity composition; (C) Jinshi records by exam year, with the 1523/1526
-    concentration highlighted. <a href="figures/fig4_distribution.pdf">PDF</a></div>
+    (B) famine severity composition; (C) Jinshi records by exam year (normalized elite).
+    <a href="figures/fig4_distribution.pdf">PDF</a></div>
+  </div>
+
+  <div class="figure">
+    <img src="figures/fig5_correction.png" alt="Figure 5: old vs corrected Jinshi layer">
+    <div class="cap"><b>Figure 5 — Encoding audit.</b> Old 911-record Arabic-coded layer vs corrected
+    2,841 elite: exam-year composition (A), grid-level discovery (B), GWR coefficient agreement
+    (C), and lag distribution (D). <a href="figures/fig5_correction.pdf">PDF</a></div>
   </div>
 
   <h2>Interactive map</h2>
@@ -157,6 +164,7 @@
 </main>
 </body>
 </html>
+
 
 
 

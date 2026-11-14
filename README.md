@@ -1,9 +1,10 @@
 ﻿# Famines and Imperial Exams in Ming China, 1521–1619
 
-**A reproducible spatiotemporal analysis of 5,736 famine records and 911 Jinshi
-(metropolitan exam) records — from event points to grid-level causal evidence.**
-The 911-record Jinshi layer is an Arabic-numeral-coded 1甲/2甲 subset
-(provisional; see [docs/jinshi_provenance.md](docs/jinshi_provenance.md)).
+**A reproducible spatiotemporal analysis of 5,736 famine records and 2,841
+Jinshi records — from event points to grid-level causal evidence.**
+The Jinshi layer is the normalized 1甲/2甲 elite (v0.3); the earlier 911-record
+Arabic-coded subset is kept as a documented audit
+([docs/jinshi_provenance.md](docs/jinshi_provenance.md)).
 
 ![Graphical abstract](figures/fig3_framework.png)
 
@@ -18,8 +19,8 @@ The 911-record Jinshi layer is an Arabic-numeral-coded 1甲/2甲 subset
 | | |
 |---|---|
 | **Question** | Did environmental shocks suppress elite educational attainment in Ming China — and where? |
-| **Data** | 5,736 famine events (1522–1619), 911 Jinshi records (1甲/2甲 Arabic-coded subset, 1523–1619), CHGIS v6 administrative points, Mann 2009 / Schneider 2015 paleoclimate reconstructions |
-| **Panel** | 1° × 1° grid × 114 years = 288 cells; 135 cells with estimable Granger models |
+| **Data** | 5,736 famine events (1522–1619), 2,841 Jinshi records (normalized 1甲/2甲 elite, 1523–1619), CHGIS v6 administrative points, Mann 2009 / Schneider 2015 paleoclimate reconstructions |
+| **Panel** | 1° × 1° grid × 114 years = 291 cells; 135 cells with estimable Granger models |
 | **Methods** | event→grid aggregation, SS-DBSCAN / ST-DBSCAN / GMM (exploration), Granger causality with FDR, GWR, GeoDetector, SHAP / GeoShapley, STL, CCM (robustness) |
 | **Stack** | Python 3.13 · pandas · GeoPandas · PySAL · mgwr · statsmodels · scikit-learn · SHAP · Matplotlib |
 
@@ -44,22 +45,29 @@ and cannot identify — including a documented negative result for CCM.
   lower-Yangtze core. The two distributions overlap only partially
   (Fig. 1A–B).
 - **Spatially selective signal.** After Benjamini–Hochberg FDR correction,
-  famine→Jinshi Granger causality is significant in **56 / 135** grid cells
+  famine→Jinshi Granger causality is significant in **48 / 135** grid cells
   (Fig. 2B).
-- **Short horizons dominate.** Multiscale LASSO/BIC models find **9**
+- **Short horizons dominate.** Multiscale LASSO/BIC models find **8**
   FDR-significant grids at 1–5 years, and **0** at 6–10 and 11–20 years
   (Fig. 2C). The long-run “effect” seen in simpler Granger models is not robust
   once derived features are controlled.
 - **Spatial heterogeneity.** GWR coefficients are mostly positive in the
-  central/eastern grids and negative in a few southwestern cells; **125 / 158**
+  central/eastern grids and negative in a few southwestern cells; **123 / 159**
   grids are locally significant, median local R² = 0.59 (Fig. 1D, 2A).
-- **Famine severity is the strongest factor.** GeoDetector q = **0.349** for
-  famine severity, **0.189** for longitude and **0.126** for latitude
+- **Famine severity is the strongest factor.** GeoDetector q = **0.337** for
+  famine severity, **0.186** for longitude and **0.128** for latitude
   (Fig. 2D).
 - **A useful negative result.** CCM (convergent cross-mapping) could not be
   estimated reliably: the 114-year series are zero-inflated, so the shadow
   manifold degenerates. This is reported as a methodological limitation, not
   hidden.
+- **Encoding audit.** The old 911-record layer was an Arabic-numeral subset.
+  Rebuilding it with normalized ranks moves Granger FDR discovery from 56 to
+  **48 / 135** grids, while GWR coefficients stay highly consistent
+  (Pearson r = 0.991; 122 of 125 significant grids overlap). The median
+  significant lag shifts from 11 to **6.5 years**, so lag claims are
+  sensitivity-prone. See Fig. 5 and
+  [docs/corrected_robustness.md](docs/corrected_robustness.md).
 
 ## Figures
 
@@ -67,8 +75,8 @@ and cannot identify — including a documented negative result for CCM.
 
 ![Figure 1](figures/fig1_patterns.png)
 
-5,736 famine events (A), 911 Jinshi records (B; provisional subset), aligned temporal context with exam-year
-counts (C), and GWR coefficients (D). Basemap: CHGIS v6; projection: Web
+5,736 famine events (A), 2,841 Jinshi records (B), aligned temporal context with
+exam-year counts (C), and GWR coefficients (D). Basemap: CHGIS v6; projection: Web
 Mercator.
 
 ### Figure 2 — Grid-level mechanism
@@ -89,9 +97,18 @@ From sparse event records to a 1° grid panel and spatially explicit evidence.
 ![Figure 4](figures/fig4_distribution.png)
 
 GWR coefficient distribution (A), famine severity composition (B), and Jinshi
-records by exam year (C). **Panel C is an encoding audit, not a historical
-claim**: the 1523/1526 concentration comes from the old Arabic-only rank filter
-(see [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md)).
+records by exam year (C). Panel C uses the normalized 1甲/2甲 elite (2,841); the
+old 911-record artefact is shown in Figure 5A.
+
+### Figure 5 — Encoding audit
+
+![Figure 5](figures/fig5_correction.png)
+
+Old Arabic-coded 911 layer vs corrected 2,841 elite: exam-year composition (A),
+grid-level discovery counts (B), GWR coefficient agreement (C), and the
+FDR-significant lag distribution (D). Spatial effects are highly consistent
+(r = 0.991); the lag median is not. See
+[docs/corrected_robustness.md](docs/corrected_robustness.md).
 
 ### Interactive map
 
@@ -136,6 +153,9 @@ python scripts/make_interactive_map.py
 - Figure QA and colour-blind checks: [docs/figure_qa.md](docs/figure_qa.md).
 - Reproducibility fixes (row order, colour limits, grid bounds):
   [docs/reproducibility_fixes.md](docs/reproducibility_fixes.md).
+- v0.3 worklog (segment-by-segment record):
+  [docs/worklog_2026-11-14.md](docs/worklog_2026-11-14.md).
+- Corrected-grid sensitivity: [docs/corrected_robustness.md](docs/corrected_robustness.md).
 - Jinshi provenance (confirmed 2026-11-14):
   [docs/jinshi_provenance.md](docs/jinshi_provenance.md).
 - Jinshi rank-encoding audit (why the 911 layer is a subset):
@@ -164,13 +184,13 @@ The sample figures carry a “synthetic sample” footnote. See
 ## Limitations
 
 - Historical records are **not a random sample**; reporting intensity varies by
-  region and period. The 911-record Jinshi layer is a **format-selected subset**
-  of the CBDB 1甲/2甲 elite (Arabic-numeral ranks only), not a representative
-  sample. Corrected elite denominator: 2,853 records (2,841 with coordinates);
-  the 1523/1526 peak is an encoding artefact. See
-  [docs/jinshi_provenance.md](docs/jinshi_provenance.md) and
-  [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md). Figures and
-  models using the 911 layer are provisional.
+  region and period. The earlier 911-record Jinshi layer was a
+  **format-selected subset** of the CBDB 1甲/2甲 elite (Arabic-numeral ranks
+  only), not a representative sample. The v0.3 figures use the normalized elite
+  (2,841 records with coordinates); the 911 layer is retained only as an audit.
+  See [docs/jinshi_provenance.md](docs/jinshi_provenance.md),
+  [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md) and
+  [docs/corrected_robustness.md](docs/corrected_robustness.md).
 - Granger causality is **predictive**, not mechanistic; the “famine → Jinshi”
   language is shorthand for “famine history improves prediction of later Jinshi
   counts”.
@@ -198,6 +218,8 @@ econometrics and explainable ML.
 
 *If you use the figure style or the pipeline, cite the data sources (CHGIS,
 Mann et al. 2009, Schneider et al. 2015) and this repository.*
+
+
 
 
 

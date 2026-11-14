@@ -4,6 +4,7 @@ import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 from src.config import DATA_PATHS, OUTPUT_PATHS, DATA_PROCESSED_DIR
+from src.data_processing.jinshi_rank import normalize_rank
 
 
 def load_zaihuang_data(city_file=None, level_file=None):
@@ -43,13 +44,9 @@ def load_jinshi_data(general_file=None):
 
 def load_jinshi_important(general_file=None):
     data = load_jinshi_data(general_file)
-    important_data = data[
-        data['EntryRank'].str.contains(r'第1甲|第2甲', na=False)
-    ]
-    important_data = important_data.dropna(subset=['EntryYear'])
-    important_data['level'] = important_data['EntryRank'].apply(
-        lambda x: 1 if "第1甲" in x else 2
-    )
+    data = normalize_rank(data)
+    important_data = data[data["level"].isin([1, 2])]
+    important_data = important_data.dropna(subset=["EntryYear"])
     return important_data
 
 
@@ -94,11 +91,11 @@ def load_extended_zaihuang(city_file=None, ext_file=None):
 def load_extended_jinshi(ext_file=None):
     ext_file = ext_file or DATA_PATHS["table_general2"]
 
-    data = pd.read_excel(ext_file, engine='openpyxl')
-    data = data.dropna(subset=['EntryRank'])
-    important = data[data['EntryRank'].str.contains(r'第1甲|第2甲', na=False)]
-    important = important.dropna(subset=['EntryYear'])
-    important['level'] = important['EntryRank'].apply(lambda x: 1 if "第1甲" in x else 2)
-    important['EntryYear'] = important['EntryYear'].astype(int)
-    result = important[['EntryYear', 'X', 'Y', 'level', 'EntryRank']].copy()
+    data = pd.read_excel(ext_file, engine="openpyxl")
+    data = data.dropna(subset=["EntryRank"])
+    data = normalize_rank(data)
+    important = data[data["level"].isin([1, 2])]
+    important = important.dropna(subset=["EntryYear"])
+    important["EntryYear"] = important["EntryYear"].astype(int)
+    result = important[["EntryYear", "X", "Y", "level", "EntryRank"]].copy()
     return result

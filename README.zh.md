@@ -1,6 +1,6 @@
 ﻿# 明代灾荒与进士的时空分析（1521–1619）
 
-**5,736 条灾荒记录 + 911 条进士记录（1甲/2甲 编码子集）：从历史事件点，到格网级因果证据的可复现空间分析。**
+**5,736 条灾荒记录 + 2,841 条进士记录（归一化 1甲/2甲 精英）：从历史事件点，到格网级因果证据的可复现空间分析。**
 
 ![图形摘要](figures/fig3_framework.png)
 
@@ -11,18 +11,18 @@
 | | |
 |---|---|
 | **问题** | 明代灾荒是否抑制了进士产出？这种关系在空间和时间上是否稳定？ |
-| **数据** | 灾荒事件 5,736 条（1522–1619）、进士记录 911 条（1甲/2甲 编码子集，1523–1619）、CHGIS v6 行政点位、Mann 2009 / Schneider 2015 古气候重建 |
-| **面板** | 1° × 1° 格网 × 114 年 = 288 个格网单元；135 个可估计 Granger 的格网 |
+| **数据** | 灾荒事件 5,736 条（1522–1619）、进士记录 2,841 条（归一化 1甲/2甲 精英，1523–1619）、CHGIS v6 行政点位、Mann 2009 / Schneider 2015 古气候重建 |
+| **面板** | 1° × 1° 格网 × 114 年 = 291 个格网单元；135 个可估计 Granger 的格网 |
 | **方法** | 事件→格网聚合、SS-DBSCAN / ST-DBSCAN / GMM（探索）、Granger + FDR、GWR、地理探测器、SHAP / GeoShapley、STL、CCM（稳健性） |
 | **技术栈** | Python 3.13 · pandas · GeoPandas · PySAL · mgwr · statsmodels · scikit-learn · SHAP · Matplotlib |
 
 ## 主要发现
 
 - **空间错位**：灾荒沿黄河、长江与华北平原形成带状分布；进士高度集中在江南/长江下游。两者只部分重叠（图 1A–B）。
-- **信号具有空间选择性**：经 FDR 校正后，灾荒→进士的 Granger 因果在 **56 / 135** 个格网显著（图 2B）。
-- **短期效应为主**：多尺度 LASSO/BIC 模型在 1–5 年尺度有 **9** 个 FDR 显著格网，6–10 年与 11–20 年均为 **0**（图 2C）。简单 Granger 中的“长期效应”在控制衍生特征后不再稳健。
-- **空间异质性明显**：GWR 系数在中东部多为正，少数西南格网为负；**125 / 158** 个格网局部显著，局部 R² 中位数 0.59（图 1D、2A）。
-- **灾荒强度是最强因子**：地理探测器 q 值：灾荒强度 **0.349**、经度 **0.189**、纬度 **0.126**（图 2D）。
+- **信号具有空间选择性**：经 FDR 校正后，灾荒→进士的 Granger 因果在 **48 / 135** 个格网显著（图 2B）。
+- **短期效应为主**：多尺度 LASSO/BIC 模型在 1–5 年尺度有 **8** 个 FDR 显著格网，6–10 年与 11–20 年均为 **0**（图 2C）。简单 Granger 中的“长期效应”在控制衍生特征后不再稳健。
+- **空间异质性明显**：GWR 系数在中东部多为正，少数西南格网为负；**123 / 159** 个格网局部显著，局部 R² 中位数 0.59（图 1D、2A）。
+- **灾荒强度是最强因子**：地理探测器 q 值：灾荒强度 **0.337**、经度 **0.186**、纬度 **0.128**（图 2D）。
 - **一个有价值的负结果**：CCM 在零值过多的 114 年序列上无法可靠估计，影子流形退化。项目如实记录这一局限，而不是调参掩盖。
 
 ## 图件
@@ -49,7 +49,13 @@
 
 ![图4](figures/fig4_distribution.png)
 
-GWR 系数分布（A）、灾荒等级构成（B）、进士按科年分布（C）。C 面板是**编码审计**而非历史结论：1523/1526 的集中度来自旧的“仅阿拉伯数字名次”筛选，见 [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md)。
+GWR 系数分布（A）、灾荒等级构成（B）、进士按科年分布（C）。C 面板使用归一化后的 1甲/2甲 精英 2,841 条；旧 911 层的编码假象见 图 5A。
+
+### 图 5 — 编码审计
+
+![图5](figures/fig5_correction.png)
+
+旧 911 条阿拉伯数字编码层 vs 修正后 2,841 条精英：科年构成（A）、格网级发现数量（B）、GWR 系数一致性（C）、FDR 显著格网的滞后分布（D）。空间效应高度一致（r = 0.991），但滞后中位数不稳健。详见 [docs/corrected_robustness.md](docs/corrected_robustness.md)。
 
 ### 交互地图
 
@@ -95,7 +101,7 @@ python scripts/make_interactive_map.py --sample --output web/sample/interactive_
 
 ## 局限
 
-- 历史记录不是随机样本，地区与时期的记录强度差异很大。911 条进士记录是 CBDB 一甲/二甲精英中**仅阿拉伯数字名次编码**的子集，不是代表性样本；修正后的一甲/二甲总数为 2,853 条（2,841 条有坐标），1523/1526 峰值是编码筛选造成的假象。详见 [docs/jinshi_provenance.md](docs/jinshi_provenance.md) 与 [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md)。使用 911 层的图件与模型均为暂定结果。
+- 历史记录不是随机样本，地区与时期的记录强度差异很大。旧版 911 条进士记录是 CBDB 一甲/二甲精英中**仅阿拉伯数字名次编码**的子集，不是代表性样本；v0.3 图件改用归一化后的一甲/二甲精英 2,841 条（有坐标），911 层仅作审计保留。详见 [docs/jinshi_provenance.md](docs/jinshi_provenance.md)、[docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md) 与 [docs/corrected_robustness.md](docs/corrected_robustness.md)。
 - Granger 是**预测性**因果，不是机制性因果。
 - 1° 格网结果对分辨率敏感，项目另做了 0.5°/1°/2° 敏感性分析。
 - CCM 在零膨胀序列上不可识别；项目保留这一负结果。
@@ -104,6 +110,7 @@ python scripts/make_interactive_map.py --sample --output web/sample/interactive_
 
 **Charles** — 空间数据科学、Python GIS 自动化、空间计量与可解释机器学习。  
 [GitHub](https://github.com/Charles-delapore) · delapore@163.com
+
 
 
 

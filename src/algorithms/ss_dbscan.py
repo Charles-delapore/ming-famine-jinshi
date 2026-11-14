@@ -1,6 +1,8 @@
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 
+from src.data_processing.jinshi_rank import rank_level
+
 
 class SSDBSCAN:
     def __init__(self, eps, min_samples, weights, max_cluster_size, important_levels=None):
@@ -104,13 +106,9 @@ def cluster_zaihuang(data, params):
 
 def cluster_jinshi(data, params):
     important_data = data.dropna(subset=['EntryRank']).copy()
-    important_data = important_data[
-        important_data['EntryRank'].str.contains(r'第1甲|第2甲', na=False)
-    ]
+    important_data['level'] = important_data['EntryRank'].map(rank_level)
+    important_data = important_data[important_data['level'].isin([1, 2])]
     important_data = important_data.dropna(subset=['EntryYear'])
-    important_data['level'] = important_data['EntryRank'].apply(
-        lambda x: 1 if "第1甲" in x else 2
-    )
 
     features = important_data[['X', 'Y', 'EntryYear']].values
     scaler = StandardScaler()

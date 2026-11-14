@@ -69,6 +69,8 @@ The 1523/1526 concentration is an encoding artefact, not a historical cohort.
 See `docs/jinshi_provenance.md`, `docs/jinshi_encoding_audit.md`, and
 `scripts/audit_jinshi_encoding.py`.
 
-**Status:** documented, not yet re-run. Figures and models that use the 911
-layer are provisional until the pipeline is re-run with a normalized rank field.
+**Status:** fixed and re-run (v0.3). `src/data_processing/jinshi_rank.py`
+normalizes both numeral systems; `loader.py` and `ss_dbscan.py` use it. Figures
+1–5 are regenerated from the normalized elite (2,841). The direct sensitivity
+check is `docs/corrected_robustness.md` and `figures/fig5_correction.*`.
 

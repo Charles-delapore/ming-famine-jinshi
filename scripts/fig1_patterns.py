@@ -308,9 +308,11 @@ if os.environ.get("MING_SAMPLE") == "1":
     note = ("Synthetic sample data for code verification — not historical records. "
             "Basemap: Natural Earth 1:110m (public domain).")
 else:
-    note = ("Data: CHGIS v6; Ming famine records; CBDB Jinshi export. "
-            "Jinshi layer: 911-record Arabic-coded 1甲/2甲 subset (provisional; "
-            "see docs/jinshi_provenance.md). "
+    n_j = len(j)
+    layer = ("normalized 1甲/2甲 elite, v0.3" if n_j > 1500
+             else "Arabic-coded 1甲/2甲 subset, v0.2")
+    note = (f"Data: CHGIS v6; {len(z):,} famine records; CBDB Jinshi export "
+            f"(n={n_j:,}; {layer}; see docs/jinshi_provenance.md). "
             "Projection: Web Mercator. Moving average: 5-year centred window. "
             "Scale bars approximate at map-centre latitude.")
 fig.text(0.01, 0.005, note, fontsize=6, color="#777777")
