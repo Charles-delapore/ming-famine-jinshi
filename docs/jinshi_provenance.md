@@ -12,8 +12,10 @@ the earlier "pending author confirmation" draft.
 | Export | `入仕查询结果` sheet, 16 columns |
 | Raw file | `明进士.xlsx` — 28,761 rows, 27,711 unique `PersonID` |
 | Pipeline input | `table_general.xlsx` — 25,187 rows (cleaned export) |
-| Entry types | 科举: 進士(籠統), 武舉進士, 正奏名進士 (three CBDB entry categories) |
+| Entry types | observed: `科舉: 進士(籠統)` 28,697 + `科舉: 武舉進士` 64. The thesis also names `正奏名進士`, but that string does not occur in this export; treat it as a CBDB query category, not an observed value. |
 | Fields | `Name`, `NameChn`, `PersonID`, `IndexYear`, `EntryDesc`, `EntryChn`, `EntryYear`, `EntryRank`, `KinType`, `KinName`, `KinChn`, `AddrName`, `AddrChn`, `X`, `Y`, `xy_count` |
+
+All 911 published records are civil `進士(籠統)`; no 武舉 record is in the figures.
 
 The thesis reports 25,188 cleaned Jinshi records; the attached
 `table_general.xlsx` has 25,187 (one-record export difference). The full CBDB
