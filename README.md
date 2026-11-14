@@ -191,7 +191,7 @@ The sample figures carry a “synthetic sample” footnote. See
   region and period. The earlier 911-record Jinshi layer was a
   **format-selected subset** of the CBDB 1甲/2甲 elite (Arabic-numeral ranks
   only), not a representative sample. The v0.3 figures use the normalized elite
-  (2,841 records with coordinates); the 911 layer is retained only as an audit.
+  (2,841 records with coordinates; confirmed civil lower bound 2,855 before the coordinate filter, upper 3,104); the 911 layer is retained only as an audit.
   See [docs/jinshi_provenance.md](docs/jinshi_provenance.md),
   [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md) and
   [docs/corrected_robustness.md](docs/corrected_robustness.md).
@@ -225,6 +225,7 @@ econometrics and explainable ML.
 
 *If you use the figure style or the pipeline, cite the data sources (CHGIS,
 Mann et al. 2009, Schneider et al. 2015) and this repository.*
+
 
 
 
