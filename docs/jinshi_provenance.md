@@ -21,6 +21,10 @@ export is **not redistributed**; only aggregate counts are published.
 
 ## 2. Coverage
 
+Aggregate tables are published in
+[`data/derived/`](../data/derived/README.md): `jinshi_by_year_1521_1619.csv`
+and `jinshi_rank_summary.csv`. They contain counts only, no individual records.
+
 | Metric | Raw export | 1521–1619 window |
 |---|---:|---:|
 | Rows | 28,761 | 11,688 |

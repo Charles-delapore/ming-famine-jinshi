@@ -141,6 +141,7 @@ python scripts/make_interactive_map.py
 - Jinshi rank-encoding audit (why the 911 layer is a subset):
   [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md).
 - Data provenance overview: [docs/data_provenance.md](docs/data_provenance.md).
+- Corrected Jinshi aggregates (counts only): [data/derived/](data/derived/README.md).
 - Interactive map notes: [web/README.md](web/README.md).
 - Zenodo DOI release steps: [docs/zenodo_release.md](docs/zenodo_release.md) — **DOI pending** the author's Zenodo release.
 - Data sources and transformations are recorded in the figure footnotes.
