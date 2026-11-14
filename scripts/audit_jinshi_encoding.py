@@ -59,6 +59,7 @@ def main() -> None:
     published = df[df["year"].between(1521, 1619) & df["arabic"] & df["cls"].isin([1, 2])]
 
     pipe_line = None
+    layer_911 = None  # pipeline-table Arabic-coded elite from 1522 = the 911 layer
     if PIPE.exists():
         p = pd.read_excel(PIPE)
         p["year"] = pd.to_numeric(p.get("EntryYear"), errors="coerce")
@@ -67,6 +68,16 @@ def main() -> None:
         p_elite = p[p["arabic"] & p["cls"].isin([1, 2]) & p["year"].between(1521, 1619)]
         p_1522 = p_elite[p_elite["year"] >= 1522]
         pipe_line = (len(p), len(p_elite), len(p_1522))
+        layer_911 = p_1522
+
+    # Elite rows matching neither the Arabic nor the Chinese flag: no 第, or a
+    # space around the digit (e.g. `1甲…`, `第 1 甲`). The normalizing regex
+    # catches them, the two `str.contains` flags do not.
+    other_spelling = (~elite["arabic"] & ~elite["chinese"])
+    pct_ar = f"{elite['arabic'].mean() * 100:.1f}"
+    pct_ch = f"{elite['chinese'].mean() * 100:.1f}"
+    pct_ot = f"{other_spelling.mean() * 100:.1f}"
+    share_sum = float(pct_ar) + float(pct_ch) + float(pct_ot)
 
     lines = [
         "# Jinshi rank-encoding audit",
@@ -121,10 +132,16 @@ def main() -> None:
         "",
         "| Encoding | Elite rows in window | Share |",
         "|---|---:|---:|",
-        f"| Arabic `第1甲`/`第2甲` | {int(elite['arabic'].sum()):,} | "
-        f"{elite['arabic'].mean() * 100:.1f}% |",
-        f"| Chinese `第一甲`/`第二甲` | {int(elite['chinese'].sum()):,} | "
-        f"{elite['chinese'].mean() * 100:.1f}% |",
+        f"| Arabic `第1甲`/`第2甲` | {int(elite['arabic'].sum()):,} | {pct_ar}% |",
+        f"| Chinese `第一甲`/`第二甲` | {int(elite['chinese'].sum()):,} | {pct_ch}% |",
+        f"| Other spellings (no 第, or spaced `第 1 甲`) | "
+        f"{int(other_spelling.sum()):,} | {pct_ot}% |",
+        "",
+        f"The {int(other_spelling.sum()):,} \"other\" rows are parsed as elite by the "
+        "normalizing regex but match",
+        "neither flag: the flags require `第` + digit + `甲` with no gap, while the",
+        f"regex also accepts a missing `第` or spaces around the digit. Shares sum to "
+        f"{share_sum:.1f}% because each is rounded to one decimal.",
         "",
         "## 4. Exam years that the old filter kept or dropped",
         "",
@@ -138,28 +155,67 @@ def main() -> None:
         arabic=("arabic", "sum"), chinese=("chinese", "sum"), total=("cls", "size")
     )
     for year, row in by_year.sort_index().iterrows():
-        kept = "yes" if row["arabic"] > 0 and row["chinese"] == 0 else (
-            "partial" if row["arabic"] > 0 else "no")
+        if year < 1522:
+            # the published 911 layer starts in 1523; 1521 contributes 0 rows
+            kept = "0"
+        elif row["arabic"] > 0 and row["chinese"] == 0:
+            kept = "yes"
+        elif row["arabic"] > 0:
+            kept = "partial"
+        else:
+            kept = "no"
         lines.append(f"| {int(year)} | {int(row['arabic'])} | {int(row['chinese'])} | {kept} |")
+    lines += [
+        "",
+        "1521 contributes 0 rows to the published 911 layer: the layer starts in",
+        "1523 (the 7 Arabic-coded 1521 records are cut off by the 嘉靖-era start), so",
+        "the previous \"partial\" label for 1521 was wrong.",
+    ]
 
     top_arabic = by_year["arabic"].sort_values(ascending=False).head(6)
-    share = published["year"].value_counts(normalize=True).head(3) * 100
+    if layer_911 is not None:
+        # The published 911 layer is the pipeline-table Arabic-coded elite from
+        # 1522 on, so its top-year shares use denominator 911, not 929.
+        layer_vc = layer_911["year"].value_counts(normalize=True)
+        share = layer_vc.head(3) * 100
+        top2 = layer_vc.head(2)
+        top2_cell = (
+            f"| {top2.sum() * 100:.1f}% of rows fall in {int(top2.index[0])} + "
+            f"{int(top2.index[1])} | Both years are encoded almost entirely "
+            "in Arabic numerals, so they survive the filter |"
+        )
+        top_years_line = (
+            "Top years in the published 911 layer: "
+            + ", ".join(f"{int(y)} ({v:.1f}%)" for y, v in share.items()) + "."
+        )
+    else:
+        # No pipeline table: the 911 layer itself is unavailable, so report the
+        # same quantities for the Arabic-coded window instead, labelled as such.
+        share = published["year"].value_counts(normalize=True).head(3) * 100
+        top2 = published["year"].value_counts(normalize=True).head(2)
+        top2_cell = (
+            f"| {top2.sum() * 100:.1f}% of Arabic-coded elite rows in the window "
+            f"fall in {int(top2.index[0])} + {int(top2.index[1])} | Both years are "
+            "encoded almost entirely in Arabic numerals, so they survive the filter |"
+        )
+        top_years_line = (
+            "Top years among the Arabic-coded elite in the window: "
+            + ", ".join(f"{int(y)} ({v:.1f}%)" for y, v in share.items()) + "."
+        )
     lines += [
         "",
         "## 5. What the 911 layer actually is",
         "",
         "| Consequence | Explanation |",
         "|---|---|",
-        "| 24.6% of rows fall in 1523 + 1526 | Both years are encoded almost entirely "
-        "in Arabic numerals, so they survive the filter |",
+        top2_cell,
         "| 0 records of 3甲 | 3甲 is excluded by design (`is_important` keeps 1甲/2甲) |",
         "| 34 records of 1甲 | Only the Arabic-coded 1甲 records survive; the Chinese-coded "
         "majority are dropped |",
         "| Cluster sizes of exactly 100 | `max_cluster_size=100` truncates dense clusters |",
         "",
         "Top Arabic-coded years: " + ", ".join(f"{int(y)} ({int(n)})" for y, n in top_arabic.items()) + ".",
-        "Top years in the published 911 layer: "
-        + ", ".join(f"{int(y)} ({v:.1f}%)" for y, v in share.items()) + ".",
+        top_years_line,
         "",
         "## 5b. Reconciliation with the published 911 table",
         "",

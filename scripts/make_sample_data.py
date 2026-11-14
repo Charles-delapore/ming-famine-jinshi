@@ -51,7 +51,7 @@ def make_events() -> None:
             "y": RNG.uniform(18, 41, n),
             "cluster": RNG.integers(1, 13, n),
         }
-    ).sort_values("year")
+    ).sort_values(["year", "code", "x", "y", "cluster"], kind="mergesort").reset_index(drop=True)
     df.to_excel(OUT / "clustered_levels.xlsx", index=False)
 
     n = 120
@@ -70,7 +70,7 @@ def make_events() -> None:
             "level": RNG.choice([1, 2], n, p=[0.04, 0.96]),
             "cluster": RNG.integers(1, 9, n),
         }
-    ).sort_values("EntryYear")
+    ).sort_values(["EntryYear", "NameChn", "X", "Y", "cluster"], kind="mergesort").reset_index(drop=True)
     jinshi.to_excel(OUT / "clustered_jinshi.xlsx", index=False)
 
 

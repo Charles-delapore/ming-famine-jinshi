@@ -1,17 +1,17 @@
-# Design notes
+﻿# Design notes
 
-These notes document why the portfolio figures look the way they do. The short
-version: every panel has one job, the encoding is honest about what the data can
-support, and the figures are reproducible from result tables.
+These notes document why the figures look the way they do. Every panel has one
+job, the encoding matches what the data can support, and the figures are
+reproducible from result tables.
 
 ## Retiring the exploratory 3D figures
 
 The original `SSDBSCAN` figures drew 74 famine clusters in a 3D rainbow scatter.
 A diagnostic showed that **72 of those clusters contain exactly 100 events**:
 `max_cluster_size=100` was cutting the dense core into equal chunks. The colours
-therefore encoded an artefact of the algorithm, not a natural grouping. The
-portfolio keeps clustering as an exploratory step and moves the inferential
-evidence to the grid level.
+therefore encoded an artefact of the algorithm, not a natural grouping. The analysis
+keeps clustering as an exploratory step and moves the inferential evidence to
+the grid level.
 
 Other retired figures:
 
@@ -28,7 +28,7 @@ Other retired figures:
 |--------|-------|------------|
 | 1 Pattern | Famine belts and Jinshi cores overlap only partially; the association is spatially heterogeneous. | A/B maps |
 | 2 Mechanism | The famine→Jinshi signal is spatially selective and concentrated in short horizons. | B Granger map |
-| 3 Abstract | Sparse records become spatially explicit evidence through a transparent pipeline. | Real data in each step |
+| 3 Abstract | Sparse records become spatially explicit evidence through the analysis pipeline. | Real data in each step |
 
 ## Visual system
 
@@ -56,3 +56,4 @@ machine once the data are in place.
 - No p-value-only bar charts; counts and q values are labelled with denominators.
 - No claim that Granger causality is mechanistic causality.
 - No hiding of the CCM failure; it is part of the method story.
+

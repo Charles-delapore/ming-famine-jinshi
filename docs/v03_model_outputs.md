@@ -47,9 +47,11 @@ GeoDetector tables consumed by Figure 2.
 ## Reading notes
 
 - The v0.2 reconstruction reproduces the published grid results exactly
-  (56/135 FDR, 125/158 GWR), which validates the re-run.
+  (56 FDR grids of 135, 125/158 GWR), which validates the re-run.
 - Spatial effects are robust (r = 0.991; 122/125 significant grids overlap).
-- Discovery count and lag are not fully robust (56→48; 11→6.5 years).
+- Discovery count and selected lag are not fully robust (56→48 under a 20-lag
+  search; 11→6.5 years for a bimodal lag distribution). The 48 count is a
+  diagnostic, not the headline.
 - The README rounds q to 0.337/0.186/0.128; the unrounded values are above.
 - The sample `geodetector_results.xlsx` (0.35/0.19/0.13; 6/0/0) is synthetic
   and is not evidence for the v0.3 numbers.

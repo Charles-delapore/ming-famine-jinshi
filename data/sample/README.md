@@ -54,3 +54,12 @@ MING_FIG_DIR  = figures/sample
 
 The output is a visual smoke test, not a substitute for the real figures in
 `figures/`.
+
+## Synthetic values are not results
+
+`geodetector_results.xlsx` contains q = 0.35 / 0.19 / 0.13, and the Granger,
+GWR and multiscale tables contain synthetic p-values, q-values and significance
+flags. These are **smoke-test values**, not the published q = 0.337/0.186/0.128
+or the 48/135 FDR and 8/0/0 horizon findings. Never quote a number from
+`data/sample/` as a research result; the real aggregate numbers are in
+`data/derived/` and `docs/v03_model_outputs.md`.

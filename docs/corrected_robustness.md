@@ -30,14 +30,17 @@ subset. This check re-estimates both models with the old extension
 ## Reading
 
 - The v0.2 reconstruction reproduces the published grid results exactly
-  (56/135 FDR, 125/158 GWR), which validates the re-run.
+  (56 FDR grids of 135, 125/158 GWR), which validates the re-run.
 - **Spatial effects are robust.** GWR coefficients agree at r = 0.991
   (median |Δ| = 0.017); 122 of 125 significant grids overlap.
 - **Discovery count and lag are not fully robust.** FDR discovery drops from
   56 to 48 grids, and the median significant lag shifts from 11 to 6.5 years.
   The positive famine→Jinshi association survives; the specific "~11–20 year"
   lag claim does not.
-- The corrected figures (v0.3) use 48/135, 123/159, 8/0/0 and GeoDetector
-  q = 0.337/0.186/0.128. See `figures/fig5_correction.png`.
+- The corrected figures (v0.3) use 123/159, 8/0/0 and GeoDetector
+  q = 0.337/0.186/0.128. Grid counts are reported as 2/135 (fixed 1–5 yr
+  joint) or 13/135 (5-yr window); `48/135` belongs to the 20-lag search and is
+  a diagnostic, not a headline (`docs/long_tail_analysis.md`).
+  See `figures/fig5_correction.png`.
 
 Raw inputs stay outside the repository.

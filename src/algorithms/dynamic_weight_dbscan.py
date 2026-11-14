@@ -2,6 +2,8 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import DBSCAN
 
+from src.data_processing.jinshi_rank import rank_level
+
 
 class DynamicWeightSSDBSCAN:
     def __init__(self, eps, min_samples, max_cluster_size=100,
@@ -259,14 +261,13 @@ def cluster_zaihuang_dynamic(data, params):
 
 
 def cluster_jinshi_dynamic(data, params):
+    # Normalize ranks with the shared module (src/data_processing/jinshi_rank):
+    # the old literal filter `第1甲|第2甲` silently dropped Chinese-numeral
+    # ranks (第一甲/第二甲). Keep 1甲/2甲 only, drop 3甲 and unparsed rows.
     important_data = data.dropna(subset=['EntryRank']).copy()
-    important_data = important_data[
-        important_data['EntryRank'].str.contains(r'第1甲|第2甲', na=False)
-    ]
+    important_data['level'] = important_data['EntryRank'].map(rank_level)
+    important_data = important_data[important_data['level'].isin([1, 2])]
     important_data = important_data.dropna(subset=['EntryYear'])
-    important_data['level'] = important_data['EntryRank'].apply(
-        lambda x: 1 if "第1甲" in x else 2
-    )
 
     features = important_data[['X', 'Y', 'EntryYear']].values
     scaler = StandardScaler()

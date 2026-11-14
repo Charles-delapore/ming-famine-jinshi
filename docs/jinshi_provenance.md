@@ -1,8 +1,8 @@
 ﻿# Jinshi data: source, selection and known defect
 
-Status: **confirmed from the 2024 graduation-project archive** (private: final
-thesis, selection code and raw CBDB export). This replaces the earlier
-"pending author confirmation" draft.
+Status: **confirmed from the 2024 graduation-project archive**
+(`<private archive>`, final thesis + code + raw CBDB export). This replaces
+the earlier "pending author confirmation" draft.
 
 ## 1. Source
 
@@ -140,8 +140,9 @@ published layer starts in 1523.
    the input to the grid models: those use a broader series
    (`ming_general` + elite extension). A direct v0.2/v0.3 comparison is in
    [`corrected_robustness.md`](corrected_robustness.md): FDR discovery moves
-   from 56/135 to 48/135, GWR coefficients agree at r = 0.991, and the median
-   significant lag shifts from 11 to 6.5 years.
+   from 56 to 48 of 135 estimable grids under a 20-lag search (2/135 under a
+   fixed 1–5 year joint test), GWR coefficients agree at r = 0.991, and the
+   selected-lag distribution is bimodal with a 6.5-year median.
 
 ## 6. Corrected denominator
 
@@ -164,8 +165,9 @@ python scripts/audit_jinshi_encoding.py
 # -> docs/jinshi_encoding_audit.md (aggregate only)
 ```
 
-The raw tables stay outside the repository in a git-ignored private directory;
-the graduation-project archive is private as well.
+The raw tables stay outside the repository (`<private raw-data directory>`,
+git-ignored). The private graduation-project archive remains at
+`<private archive>`.
 
 ## 8. Wording for the README
 

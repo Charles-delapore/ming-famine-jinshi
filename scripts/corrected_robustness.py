@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import json
 import os
-import re
+import sys
 import warnings
 from pathlib import Path
 
@@ -39,16 +39,12 @@ JINSHI_ALL = Path(os.environ.get("MING_JINSHI_ALL", ROOT / "data" / "raw" / "min
 OUT = Path(os.environ.get("MING_V03_OUT", ROOT / "output" / "v03"))
 DOC = ROOT / "docs" / "corrected_robustness.md"
 
-RANK_RE = re.compile(r"^\s*(?:第)?\s*([一二三123])\s*甲")
-NUM = {"一": 1, "二": 2, "三": 3, "1": 1, "2": 2, "3": 3}
+sys.path.insert(0, str(ROOT))
+# Shared normalizer (same pattern as scripts/build_v03_figure_inputs.py);
+# this script previously carried its own copy of RANK_RE / rank_class.
+from src.data_processing.jinshi_rank import rank_class  # noqa: E402
+
 GRID = 1.0
-
-
-def rank_class(value: object) -> int | None:
-    if pd.isna(value):
-        return None
-    match = RANK_RE.match(str(value))
-    return NUM[match.group(1)] if match else None
 
 
 # --------------------------------------------------------------------- data

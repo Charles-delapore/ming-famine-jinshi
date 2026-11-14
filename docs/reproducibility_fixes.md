@@ -11,9 +11,16 @@ digital-humanities review, plus the changes made in this repository.
 - `clustered_levels`: `year, code, x, y, cluster`
 - `clustered_jinshi`: `EntryYear, NameChn, X, Y, cluster`
 
-The synthetic sample generator already sorts event tables; the real pipeline
-output is now stable across runs (assuming the same input rows). This does not
-change any value, only the row order.
+The synthetic sample generator sorts with the same full keys and the same
+stable mergesort as `run_pipeline.py` (`clustered_levels`:
+`year, code, x, y, cluster`; `clustered_jinshi`:
+`EntryYear, NameChn, X, Y, cluster`). Before this fix the generator sorted
+only on a single key (`year` / `EntryYear`) with the default quicksort, so
+rows tied on that key could come out in a different order on another machine
+or pandas version — regenerating `clustered_levels.xlsx` moved 298/400 rows
+against the committed file, even though the values were identical. The
+generator output is now stable across runs (assuming the same input rows).
+This does not change any value, only the row order.
 
 ## 2. Data-driven colour limits
 
@@ -41,7 +48,7 @@ and every receipt/result tied to it. It is now explicitly documented in
 `src/config.py` and `src/README.md`:
 
 > The labels are exploratory partitions of dense areas, not natural clusters.
-> They are not used as inferential evidence in the portfolio figures.
+> They are not used as inferential evidence in the figures.
 
 The 3D rainbow cluster figures remain retired; the hero figures use map and
 grid-level evidence instead.
@@ -73,5 +80,6 @@ See `docs/jinshi_provenance.md`, `docs/jinshi_encoding_audit.md`, and
 normalizes both numeral systems; `loader.py` and `ss_dbscan.py` use it. Figures
 1–5 are regenerated from the normalized elite (2,841). The direct sensitivity
 check is `docs/corrected_robustness.md` and `figures/fig5_correction.*`.
+
 
 

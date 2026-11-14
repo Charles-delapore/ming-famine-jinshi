@@ -49,6 +49,12 @@ The 911-record layer is therefore a *format-selected* subsample. This audit quan
 |---|---:|---:|
 | Arabic `第1甲`/`第2甲` | 929 | 32.6% |
 | Chinese `第一甲`/`第二甲` | 1,916 | 67.2% |
+| Other spellings (no 第, or spaced `第 1 甲`) | 8 | 0.3% |
+
+The 8 "other" rows are parsed as elite by the normalizing regex but match
+neither flag: the flags require `第` + digit + `甲` with no gap, while the
+regex also accepts a missing `第` or spaces around the digit. Shares sum to
+100.1% because each is rounded to one decimal.
 
 ## 4. Exam years that the old filter kept or dropped
 
@@ -57,7 +63,7 @@ Arabic numerals. The table shows why 1523 and 1526 dominate.
 
 | Year | Arabic elite | Chinese elite | In 911 layer |
 |---:|---:|---:|---|
-| 1521 | 7 | 108 | partial |
+| 1521 | 7 | 108 | 0 |
 | 1523 | 135 | 0 | yes |
 | 1525 | 1 | 0 | yes |
 | 1526 | 91 | 0 | yes |
@@ -96,6 +102,10 @@ Arabic numerals. The table shows why 1523 and 1526 dominate.
 | 1618 | 1 | 0 | yes |
 | 1619 | 61 | 0 | yes |
 
+1521 contributes 0 rows to the published 911 layer: the layer starts in
+1523 (the 7 Arabic-coded 1521 records are cut off by the 嘉靖-era start), so
+the previous "partial" label for 1521 was wrong.
+
 ## 5. What the 911 layer actually is
 
 | Consequence | Explanation |
@@ -106,7 +116,7 @@ Arabic numerals. The table shows why 1523 and 1526 dominate.
 | Cluster sizes of exactly 100 | `max_cluster_size=100` truncates dense clusters |
 
 Top Arabic-coded years: 1523 (135), 1526 (91), 1589 (69), 1616 (66), 1613 (66), 1598 (61).
-Top years in the published 911 layer: 1523 (14.5%), 1526 (9.8%), 1589 (7.4%).
+Top years in the published 911 layer: 1523 (14.7%), 1526 (9.9%), 1589 (7.5%).
 
 ## 5b. Reconciliation with the published 911 table
 

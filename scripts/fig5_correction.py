@@ -26,7 +26,7 @@ ms.apply_style()
 
 ROOT = Path(__file__).resolve().parents[1]
 V03 = Path(os.environ.get("MING_V03_OUT", ROOT / "output" / "v03"))
-OLD_OUTPUT = Path(os.environ.get("MING_OUTPUT_OLD", ROOT / "output" / "old"))
+OLD_OUTPUT = Path(os.environ.get("MING_OUTPUT_OLD", r"data/private/v02_output"))
 NEW_INPUT = V03 / "fig_input"
 
 old_j = pd.read_excel(OLD_OUTPUT / "clustered_jinshi.xlsx")
