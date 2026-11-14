@@ -30,11 +30,11 @@ Machine-readable copy:
 ## How these were produced
 
 ```bash
-set MING_JINSHI_RAW=I:\L\Work_ming\raw\明进士.xlsx
-set MING_FAMINE_MERGED=I:\L\Work_ming\old-version\workload_明代\database\merged_data.csv
-set MING_FAMINE_EXT=I:\L\Work_ming\old-version\000work_ming\000_load\table_generals1521_1619.xlsx
-set MING_CITYS=I:\L\Work_ming\old-version\000work_ming\000_load\table_citys.xlsx
-set MING_JINSHI_ALL=I:\L\Work_ming\old-version\workload_明代\database\ming_general.csv
+set MING_JINSHI_RAW=<path to the private CBDB export>
+set MING_FAMINE_MERGED=<path to the private famine table>
+set MING_FAMINE_EXT=<path to the private famine export>
+set MING_CITYS=<path to the private city points>
+set MING_JINSHI_ALL=<path to the private Jinshi extension>
 
 python scripts\corrected_robustness.py
 python scripts\build_v03_figure_inputs.py

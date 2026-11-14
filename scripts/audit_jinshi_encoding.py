@@ -11,7 +11,7 @@ format-selected subsample, not a rank-selected one. This script quantifies the
 problem from the raw CBDB export and prints a reproducible table.
 
 Usage:
-    set MING_JINSHI_RAW=I:\\L\\Work_ming\\raw\\明进士.xlsx
+    set MING_JINSHI_RAW=<path to the private CBDB export>
     python scripts/audit_jinshi_encoding.py
 
 Writes docs/jinshi_encoding_audit.md (aggregate counts only).

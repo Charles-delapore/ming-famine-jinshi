@@ -17,7 +17,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 V03 = Path(os.environ.get("MING_V03_OUT", ROOT / "output" / "v03"))
 FIG = V03 / "fig_input"
-OLD_OUTPUT = Path(os.environ.get("MING_OUTPUT_OLD", r"I:\L\Work_ming\output"))
+OLD_OUTPUT = Path(os.environ.get("MING_OUTPUT_OLD", ROOT / "output" / "old"))
 RAW = Path(os.environ.get("MING_JINSHI_RAW", ROOT / "data" / "raw" / "明进士.xlsx"))
 
 sys.path.insert(0, str(ROOT))

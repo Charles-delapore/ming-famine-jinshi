@@ -11,8 +11,8 @@ useful for intent, not for verification.
 
 Sources:
 
-- `I:\G\001\000\000毕设\004\T1——文本新.docx` §1.3, §3.1, §4.1.1, §4.2.1, §4.3.2
-- `I:\G\001\000\000毕设\009\...\古代灾荒事件...docx` §2.1 (final thesis)
+- Graduation thesis (private archive), §1.3, §3.1, §4.1.1, §4.2.1, §4.3.2
+- Final thesis, famine-events section (private archive), §2.1
 
 Stated boundary:
 

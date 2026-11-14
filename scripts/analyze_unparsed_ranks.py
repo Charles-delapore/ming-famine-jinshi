@@ -4,7 +4,7 @@ Aggregate output only: no names, PersonIDs or coordinates. The goal is to bound
 the elite (1甲/2甲) count rather than assume that every unparsed row is elite.
 
 Usage:
-    set MING_JINSHI_RAW=I:\\L\\Work_ming\\raw\\明进士.xlsx
+    set MING_JINSHI_RAW=<path to the private CBDB export>
     python scripts/analyze_unparsed_ranks.py
 """
 

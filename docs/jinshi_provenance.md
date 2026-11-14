@@ -1,8 +1,8 @@
 ﻿# Jinshi data: source, selection and known defect
 
-Status: **confirmed from the 2024 graduation-project archive**
-(`I:\G\001\000\000毕设`, final thesis + code + raw CBDB export). This replaces
-the earlier "pending author confirmation" draft.
+Status: **confirmed from the 2024 graduation-project archive** (private: final
+thesis, selection code and raw CBDB export). This replaces the earlier
+"pending author confirmation" draft.
 
 ## 1. Source
 
@@ -158,15 +158,14 @@ Never match the literal string `第1甲` alone.
 ## 7. Reproduction
 
 ```bash
-set MING_JINSHI_RAW=I:\L\Work_ming\raw\明进士.xlsx
-set MING_JINSHI_PIPELINE=I:\L\Work_ming\raw\table_general.xlsx
+set MING_JINSHI_RAW=<path to the private CBDB export>
+set MING_JINSHI_PIPELINE=<path to the private cleaned Jinshi table>
 python scripts/audit_jinshi_encoding.py
 # -> docs/jinshi_encoding_audit.md (aggregate only)
 ```
 
-The raw tables stay outside the repository (`I:\L\Work_ming\raw\`,
-git-ignored). The private graduation-project archive remains at
-`I:\G\001\000\000毕设`.
+The raw tables stay outside the repository in a git-ignored private directory;
+the graduation-project archive is private as well.
 
 ## 8. Wording for the README
 

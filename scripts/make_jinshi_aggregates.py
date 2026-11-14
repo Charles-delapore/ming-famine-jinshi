@@ -5,7 +5,7 @@ rank-class totals only. They give downstream users the corrected denominator
 (2,853 elite records in 1521-1619) without redistributing CBDB rows.
 
 Usage:
-    set MING_JINSHI_RAW=I:\\L\\Work_ming\\raw\\明进士.xlsx
+    set MING_JINSHI_RAW=<path to the private CBDB export>
     python scripts/make_jinshi_aggregates.py
 """
 
