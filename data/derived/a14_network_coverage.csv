@@ -1,0 +1,13 @@
+metric,value
+edge_rows_raw,40450.0
+edge_rows_deduplicated,22459.0
+unique_person_ids,2678.0
+unique_node_ids,6136.0
+unique_actors_total,6902.0
+jinshi_ids_in_export,27711.0
+jinshi_ids_with_any_network_edge,4276.0
+jinshi_network_coverage,0.1543
+edges_with_both_coordinates,20767.0
+median_edge_distance,1.0
+share_edges_within_1_degree,0.0
+coverage_go_threshold,0.3

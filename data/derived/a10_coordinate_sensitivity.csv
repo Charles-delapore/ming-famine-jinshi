@@ -1,0 +1,2 @@
+n_elite,match_rate,tier1,tier2,tier3,tier3_share,multi_addr_share,grids_tested,fdr_sig,median_lag,elite_rows_kept,elite_rows_dropped,baseline_fdr,fdr_delta,large_move
+2841,0.9915522703273495,2556,258,27,0.009503695881731784,0.6406195001759943,135,48,6.5,2814,27,48,0,False

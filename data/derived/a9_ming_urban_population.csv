@@ -1,0 +1,158 @@
+id,city,alt_names,country,lat,lon,level,year,population,key
+2790,Yinchuan,"Chunghsing, Yuwei, Erikhaya, Khotun, Ninghsia",China,38.4667,106.2667,3,1500,20000,Yinchuan_38.5_106.3
+2324,Yangzhou,Yangchow,China,32.4,119.416667,2,1400,60000,Yangzhou_32.4_119.4
+2490,Yangzhou,Yangchow,China,32.4,119.416667,2,1450,60000,Yangzhou_32.4_119.4
+2789,Yangzhou,Yangchow,China,32.4,119.416667,2,1500,60000,Yangzhou_32.4_119.4
+3066,Yangzhou,Yangchow,China,32.4,119.416667,2,1550,60000,Yangzhou_32.4_119.4
+3216,Yangzhou,Yangchow,China,32.4,119.416667,2,1575,55000,Yangzhou_32.4_119.4
+3560,Yangzhou,Yangchow,China,32.4,119.416667,2,1600,58000,Yangzhou_32.4_119.4
+2322,Xuzhou,"Suchow, Suifu, Hsuchow",China,34.26,117.21,1,1400,45000,Xuzhou_34.3_117.2
+2489,Xuzhou,"Suchow, Suifu, Hsuchow",China,34.26,117.21,1,1450,50000,Xuzhou_34.3_117.2
+2787,Xuzhou,"Suchow, Suifu, Hsuchow",China,34.26,117.21,1,1500,55000,Xuzhou_34.3_117.2
+3064,Xuzhou,"Suchow, Suifu, Hsuchow",China,34.26,117.21,1,1550,65000,Xuzhou_34.3_117.2
+3214,Xuzhou,"Suchow, Suifu, Hsuchow",China,34.26,117.21,1,1575,65000,Xuzhou_34.3_117.2
+3558,Xuzhou,"Suchow, Suifu, Hsuchow",China,34.26,117.21,1,1600,65000,Xuzhou_34.3_117.2
+3750,Xuzhou,"Suchow, Suifu, Hsuchow",China,34.26,117.21,1,1644,73961,Xuzhou_34.3_117.2
+2093,Xiangtan,Siangtan,China,27.85,112.9,3,1370,20053,Xiangtan_27.9_112.9
+2957,Xiangtan,Siangtan,China,27.85,112.9,3,1542,33000,Xiangtan_27.9_112.9
+2092,Xian,"Sian, Changan, Xi'an",China,34.341485,108.940404,1,1370,112000,Xian_34.3_108.9
+2321,Xian,"Sian, Changan, Xi'an",China,34.341485,108.940404,1,1400,115000,Xian_34.3_108.9
+2488,Xian,"Sian, Changan, Xi'an",China,34.341485,108.940404,1,1450,120000,Xian_34.3_108.9
+2786,Xian,"Sian, Changan, Xi'an",China,34.341485,108.940404,1,1500,127000,Xian_34.3_108.9
+3063,Xian,"Sian, Changan, Xi'an",China,34.341485,108.940404,1,1550,132000,Xian_34.3_108.9
+3213,Xian,"Sian, Changan, Xi'an",China,34.341485,108.940404,1,1575,135000,Xian_34.3_108.9
+3557,Xian,"Sian, Changan, Xi'an",China,34.341485,108.940404,1,1600,138000,Xian_34.3_108.9
+3556,Xiamen,"Amoy, Hsiamen",China,24.47979,118.08187,1,1600,50000,Xiamen_24.5_118.1
+3650,Xiamen,"Amoy, Hsiamen",China,24.47979,118.08187,1,1623,60000,Xiamen_24.5_118.1
+2320,Wuhan,Wuchang,China,30.58333,114.26667,1,1400,90000,Wuhan_30.6_114.3
+2487,Wuhan,Wuchang,China,30.58333,114.26667,1,1450,65000,Wuhan_30.6_114.3
+2785,Wuhan,Wuchang,China,30.58333,114.26667,1,1500,64000,Wuhan_30.6_114.3
+3062,Wuhan,Wuchang,China,30.58333,114.26667,1,1550,70000,Wuhan_30.6_114.3
+3212,Wuhan,Wuchang,China,30.58333,114.26667,1,1575,72000,Wuhan_30.6_114.3
+3555,Wuhan,Wuchang,China,30.58333,114.26667,1,1600,75000,Wuhan_30.6_114.3
+2134,Wenzhou,"Wenchow, Luchow",China,27.99942,120.66682,1,1385,25000,Wenzhou_28_120.7
+2525,Turpan,"Turfan, Tulufan",China,42.93333,89.16667,1,1473,60000,Turpan_42.9_89.2
+2773,Turpan,"Turfan, Tulufan",China,42.93333,89.16667,1,1500,60000,Turpan_42.9_89.2
+2308,Tsinkiang,"Zayton, Chinchiang, Chuanchow",China,24.913889,118.58583,3,1400,65000,Tsinkiang_24.9_118.6
+2483,Tsinkiang,"Zayton, Chinchiang, Chuanchow",China,24.913889,118.58583,3,1450,65000,Tsinkiang_24.9_118.6
+2771,Tsinkiang,"Zayton, Chinchiang, Chuanchow",China,24.913889,118.58583,3,1500,60000,Tsinkiang_24.9_118.6
+3052,Tsinkiang,"Zayton, Chinchiang, Chuanchow",China,24.913889,118.58583,3,1550,58000,Tsinkiang_24.9_118.6
+3207,Tsinkiang,"Zayton, Chinchiang, Chuanchow",China,24.913889,118.58583,3,1575,58000,Tsinkiang_24.9_118.6
+3223,Tsinkiang,"Zayton, Chinchiang, Chuanchow",China,24.913889,118.58583,3,1577,58000,Tsinkiang_24.9_118.6
+3541,Tsinkiang,"Zayton, Chinchiang, Chuanchow",China,24.913889,118.58583,3,1600,56000,Tsinkiang_24.9_118.6
+3587,Tsinkiang,"Zayton, Chinchiang, Chuanchow",China,24.913889,118.58583,3,1608,56159,Tsinkiang_24.9_118.6
+2125,Taiyuan,,China,37.87059,112.548879,1,1383,53719,Taiyuan_37.9_112.5
+2295,Taiyuan,,China,37.87059,112.548879,1,1400,51000,Taiyuan_37.9_112.5
+2351,Taiyuan,,China,37.87059,112.548879,1,1414,50228,Taiyuan_37.9_112.5
+2478,Taiyuan,,China,37.87059,112.548879,1,1450,50000,Taiyuan_37.9_112.5
+2535,Taiyuan,,China,37.87059,112.548879,1,1476,51652,Taiyuan_37.9_112.5
+2759,Taiyuan,,China,37.87059,112.548879,1,1500,61000,Taiyuan_37.9_112.5
+2962,Taiyuan,,China,37.87059,112.548879,1,1544,79068,Taiyuan_37.9_112.5
+3049,Taiyuan,,China,37.87059,112.548879,1,1550,79000,Taiyuan_37.9_112.5
+3205,Taiyuan,,China,37.87059,112.548879,1,1575,79000,Taiyuan_37.9_112.5
+3527,Taiyuan,,China,37.87059,112.548879,1,1600,80000,Taiyuan_37.9_112.5
+3654,Taiyuan,,China,37.87059,112.548879,1,1624,81200,Taiyuan_37.9_112.5
+2095,Suzhou,Soochow,China,31.3,120.6,1,1371,105000,Suzhou_31.3_120.6
+2116,Suzhou,Soochow,China,31.3,120.6,1,1378,122000,Suzhou_31.3_120.6
+2142,Suzhou,Soochow,China,31.3,120.6,1,1393,129000,Suzhou_31.3_120.6
+2293,Suzhou,Soochow,China,31.3,120.6,1,1400,129000,Suzhou_31.3_120.6
+2475,Suzhou,Soochow,China,31.3,120.6,1,1450,121000,Suzhou_31.3_120.6
+2564,Suzhou,Soochow,China,31.3,120.6,1,1491,112000,Suzhou_31.3_120.6
+2757,Suzhou,Soochow,China,31.3,120.6,1,1500,122000,Suzhou_31.3_120.6
+2871,Suzhou,Soochow,China,31.3,120.6,1,1522,146000,Suzhou_31.3_120.6
+3047,Suzhou,Soochow,China,31.3,120.6,1,1550,128000,Suzhou_31.3_120.6
+3203,Suzhou,Soochow,China,31.3,120.6,1,1575,130000,Suzhou_31.3_120.6
+3524,Suzhou,Soochow,China,31.3,120.6,1,1600,134000,Suzhou_31.3_120.6
+3686,Shenyang,"Fengtien, Mukden",China,41.79222,123.43278,1,1631,200000,Shenyang_41.8_123.4
+3081,Shanghai,,China,31.22222,121.45806,1,1554,25000,Shanghai_31.2_121.5
+2259,Ningbo,"Yinhsien, Ningpo",China,29.866667,121.55,2,1400,60000,Ningbo_29.9_121.5
+2460,Ningbo,"Yinhsien, Ningpo",China,29.866667,121.55,2,1450,50000,Ningbo_29.9_121.5
+2719,Ningbo,"Yinhsien, Ningpo",China,29.866667,121.55,2,1500,30000,Ningbo_29.9_121.5
+2955,Ningbo,"Yinhsien, Ningpo",China,29.866667,121.55,2,1542,48000,Ningbo_29.9_121.5
+3479,Ningbo,"Yinhsien, Ningpo",China,29.866667,121.55,2,1600,50000,Ningbo_29.9_121.5
+2140,Nanjing,Nanking,China,32.05,118.766667,1,1391,473200,Nanjing_32_118.8
+2254,Nanjing,Nanking,China,32.05,118.766667,1,1400,487000,Nanjing_32_118.8
+2458,Nanjing,Nanking,China,32.05,118.766667,1,1450,150000,Nanjing_32_118.8
+2715,Nanjing,Nanking,China,32.05,118.766667,1,1500,147000,Nanjing_32_118.8
+2848,Nanjing,Nanking,China,32.05,118.766667,1,1515,147013,Nanjing_32_118.8
+3028,Nanjing,Nanking,China,32.05,118.766667,1,1550,182000,Nanjing_32_118.8
+3187,Nanjing,Nanking,China,32.05,118.766667,1,1575,188000,Nanjing_32_118.8
+3273,Nanjing,Nanking,China,32.05,118.766667,1,1592,194000,Nanjing_32_118.8
+3476,Nanjing,Nanking,China,32.05,118.766667,1,1600,194000,Nanjing_32_118.8
+2253,Nanchang,,China,28.68333,115.88333,1,1400,60000,Nanchang_28.7_115.9
+2457,Nanchang,,China,28.68333,115.88333,1,1450,50000,Nanchang_28.7_115.9
+2714,Nanchang,,China,28.68333,115.88333,1,1500,50000,Nanchang_28.7_115.9
+3475,Nanchang,,China,28.68333,115.88333,1,1600,45000,Nanchang_28.7_115.9
+3706,Macao,,China,22.1667,113.55,1,1635,35000,Macao_22.2_113.5
+2232,Kunming,Yunnanfu,China,25.03889,102.71833,1,1400,50000,Kunming_25_102.7
+2450,Kunming,Yunnanfu,China,25.03889,102.71833,1,1450,50000,Kunming_25_102.7
+2686,Kunming,Yunnanfu,China,25.03889,102.71833,1,1500,50000,Kunming_25_102.7
+3438,Kunming,Yunnanfu,China,25.03889,102.71833,1,1600,50000,Kunming_25_102.7
+2683,Kashi,Kashgar,China,39.4704,75.989756,1,1500,30000,Kashi_39.5_76
+2829,Kashi,Kashgar,China,39.4704,75.989756,1,1512,30000,Kashi_39.5_76
+2840,Kashi,Kashgar,China,39.4704,75.989756,1,1514,60000,Kashi_39.5_76
+2936,Kashi,Kashgar,China,39.4704,75.989756,1,1533,72000,Kashi_39.5_76
+3016,Kashi,Kashgar,China,39.4704,75.989756,1,1550,60000,Kashi_39.5_76
+2227,Kaifeng,"Bienliang, Pienliang",China,34.7986,114.30742,1,1400,90000,Kaifeng_34.8_114.3
+2448,Kaifeng,"Bienliang, Pienliang",China,34.7986,114.30742,1,1450,80000,Kaifeng_34.8_114.3
+2681,Kaifeng,"Bienliang, Pienliang",China,34.7986,114.30742,1,1500,80000,Kaifeng_34.8_114.3
+3014,Kaifeng,"Bienliang, Pienliang",China,34.7986,114.30742,1,1550,80000,Kaifeng_34.8_114.3
+3178,Kaifeng,"Bienliang, Pienliang",China,34.7986,114.30742,1,1575,80000,Kaifeng_34.8_114.3
+3430,Kaifeng,"Bienliang, Pienliang",China,34.7986,114.30742,1,1600,80000,Kaifeng_34.8_114.3
+3741,Kaifeng,"Bienliang, Pienliang",China,34.7986,114.30742,1,1642,80000,Kaifeng_34.8_114.3
+2349,Jiujiang,"Kiukiang, Kew Keang",China,29.705078,115.987222,1,1412,37000,Jiujiang_29.7_116
+2226,Jingdezhen,Kingtehchen,China,29.268836,117.17842,2,1400,75000,Jingdezhen_29.3_117.2
+2447,Jingdezhen,Kingtehchen,China,29.268836,117.17842,2,1450,80000,Jingdezhen_29.3_117.2
+3013,Jingdezhen,Kingtehchen,China,29.268836,117.17842,2,1550,75000,Jingdezhen_29.3_117.2
+3177,Jingdezhen,Kingtehchen,China,29.268836,117.17842,2,1575,100000,Jingdezhen_29.3_117.2
+3426,Jingdezhen,Kingtehchen,China,29.268836,117.17842,2,1600,75000,Jingdezhen_29.3_117.2
+2220,Hangzhou,Hangchow,China,30.25,120.166667,2,1400,240000,Hangzhou_30.2_120.2
+2441,Hangzhou,Hangchow,China,30.25,120.166667,2,1450,250000,Hangzhou_30.2_120.2
+2669,Hangzhou,Hangchow,China,30.25,120.166667,2,1500,250000,Hangzhou_30.2_120.2
+3011,Hangzhou,Hangchow,China,30.25,120.166667,2,1550,260000,Hangzhou_30.2_120.2
+3175,Hangzhou,Hangchow,China,30.25,120.166667,2,1575,260000,Hangzhou_30.2_120.2
+3417,Hangzhou,Hangchow,China,30.25,120.166667,2,1600,270000,Hangzhou_30.2_120.2
+3658,Hangzhou,Hangchow,China,30.25,120.166667,2,1625,275000,Hangzhou_30.2_120.2
+2216,Guiyang,"Gwiyang, Kweiyang",China,26.647661,106.630154,1,1400,12000,Guiyang_26.6_106.6
+3413,Guiyang,"Gwiyang, Kweiyang",China,26.647661,106.630154,1,1600,20000,Guiyang_26.6_106.6
+2215,Guangzhou,Canton,China,23.11667,113.25,1,1400,150000,Guangzhou_23.1_113.2
+2440,Guangzhou,Canton,China,23.11667,113.25,1,1450,175000,Guangzhou_23.1_113.2
+2665,Guangzhou,Canton,China,23.11667,113.25,1,1500,150000,Guangzhou_23.1_113.2
+3009,Guangzhou,Canton,China,23.11667,113.25,1,1550,160000,Guangzhou_23.1_113.2
+3174,Guangzhou,Canton,China,23.11667,113.25,1,1575,170000,Guangzhou_23.1_113.2
+3411,Guangzhou,Canton,China,23.11667,113.25,1,1600,180000,Guangzhou_23.1_113.2
+2088,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1368,70000,Fuzhou_26.1_119.3
+2121,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1381,81164,Fuzhou_26.1_119.3
+2207,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1400,81000,Fuzhou_26.1_119.3
+2434,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1450,82000,Fuzhou_26.1_119.3
+2656,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1500,83000,Fuzhou_26.1_119.3
+2828,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1512,83904,Fuzhou_26.1_119.3
+3001,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1550,79000,Fuzhou_26.1_119.3
+3137,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1573,76530,Fuzhou_26.1_119.3
+3168,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1575,76000,Fuzhou_26.1_119.3
+3403,Fuzhou,"Fuchow, Hokchiu, Fujian province",China,26.076111,119.306389,1,1600,78000,Fuzhou_26.1_119.3
+2104,Dali,Tali,China,25.606486,100.267638,1,1377,25000,Dali_25.6_100.3
+3378,Chongqing,"Chonquing, Chungking",China,29.56301,106.551557,2,1600,36000,Chongqing_29.6_106.6
+3376,Chinkiang,Zhenjiang,China,32.2,119.416667,2,1600,39000,Chinkiang_32.2_119.4
+3728,Chinkiang,Zhenjiang,China,32.2,119.416667,2,1640,39811,Chinkiang_32.2_119.4
+3747,Chinkiang,Zhenjiang,China,32.2,119.416667,2,1644,44256,Chinkiang_32.2_119.4
+2091,Chengdu,,China,30.66667,104.06667,1,1370,33000,Chengdu_30.7_104.1
+2187,Chengdu,,China,30.66667,104.06667,1,1400,50000,Chengdu_30.7_104.1
+2423,Chengdu,,China,30.66667,104.06667,1,1450,65000,Chengdu_30.7_104.1
+2630,Chengdu,,China,30.66667,104.06667,1,1500,85000,Chengdu_30.7_104.1
+2993,Chengdu,,China,30.66667,104.06667,1,1550,90000,Chengdu_30.7_104.1
+3162,Chengdu,,China,30.66667,104.06667,1,1575,95000,Chengdu_30.7_104.1
+3375,Chengdu,,China,30.66667,104.06667,1,1600,100000,Chengdu_30.7_104.1
+3374,Changzhou,"Changchow, Jiangsu province",China,31.77358,119.95401,1,1600,85000,Changzhou_31.8_120
+3373,Changsha,,China,28.196111,112.972222,1,1600,37000,Changsha_28.2_113
+3714,Changsha,,China,28.196111,112.972222,1,1637,37000,Changsha_28.2_113
+3372,Changchun,"Hsinking, Kwangchingtsu",China,43.9,125.2,1,1600,85000,Changchun_43.9_125.2
+2167,Beijing,Peking,China,39.9075,116.39723,1,1400,150000,Beijing_39.9_116.4
+2361,Beijing,Peking,China,39.9075,116.39723,1,1419,150000,Beijing_39.9_116.4
+2413,Beijing,Peking,China,39.9075,116.39723,1,1450,600000,Beijing_39.9_116.4
+2568,Beijing,Peking,China,39.9075,116.39723,1,1492,669033,Beijing_39.9_116.4
+2610,Beijing,Peking,China,39.9075,116.39723,1,1500,672000,Beijing_39.9_116.4
+2985,Beijing,Peking,China,39.9075,116.39723,1,1550,690000,Beijing_39.9_116.4
+3154,Beijing,Peking,China,39.9075,116.39723,1,1575,706000,Beijing_39.9_116.4
+3227,Beijing,Peking,China,39.9075,116.39723,1,1579,706861,Beijing_39.9_116.4
+3352,Beijing,Peking,China,39.9075,116.39723,1,1600,706000,Beijing_39.9_116.4

@@ -1,0 +1,5 @@
+max_lag,grids_tested,fdr_sig,median_lag,short_share,window
+5,155,19,2.0,1.0,full_1368_1643
+20,155,28,3.5,0.6428571428571429,full_1368_1643
+5,142,4,2.5,1.0,v03_window_1521_1619
+20,142,5,3.0,0.8,v03_window_1521_1619
