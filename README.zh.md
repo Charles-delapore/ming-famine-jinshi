@@ -1,6 +1,6 @@
 ﻿# 明代灾荒与进士的时空分析（1521–1619）
 
-**5,736 条灾荒记录 + 911 位进士：从历史事件点，到格网级因果证据的可复现空间分析。**
+**5,736 条灾荒记录 + 911 条进士记录（1甲/2甲 编码子集）：从历史事件点，到格网级因果证据的可复现空间分析。**
 
 ![图形摘要](figures/fig3_framework.png)
 
@@ -11,7 +11,7 @@
 | | |
 |---|---|
 | **问题** | 明代灾荒是否抑制了进士产出？这种关系在空间和时间上是否稳定？ |
-| **数据** | 灾荒事件 5,736 条（1522–1619）、进士 911 位（1523–1619）、CHGIS v6 行政点位、Mann 2009 / Schneider 2015 古气候重建 |
+| **数据** | 灾荒事件 5,736 条（1522–1619）、进士记录 911 条（1甲/2甲 编码子集，1523–1619）、CHGIS v6 行政点位、Mann 2009 / Schneider 2015 古气候重建 |
 | **面板** | 1° × 1° 格网 × 114 年 = 288 个格网单元；135 个可估计 Granger 的格网 |
 | **方法** | 事件→格网聚合、SS-DBSCAN / ST-DBSCAN / GMM（探索）、Granger + FDR、GWR、地理探测器、SHAP / GeoShapley、STL、CCM（稳健性） |
 | **技术栈** | Python 3.13 · pandas · GeoPandas · PySAL · mgwr · statsmodels · scikit-learn · SHAP · Matplotlib |
@@ -95,7 +95,7 @@ python scripts/make_interactive_map.py --sample --output web/sample/interactive_
 
 ## 局限
 
-- 历史记录不是随机样本，地区与时期的记录强度差异很大。911 位进士是 CBDB 一甲/二甲精英中**仅阿拉伯数字名次编码**的子集，不是代表性样本；修正后的一甲/二甲总数为 2,853 条（2,841 条有坐标），1523/1526 峰值是编码筛选造成的假象。详见 [docs/jinshi_provenance.md](docs/jinshi_provenance.md) 与 [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md)。使用 911 层的图件与模型均为暂定结果。
+- 历史记录不是随机样本，地区与时期的记录强度差异很大。911 条进士记录是 CBDB 一甲/二甲精英中**仅阿拉伯数字名次编码**的子集，不是代表性样本；修正后的一甲/二甲总数为 2,853 条（2,841 条有坐标），1523/1526 峰值是编码筛选造成的假象。详见 [docs/jinshi_provenance.md](docs/jinshi_provenance.md) 与 [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md)。使用 911 层的图件与模型均为暂定结果。
 - Granger 是**预测性**因果，不是机制性因果。
 - 1° 格网结果对分辨率敏感，项目另做了 0.5°/1°/2° 敏感性分析。
 - CCM 在零膨胀序列上不可识别；项目保留这一负结果。
@@ -104,4 +104,6 @@ python scripts/make_interactive_map.py --sample --output web/sample/interactive_
 
 **Charles** — 空间数据科学、Python GIS 自动化、空间计量与可解释机器学习。  
 [GitHub](https://github.com/Charles-delapore) · delapore@163.com
+
+
 

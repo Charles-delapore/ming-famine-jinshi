@@ -1,4 +1,4 @@
-# Figure plan and contracts
+﻿# Figure plan and contracts
 
 This project follows a one-claim-per-figure contract: each figure has a written
 core claim, a hero panel, and the statistics that must appear on the page. The
@@ -104,7 +104,7 @@ individual records are embedded.
 
 **Fig. 1.** Famine belts and Jinshi core areas overlap only partially, and the
 famine–Jinshi association changes sign across space. (A) 5,736 famine events by
-severity; (B) 911 Jinshi; (C) annual famine severity with a 5-year moving average
+severity; (B) 911 Jinshi records (provisional subset); (C) annual famine severity with a 5-year moving average
 and Jinshi counts at exam years; (D) GWR coefficients (125/158 grids significant
 at p < 0.05). Basemap: CHGIS v6; projection: Web Mercator.
 
@@ -145,3 +145,4 @@ denominator: 2,853 records (2,841 with coordinates). See
 tables. `scripts/run_sample_figures.py` regenerates the figures into
 `figures/sample/` with a clear “synthetic sample” footnote. This is a code and
 layout verification path, not a substitute for the real data.
+

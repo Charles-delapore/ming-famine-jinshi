@@ -18,7 +18,7 @@ The 911-record Jinshi layer is an Arabic-numeral-coded 1甲/2甲 subset
 | | |
 |---|---|
 | **Question** | Did environmental shocks suppress elite educational attainment in Ming China — and where? |
-| **Data** | 5,736 famine events (1522–1619), 911 Jinshi graduates (1523–1619), CHGIS v6 administrative points, Mann 2009 / Schneider 2015 paleoclimate reconstructions |
+| **Data** | 5,736 famine events (1522–1619), 911 Jinshi records (1甲/2甲 Arabic-coded subset, 1523–1619), CHGIS v6 administrative points, Mann 2009 / Schneider 2015 paleoclimate reconstructions |
 | **Panel** | 1° × 1° grid × 114 years = 288 cells; 135 cells with estimable Granger models |
 | **Methods** | event→grid aggregation, SS-DBSCAN / ST-DBSCAN / GMM (exploration), Granger causality with FDR, GWR, GeoDetector, SHAP / GeoShapley, STL, CCM (robustness) |
 | **Stack** | Python 3.13 · pandas · GeoPandas · PySAL · mgwr · statsmodels · scikit-learn · SHAP · Matplotlib |
@@ -67,7 +67,7 @@ and cannot identify — including a documented negative result for CCM.
 
 ![Figure 1](figures/fig1_patterns.png)
 
-5,736 famine events (A), 911 Jinshi (B), aligned temporal context with exam-year
+5,736 famine events (A), 911 Jinshi records (B; provisional subset), aligned temporal context with exam-year
 counts (C), and GWR coefficients (D). Basemap: CHGIS v6; projection: Web
 Mercator.
 
@@ -197,6 +197,7 @@ econometrics and explainable ML.
 
 *If you use the figure style or the pipeline, cite the data sources (CHGIS,
 Mann et al. 2009, Schneider et al. 2015) and this repository.*
+
 
 
 

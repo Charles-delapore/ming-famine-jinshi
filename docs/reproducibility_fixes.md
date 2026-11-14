@@ -48,11 +48,10 @@ grid-level evidence instead.
 
 ## 5. Jinshi sample provenance
 
-The 911-record eligibility description is drafted in
-`docs/data_provenance.md`. It is explicitly marked **pending author
-confirmation**; the aggregate audit is in `docs/jinshi_sample_audit.md`.
-Until the source/selection fields are filled, the README should describe the
-Jinshi layer as a non-random compiled sample.
+Confirmed in `docs/jinshi_provenance.md`: the source is the CBDB
+`入仕查询结果` export. The 911-record layer is an **Arabic-numeral-coded**
+1甲/2甲 subset, not a representative sample; see item 7 below. The aggregate
+audits are `docs/jinshi_sample_audit.md` and `docs/jinshi_encoding_audit.md`.
 
 ## 6. Zenodo DOI
 
