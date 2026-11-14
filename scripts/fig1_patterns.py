@@ -162,7 +162,7 @@ axB.scatter(
     rasterized=True,
     zorder=3,
 )
-axB.set_title("Jinshi (metropolitan graduates), 1523–1619", loc="left", pad=4)
+axB.set_title("Jinshi (metropolitan graduates), 1521–1619", loc="left", pad=4)
 axB.text(
     0.01,
     0.01,

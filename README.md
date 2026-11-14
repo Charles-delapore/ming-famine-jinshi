@@ -1,44 +1,38 @@
 ﻿# Famines and Imperial Exams in Ming China, 1521–1619
 
-**A 1° grid × 114-year panel analysis of 5,736 famine records and 2,841 Jinshi graduates.**
+**Spatial inequality in Ming elite production, and the short-window predictive signal of famine.**
 
-[Gallery](https://charles-delapore.github.io/ming-famine-jinshi/) ·
-[Interactive map](web/interactive_map.html) ·
-[中文](README.zh.md) ·
-[Technical notes](docs/project_notes.md) ·
-[Citation](CITATION.cff)
+[Gallery](https://charles-delapore.github.io/ming-famine-jinshi/) · [Interactive map](web/interactive_map.html) · [中文](README.zh.md) · [Technical notes](docs/project_notes.md) · [Citation](CITATION.cff)
 
 ![Overview](figures/fig3_framework.png)
 
-## Overview
+## Question
 
 Did famine history shape success in the Ming imperial examinations, and did the
-relationship vary across space and time? The project combines 5,736 famine
-records with 2,841 Jinshi (1甲/2甲) records on a 1° grid × 114-year panel
-covering 1521–1619.
+relationship vary across space? 5,736 famine records and 2,841 Jinshi (1甲/2甲)
+on a 1° grid × 114-year panel, 1521–1619.
 
 ## Results
 
-- Famine belts and Jinshi core areas overlap only partially.
-- Famine→Jinshi Granger survives FDR in **48/135** grids; multiscale models find
-  **8** short-horizon grids and **0** at 6–10 and 11–20 years.
-- GWR is locally significant in **123/159** grids; famine severity is the
-  strongest GeoDetector factor (**q = 0.337**).
+- Famine belts and the Jiangnan Jinshi core overlap only partially.
+- Famine severity is the strongest factor: GeoDetector q = 0.337 (longitude
+  0.186, latitude 0.128); GWR significant in 123/159 grids, R² = 0.759.
+- Short-window signal: fixed 1–5 yr joint test **2/135**; pre-specified 5-year
+  window **13/135**; multiscale LASSO **8/135** at 1–5 yr, **0** at 5–10 /
+  11–20 years.
+- `48/135` is a 20-lag search artefact (7/135 after within-grid correction);
+  lag estimates are bimodal, so no single median is reported. Common-support ±1/±3-year
+  alignment and record-intensity checks pass. A1 rank-share and A2 spillover
+  tests are null.
 
-## Methods and stack
+## Reproduce
 
-Python 3.13 · GeoPandas · PySAL · mgwr · statsmodels · scikit-learn ·
-Matplotlib. Grid-level Granger with FDR control, multiscale LASSO/BIC,
-GWR/SDM and GeoDetector.
+`python scripts/a3_assemble_main_results.py` rebuilds every number
+(script → table → document). Raw historical tables are not redistributed;
+`data/sample/` verifies code and layout only. See `docs/a3_main_results.md`.
 
-## Data and citation
+## Data and license
 
 Famine: Hu Peng, *Ming famine database*. Jinshi: CBDB. Basemap: CHGIS v6.
-Climate: Mann et al. 2009; Schneider et al. 2015. Raw data are not redistributed.
-
-Please cite this repository and the data sources; see
-[CITATION.cff](CITATION.cff).
-
-## License
-
+Python 3.13 · GeoPandas · PySAL · mgwr · statsmodels · Matplotlib.
 MIT for code; historical data remain under their original terms.

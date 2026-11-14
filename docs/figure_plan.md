@@ -20,7 +20,7 @@ heterogeneous rather than uniform.*
 | Panel | Content | Encoding | Data |
 |-------|---------|----------|------|
 | A | Famine events 1522–1619 | position; colour = severity 1–5 (`YlOrRd`); fixed size | famine event table |
-| B | Jinshi 1523–1619 (normalized 1甲/2甲 elite) | position; single blue; fixed size | Jinshi table |
+| B | Jinshi 1521–1619 (normalized 1甲/2甲 elite) | position; single blue; fixed size | Jinshi table |
 | C | Temporal context | top: annual severity + 5-year moving average; bottom: Jinshi at exam years only | derived from A/B |
 | D | GWR coefficient surface | signed coefficient (`RdBu_r`, centred at 0); significant cells opaque | GWR grid results |
 
@@ -33,7 +33,8 @@ significant at p < 0.05; moving average labelled descriptive.
 **Script**: `scripts/fig2_mechanism.py`
 
 **Core claim**: *After FDR correction, the famine→Jinshi Granger signal survives
-in 48/135 grid cells and is concentrated in short horizons; famine severity is
+in 2/135 grids under a fixed 1–5 year joint test (13/135 with a 5-year search
+window); famine severity is
 the strongest single explanatory factor.*
 
 **Hero panel**: B (FDR-significant Granger grid map).
@@ -45,7 +46,8 @@ the strongest single explanatory factor.*
 | C | Discovery across horizons | bars: Granger any lag, short, medium, long |
 | D | GeoDetector q | bars sorted by q |
 
-**On figure**: 48/135 FDR-significant grids; 8 short-horizon FDR grids vs 0
+**On figure**: 2/135 fixed-window FDR grids (48/135 is only the 20-lag search
+diagnostic); 8 multiscale short-horizon FDR grids vs 0
 medium/long; q = 0.337 severity, 0.186 longitude, 0.128 latitude; n = 159 GWR
 grids.
 
@@ -55,7 +57,7 @@ grids.
 **Script**: `scripts/fig3_framework.py`
 
 **Core claim**: *Sparse historical records become spatially explicit causal
-evidence through a transparent fuse → aggregate → infer pipeline.*
+evidence through the fuse → aggregate → infer pipeline.*
 
 The panels use real method objects: event points, a 1° grid, and a GWR
 coefficient surface — not generic boxes-and-arrows.
@@ -79,12 +81,51 @@ Arabic-only rank filter.*
 This is the S6 statistical companion; maps carry spatial pattern, this figure
 carries numeric comparison.
 
+## Figure 5 — Rank-encoding correction (audit figure)
+
+> **Status (A4, 2026-11-14): supplementary material.** Figure 5 is an encoding
+> audit, not a main result; it is not linked from the landing page. The fixed-window
+> `fig2_fixed_window.{png,pdf,svg}` is the main mechanism figure.
+
+**File**: `figures/fig5_correction.{pdf,png,svg}`  
+**Script**: `scripts/fig5_correction.py`
+
+**Core claim**: *Normalizing the Jinshi rank field changes discovery counts and
+lag claims, but leaves the spatial GWR association nearly unchanged — the
+famine→Jinshi spatial result is robust while the long-lag claim is not.*
+
+This is an **audit figure**, not a new causal claim. It is a v0.2 → v0.3
+comparison, and the only figure where v0.2 baseline numbers are intentionally
+quoted.
+
+| Panel | Content | Encoding | Data |
+|---|---|---|---|
+| A | Exam-year composition, old 911 layer vs corrected 2,841 elite | two lines (grey = v0.2, blue = v0.3); 1523/1526 spike annotated | `output/v03/fig_input/clustered_jinshi.xlsx`; legacy `clustered_jinshi.xlsx` |
+| B | Grid-level discovery (Granger FDR, GWR significance) | paired bars, denominators in x labels | `output/v03/granger_v02.xlsx`, `granger_v03.xlsx`, `gwr_v02.xlsx`, `gwr_v03.xlsx` |
+| C | GWR coefficient agreement on common grids | scatter, r annotated | the two GWR tables |
+| D | Lag distribution of FDR-significant Granger grids | v0.2 vs v0.3 | the two Granger tables |
+
+**On figure (v0.2 → v0.3)**: Granger FDR-significant grids 56 → 48 (of 135);
+GWR significant 125/158 → 123/159; coefficient r = 0.991 (122/125 overlap);
+selected lag 11.0 → 6.5 years (bimodal distribution; reported as a share, not
+a headline). The v0.2 values here are **baseline comparison values**, not
+current headline figures. Current headline values are 2/135 (fixed 1–5 yr
+joint), 13/135 (5-yr window), 123/159, 8/0/0 and q = 0.337/0.186/0.128;
+`48/135` is only the 20-lag search diagnostic (Figures 1–2 and
+`docs/corrected_robustness.md`). Export and QA: `figures/figure_manifest.csv`
+row `fig5`; `docs/figure_qa.md` covers fig5.
+
 ## Interactive map
 
 `web/interactive_map.html` is a Folium map of the aggregated 1° cells: mean
 famine severity, Jinshi totals, GWR coefficients, and FDR-significant Granger
 cells. It includes a layer control, scale control, legend and north arrow. No
 individual records are embedded.
+
+**Status**: a local standalone example, not a published online service. It is
+outside the five-figure contract and its QA checklist; the `Live gallery` /
+`在线图册` links in the READMEs point to the project site, not to a released
+map product.
 
 ## Style contract
 
@@ -109,12 +150,13 @@ and Jinshi counts at exam years; (D) GWR coefficients (123/159 grids significant
 at p < 0.05). Basemap: CHGIS v6; projection: Web Mercator.
 
 **Fig. 2.** The famine→Jinshi signal is spatially selective and short-horizon.
-(A) GWR local R²; (B) 48/135 grids with FDR-significant famine→Jinshi Granger
+(A) GWR local R²; (B) 2/135 grids with fixed 1–5 yr FDR-significant
+famine→Jinshi Granger
 causality; (C) FDR-significant grid counts by horizon (8 short, 0 medium, 0
 long); (D) GeoDetector q values. Granger is predictive, not mechanistic,
 causality.
 
-**Fig. 3.** A transparent pipeline turns sparse historical records into
+**Fig. 3.** The analysis pipeline turns sparse historical records into
 spatially explicit evidence: fuse event, exam and climate data; aggregate to a
 1° × 114-year panel; estimate Granger, GWR and GeoDetector evidence.
 
@@ -125,9 +167,11 @@ normalized 1甲/2甲 Jinshi series declines gently by exam year. The old 911-rec
 See `docs/jinshi_provenance.md`.
 
 **Fig. 5.** Rebuilding the Jinshi layer with normalized ranks (2,841 elite)
-moves FDR discovery from 56/135 to 48/135 grids, while GWR coefficients remain
+moves FDR discovery from 56 to 48 of 135 grids under the 20-lag search
+(2/135 in a fixed 1–5 yr test), while GWR coefficients remain
 nearly identical (r = 0.991; 122/125 significant grids overlap). The median
-significant lag shifts from 11 to 6.5 years, so lag claims are the least robust
+selected lag shifts from 11 to 6.5 years in a bimodal distribution, so lag
+claims are the least robust
 part of the result. See `docs/corrected_robustness.md`.
 
 ## Acceptance checklist
@@ -140,7 +184,7 @@ part of the result. See `docs/corrected_robustness.md`.
 - [x] PDF/SVG/PNG exported; fonts embedded in PDF.
 - [x] Final-size preview at 7.2 in width.
 - [x] S4 scale bar / north arrow added to Fig. 1–2; S6 statistical companion Fig. 4 added.
-- [x] 8-standard QA checklist in `docs/figure_qa.md`; colour-blind outputs in `figures/qa/`.
+- [x] 8-standard QA checklist in `docs/figure_qa.md`; colour-blind outputs generated locally (not committed).
 - [ ] Re-check venue-specific pt/width before submission.
 
 ## Sample data
@@ -149,5 +193,13 @@ part of the result. See `docs/corrected_robustness.md`.
 tables. `scripts/run_sample_figures.py` regenerates the figures into
 `figures/sample/` with a clear “synthetic sample” footnote. This is a code and
 layout verification path, not a substitute for the real data.
+
+**Synthetic q values**: the GeoDetector q values in
+`data/sample/geodetector_results.xlsx` (0.35 / 0.19 / 0.13) are smoke-test
+values, **not** the published q = 0.337 / 0.186 / 0.128. The same applies to the
+synthetic p-values and significance flags in the other sample tables. Never
+quote a number from `data/sample/` as a research result; see
+`data/sample/README.md` and `docs/v03_model_outputs.md`.
+
 
 
