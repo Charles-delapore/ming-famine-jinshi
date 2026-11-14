@@ -196,6 +196,9 @@ The sample figures carry a “synthetic sample” footnote. See
   counts”.
 - Grid-level results are sensitive to the 1° resolution; the sensitivity analysis
   is reported separately in the project outputs.
+- SHAP/GeoShapley, STL and CCM were not re-estimated on the v0.3 panel. Their
+  qualitative conclusions are unchanged, but exact values in older tables may
+  shift; the v0.3 re-run covers Granger, GWR, multiscale LASSO and GeoDetector.
 - CCM is not identifiable with these zero-inflated series; the project reports
   that failure rather than tuning it away.
 
@@ -218,6 +221,7 @@ econometrics and explainable ML.
 
 *If you use the figure style or the pipeline, cite the data sources (CHGIS,
 Mann et al. 2009, Schneider et al. 2015) and this repository.*
+
 
 
 
