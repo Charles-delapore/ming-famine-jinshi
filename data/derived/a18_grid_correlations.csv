@@ -1,0 +1,3 @@
+target,n_grids,pearson_r,spearman_r
+v03_jinshi,273,0.9057,0.9501
+famine_level,273,0.6901,0.6052
