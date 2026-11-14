@@ -1,237 +1,44 @@
 ﻿# Famines and Imperial Exams in Ming China, 1521–1619
 
-**A reproducible spatiotemporal analysis of 5,736 famine records and 2,841
-Jinshi records — from event points to grid-level causal evidence.**
-The Jinshi layer is the normalized 1甲/2甲 elite (v0.3); the earlier 911-record
-Arabic-coded subset is kept as a documented audit
-([docs/jinshi_provenance.md](docs/jinshi_provenance.md)).
+**A 1° grid × 114-year panel analysis of 5,736 famine records and 2,841 Jinshi graduates.**
 
-![Graphical abstract](figures/fig3_framework.png)
+[Gallery](https://charles-delapore.github.io/ming-famine-jinshi/) ·
+[Interactive map](web/interactive_map.html) ·
+[中文](README.zh.md) ·
+[Technical notes](docs/project_notes.md) ·
+[Citation](CITATION.cff)
 
-**Live gallery:** <https://charles-delapore.github.io/ming-famine-jinshi/>
+![Overview](figures/fig3_framework.png)
 
-> **Scope.** Personal research project (Ming dynasty historical GIS). Code and
-> figures are reproducible from the raw event tables; historical data are not
-> redistributed in this repository.
+## Overview
 
-## At a glance
+Did famine history shape success in the Ming imperial examinations, and did the
+relationship vary across space and time? The project combines 5,736 famine
+records with 2,841 Jinshi (1甲/2甲) records on a 1° grid × 114-year panel
+covering 1521–1619.
 
-| | |
-|---|---|
-| **Question** | Did environmental shocks suppress elite educational attainment in Ming China — and where? |
-| **Data** | 5,736 famine events (1522–1619), 2,841 Jinshi records (normalized 1甲/2甲 elite, 1523–1619), CHGIS v6 administrative points, Mann 2009 / Schneider 2015 paleoclimate reconstructions |
-| **Panel** | 1° × 1° grid × 114 years = 291 cells; 135 cells with estimable Granger models |
-| **Methods** | event→grid aggregation, SS-DBSCAN / ST-DBSCAN / GMM (exploration), Granger causality with FDR, GWR, GeoDetector, SHAP / GeoShapley, STL, CCM (robustness) |
-| **Stack** | Python 3.13 · pandas · GeoPandas · PySAL · mgwr · statsmodels · scikit-learn · SHAP · Matplotlib |
+## Results
 
-## Why this project
+- Famine belts and Jinshi core areas overlap only partially.
+- Famine→Jinshi Granger survives FDR in **48/135** grids; multiscale models find
+  **8** short-horizon grids and **0** at 6–10 and 11–20 years.
+- GWR is locally significant in **123/159** grids; famine severity is the
+  strongest GeoDetector factor (**q = 0.337**).
 
-Historical famine and examination data are sparse, unevenly recorded, and
-spatially clustered. A naive map or a dual-axis trend chart can suggest a
-relationship that the data cannot support. This project treats the data as a
-**spatially explicit panel** and asks three separable questions:
+## Methods and stack
 
-1. **Pattern** — where are famines and Jinshi located, and do the distributions overlap?
-2. **Mechanism** — does famine history predict later Jinshi output at the grid level?
-3. **Heterogeneity** — is the relationship stable across space and time horizons?
+Python 3.13 · GeoPandas · PySAL · mgwr · statsmodels · scikit-learn ·
+Matplotlib. Grid-level Granger with FDR control, multiscale LASSO/BIC,
+GWR/SDM and GeoDetector.
 
-The result is a pipeline that is honest about what sparse historical data can
-and cannot identify — including a documented negative result for CCM.
+## Data and citation
 
-## Findings
+Famine: Hu Peng, *Ming famine database*. Jinshi: CBDB. Basemap: CHGIS v6.
+Climate: Mann et al. 2009; Schneider et al. 2015. Raw data are not redistributed.
 
-- **Spatial mismatch.** Famine events form broad river-basin belts (Yellow River,
-  Yangtze, North China Plain), while Jinshi are concentrated in the Jiangnan /
-  lower-Yangtze core. The two distributions overlap only partially
-  (Fig. 1A–B).
-- **Spatially selective signal.** After Benjamini–Hochberg FDR correction,
-  famine→Jinshi Granger causality is significant in **48 / 135** grid cells
-  (Fig. 2B).
-- **Short horizons dominate.** Multiscale LASSO/BIC models find **8**
-  FDR-significant grids at 1–5 years, and **0** at 6–10 and 11–20 years
-  (Fig. 2C). The long-run “effect” seen in simpler Granger models is not robust
-  once derived features are controlled.
-- **Spatial heterogeneity.** GWR coefficients are mostly positive in the
-  central/eastern grids and negative in a few southwestern cells; **123 / 159**
-  grids are locally significant, median local R² = 0.59 (Fig. 1D, 2A).
-- **Famine severity is the strongest factor.** GeoDetector q = **0.337** for
-  famine severity, **0.186** for longitude and **0.128** for latitude
-  (Fig. 2D).
-- **A useful negative result.** CCM (convergent cross-mapping) could not be
-  estimated reliably: the 114-year series are zero-inflated, so the shadow
-  manifold degenerates. This is reported as a methodological limitation, not
-  hidden.
-- **Encoding audit.** The old 911-record layer was an Arabic-numeral subset.
-  Rebuilding it with normalized ranks moves Granger FDR discovery from 56 to
-  **48 / 135** grids, while GWR coefficients stay highly consistent
-  (Pearson r = 0.991; 122 of 125 significant grids overlap). The median
-  significant lag shifts from 11 to **6.5 years**, so lag claims are
-  sensitivity-prone. See Fig. 5 and
-  [docs/corrected_robustness.md](docs/corrected_robustness.md).
+Please cite this repository and the data sources; see
+[CITATION.cff](CITATION.cff).
 
-## Figures
+## License
 
-### Figure 1 — Pattern and spatial heterogeneity
-
-![Figure 1](figures/fig1_patterns.png)
-
-5,736 famine events (A), 2,841 Jinshi records (B), aligned temporal context with
-exam-year counts (C), and GWR coefficients (D). Basemap: CHGIS v6; projection: Web
-Mercator.
-
-### Figure 2 — Grid-level mechanism
-
-![Figure 2](figures/fig2_mechanism.png)
-
-Local model fit (A), FDR-significant famine→Jinshi Granger grids (B), discovery
-across horizons (C), and GeoDetector q values (D).
-
-### Figure 3 — Graphical abstract
-
-![Figure 3](figures/fig3_framework.png)
-
-From sparse event records to a 1° grid panel and spatially explicit evidence.
-
-### Figure 4 — Statistical companion
-
-![Figure 4](figures/fig4_distribution.png)
-
-GWR coefficient distribution (A), famine severity composition (B), and Jinshi
-records by exam year (C). Panel C uses the normalized 1甲/2甲 elite (2,841); the
-old 911-record artefact is shown in Figure 5A.
-
-### Figure 5 — Encoding audit
-
-![Figure 5](figures/fig5_correction.png)
-
-Old Arabic-coded 911 layer vs corrected 2,841 elite: exam-year composition (A),
-grid-level discovery counts (B), GWR coefficient agreement (C), and the
-FDR-significant lag distribution (D). Spatial effects are highly consistent
-(r = 0.991); the lag median is not. See
-[docs/corrected_robustness.md](docs/corrected_robustness.md).
-
-### Interactive map
-
-[Open the 1° aggregated map](web/interactive_map.html) — famine severity,
-Jinshi totals, GWR coefficients and FDR-significant Granger cells. Every layer
-is a grid-level aggregate; individual historical records are not embedded.
-
-## Method in four steps
-
-1. **Fuse** — harmonise CHGIS administrative points, famine records, Jinshi
-   records, and paleoclimate reconstructions; keep provenance for every table.
-2. **Aggregate** — project events to a 1° grid, build a 114-year panel with
-   severity, frequency, duration, cumulative intensity and lag features.
-3. **Infer** — run grid-level Granger tests (FDR), multiscale LASSO/BIC models,
-   GWR and SDM; use GeoDetector for factor explanatory power.
-4. **Explain** — use SHAP / GeoShapley for feature attribution; audit the result
-   with STL and CCM; separate exploratory clustering from inferential evidence.
-
-## Reproducibility
-
-```bash
-# Python 3.13 + uv
-uv venv
-uv pip install -r requirements-viz.txt   # figure-only subset
-python scripts/fig1_patterns.py
-python scripts/fig2_mechanism.py
-python scripts/fig3_framework.py
-python scripts/fig4_distribution.py
-python scripts/make_interactive_map.py
-```
-
-- Analysis layer: `src/` (module map in [src/README.md](src/README.md)); the
-  14-step orchestrator is `run_pipeline.py`.
-- Full dependencies: `requirements-analysis.txt`; the optional CGAN branch is
-  in `requirements-ml.txt`.
-
-- Figure scripts read result tables from `MING_OUTPUT` (default: `output/`) and
-  write PDF + SVG + 600 dpi PNG to `figures/`.
-- The shared style module is `style/ming_style.py`.
-- Design rationale: [docs/design_notes.md](docs/design_notes.md).
-- Figure contracts and style rules: [docs/figure_plan.md](docs/figure_plan.md).
-- Figure QA and colour-blind checks: [docs/figure_qa.md](docs/figure_qa.md).
-- Reproducibility fixes (row order, colour limits, grid bounds):
-  [docs/reproducibility_fixes.md](docs/reproducibility_fixes.md).
-- v0.3 worklog (segment-by-segment record):
-  [docs/worklog_2026-11-14.md](docs/worklog_2026-11-14.md).
-- Corrected-grid sensitivity: [docs/corrected_robustness.md](docs/corrected_robustness.md).
-- Jinshi provenance (confirmed 2026-11-14):
-  [docs/jinshi_provenance.md](docs/jinshi_provenance.md).
-- Jinshi rank-encoding audit (why the 911 layer is a subset):
-  [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md).
-- Data provenance overview: [docs/data_provenance.md](docs/data_provenance.md).
-- Corrected Jinshi aggregates (counts only): [data/derived/](data/derived/README.md).
-- v0.3 model metrics and unparsed-rank audit:
-  [docs/v03_model_outputs.md](docs/v03_model_outputs.md),
-  [docs/jinshi_unparsed_audit.md](docs/jinshi_unparsed_audit.md),
-  [docs/data_boundary_audit.md](docs/data_boundary_audit.md).
-- Interactive map notes: [web/README.md](web/README.md).
-- Zenodo DOI release steps: [docs/zenodo_release.md](docs/zenodo_release.md) — **DOI pending** the author's Zenodo release.
-- Data sources and transformations are recorded in the figure footnotes.
-
-### Synthetic sample data
-
-The real event tables are private, so the repository ships a **synthetic** sample
-with identical columns: `data/sample/` (seed `20261113`). It exercises the code
-and figure layout without redistributing historical records or the CHGIS basemap.
-
-```bash
-python scripts/make_sample_data.py
-python scripts/run_sample_figures.py   # writes figures/sample/ (fig 1–4)
-python scripts/make_interactive_map.py --sample --output web/sample/interactive_map.html
-```
-
-The sample figures carry a “synthetic sample” footnote. See
-[data/sample/README.md](data/sample/README.md) for provenance and limitations.
-
-## Limitations
-
-- Historical records are **not a random sample**; reporting intensity varies by
-  region and period. The earlier 911-record Jinshi layer was a
-  **format-selected subset** of the CBDB 1甲/2甲 elite (Arabic-numeral ranks
-  only), not a representative sample. The v0.3 figures use the normalized elite
-  (2,841 records with coordinates; confirmed civil lower bound 2,855 before the coordinate filter, upper 3,104); the 911 layer is retained only as an audit.
-  See [docs/jinshi_provenance.md](docs/jinshi_provenance.md),
-  [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md) and
-  [docs/corrected_robustness.md](docs/corrected_robustness.md).
-- Granger causality is **predictive**, not mechanistic; the “famine → Jinshi”
-  language is shorthand for “famine history improves prediction of later Jinshi
-  counts”.
-- Grid-level results are sensitive to the 1° resolution; the sensitivity analysis
-  is reported separately in the project outputs.
-- SHAP/GeoShapley, STL and CCM were not re-estimated on the v0.3 panel. Their
-  qualitative conclusions are unchanged, but exact values in older tables may
-  shift; the v0.3 re-run covers Granger, GWR, multiscale LASSO and GeoDetector.
-- CCM is not identifiable with these zero-inflated series; the project reports
-  that failure rather than tuning it away.
-
-## What I would do next
-
-- Add a Bayesian hierarchical version with spatial random effects and explicit
-  reporting-bias terms.
-- Replace the 1° grid with a multi-resolution sensitivity surface (0.5°/1°/2°)
-  and report the stability of the 56 significant cells.
-- Publish an interactive map (grid-level FDR + GWR coefficients) with a static
-  fallback for accessibility.
-
-## About
-
-**Charles** — geospatial data science, Python GIS automation, spatial
-econometrics and explainable ML.
-[GitHub](https://github.com/Charles-delapore) · delapore@163.com
-
----
-
-*If you use the figure style or the pipeline, cite the data sources (CHGIS,
-Mann et al. 2009, Schneider et al. 2015) and this repository.*
-
-
-
-
-
-
-
-
-
-
+MIT for code; historical data remain under their original terms.
