@@ -1,4 +1,4 @@
-﻿"""Shared visual system for the Ming famine / Jinshi portfolio figures.
+"""Shared visual system for the Ming famine / Jinshi portfolio figures.
 
 Design rules
 ------------

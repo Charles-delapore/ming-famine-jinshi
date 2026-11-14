@@ -1,4 +1,4 @@
-﻿"""Figure 2 — grid-level evidence for the famine–Jinshi relationship.
+"""Figure 2 — grid-level evidence for the famine–Jinshi relationship.
 
 Panels separate three different questions:
 A  How well does the local model fit? (GWR local R²)
@@ -25,6 +25,7 @@ from matplotlib.lines import Line2D
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "style"))
 import ming_style as ms  # noqa: E402
+import figure_kit as fk  # noqa: E402
 
 ms.apply_style()
 
@@ -71,7 +72,10 @@ gs = GridSpec(2, 2, figure=fig, height_ratios=[1.12, 0.88], hspace=0.28, wspace=
 # --- A: local R² -----------------------------------------------------------
 axA = fig.add_subplot(gs[0, 0])
 ms.style_map(axA, prov, extent)
-r2_norm = TwoSlopeNorm(vmin=-0.50, vcenter=0.0, vmax=0.85)
+r2 = gwr["gwr_local_r2"].astype(float)
+r2_norm = TwoSlopeNorm(vmin=min(float(r2.min()), -0.02),
+                       vcenter=0.0,
+                       vmax=max(float(r2.max()), 0.02))
 sc = axA.scatter(
     gx,
     gy,
@@ -100,6 +104,7 @@ axA.text(
     va="top",
 )
 ms.panel_label(axA, "A")
+fk.add_scale_north(axA)
 
 # --- B: Granger FDR --------------------------------------------------------
 axB = fig.add_subplot(gs[0, 1])
@@ -150,6 +155,7 @@ axB.legend(
     borderpad=0.2,
 )
 ms.panel_label(axB, "B")
+fk.add_scale_north(axB)
 
 # --- C: discovery counts ---------------------------------------------------
 axC = fig.add_subplot(gs[1, 0])
@@ -227,11 +233,17 @@ if os.environ.get("MING_SAMPLE") == "1":
             "FDR = Benjamini–Hochberg across grids within each method.")
 else:
     note = ("Data: Work_ming v5 outputs (GWR, grid Granger, multiscale LASSO models, "
-            "GeoDetector). FDR = Benjamini–Hochberg across grids within each method.")
+            "GeoDetector). FDR = Benjamini–Hochberg across grids within each method. "
+            "Scale bars approximate at map-centre latitude.")
 fig.text(0.01, 0.005, note, fontsize=6, color="#777777")
 
 paths = ms.save(fig, "fig2_mechanism")
 print("\n".join(str(p) for p in paths))
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-﻿"""Figure 1 — spatial pattern and temporal context of Ming famines and Jinshi.
+"""Figure 1 — spatial pattern and temporal context of Ming famines and Jinshi.
 
 Core claim: famine events form broad river-basin belts while Jinshi are
 concentrated in the southeast; the two distributions overlap only partially.
@@ -26,6 +26,7 @@ from shapely.geometry import Point
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "style"))
 import ming_style as ms  # noqa: E402
+import figure_kit as fk  # noqa: E402
 
 ms.apply_style()
 
@@ -145,6 +146,7 @@ for lon, lat, txt in [
     pt = gpd.GeoSeries([Point(lon, lat)], crs=4326).to_crs(3857).iloc[0]
     ms.map_annotation(axA, pt.x, pt.y, txt)
 ms.panel_label(axA, "A")
+fk.add_scale_north(axA)
 
 # --- B: Jinshi -------------------------------------------------------------
 axB = fig.add_subplot(gs[0, 1])
@@ -179,6 +181,7 @@ for lon, lat, txt in [
     pt = gpd.GeoSeries([Point(lon, lat)], crs=4326).to_crs(3857).iloc[0]
     ms.map_annotation(axB, pt.x, pt.y, txt, color="#1F4E79")
 ms.panel_label(axB, "B")
+fk.add_scale_north(axB)
 
 # --- C: aligned time series ------------------------------------------------
 sub = gs[1, 0].subgridspec(2, 1, height_ratios=[1, 1], hspace=0.08)
@@ -241,7 +244,10 @@ ms.panel_label(axC1, "C")
 axD = fig.add_subplot(gs[1, 1])
 ms.style_map(axD, prov, extent)
 axD.set_xlabel(""); axD.set_ylabel("")
-coef_norm = TwoSlopeNorm(vmin=-0.30, vcenter=0.0, vmax=2.20)
+coef = gwr["gwr_coef"].astype(float)
+coef_norm = TwoSlopeNorm(vmin=min(float(coef.min()), -0.05),
+                         vcenter=0.0,
+                         vmax=max(float(coef.max()), 0.05))
 sig = gwr["gwr_sig"].astype(bool).values
 axD.scatter(
     gx[~sig],
@@ -292,6 +298,8 @@ axD.legend(
     handles=handles, loc="upper right", fontsize=6, handletextpad=0.4, borderpad=0.2
 )
 ms.panel_label(axD, "D")
+fk.scale_bar(axD)
+fk.north_arrow(axD, location=(0.93, 0.80))
 
 # ---------------------------------------------------------------------------
 # Provenance note
@@ -301,11 +309,17 @@ if os.environ.get("MING_SAMPLE") == "1":
             "Basemap: Natural Earth 1:110m (public domain).")
 else:
     note = ("Data: CHGIS v6; Ming famine records; Ming Jinshi database. "
-            "Projection: Web Mercator. Moving average: 5-year centred window.")
+            "Projection: Web Mercator. Moving average: 5-year centred window. "
+            "Scale bars approximate at map-centre latitude.")
 fig.text(0.01, 0.005, note, fontsize=6, color="#777777")
 
 paths = ms.save(fig, "fig1_patterns")
 print("\n".join(str(p) for p in paths))
+
+
+
+
+
 
 
 

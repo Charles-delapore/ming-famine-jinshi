@@ -41,9 +41,11 @@ from the environment. There are no machine-specific paths in this directory.
 - `CLUSTER_PARAMS` keeps `max_cluster_size=100`. This caps dense clusters and is
   the reason the exploratory 3D figures were retired; see
   `docs/design_notes.md`. Do not present the resulting labels as natural clusters.
-- `GRID_PARAMS["y_max"]` is 120.257776 in the original code, which is not a valid
-  latitude. It is kept as published for provenance; verify it before re-running
-  `grid_integrator` on new data.
+- `GRID_PARAMS["y_max"]` was corrected from `120.257776` (invalid latitude) to
+  `50.257776`; see `docs/reproducibility_fixes.md`. Verify grid bounds before
+  re-running `grid_integrator` on new data.
+- `run_pipeline.py` sorts exported tables and the figure scripts use data-driven
+  colour limits; see `docs/reproducibility_fixes.md`.
 - `cgan_augment.py` imports TensorFlow or PyTorch lazily. Install one of them
   only if you need the augmentation branch.
 - `run_pipeline.py` at the repository root is the 14-step orchestrator. It needs

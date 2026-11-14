@@ -82,6 +82,20 @@ across horizons (C), and GeoDetector q values (D).
 
 From sparse event records to a 1° grid panel and spatially explicit evidence.
 
+### Figure 4 — Statistical companion
+
+![Figure 4](figures/fig4_distribution.png)
+
+GWR coefficient distribution (A), famine severity composition (B), and Jinshi
+records by exam year (C). This is the numeric companion to the maps (S6); the
+1523/1526 concentration is visible rather than hidden in a trend line.
+
+### Interactive map
+
+[Open the 1° aggregated map](web/interactive_map.html) — famine severity,
+Jinshi totals, GWR coefficients and FDR-significant Granger cells. Every layer
+is a grid-level aggregate; individual historical records are not embedded.
+
 ## Method in four steps
 
 1. **Fuse** — harmonise CHGIS administrative points, famine records, Jinshi
@@ -102,6 +116,8 @@ uv pip install -r requirements-viz.txt   # figure-only subset
 python scripts/fig1_patterns.py
 python scripts/fig2_mechanism.py
 python scripts/fig3_framework.py
+python scripts/fig4_distribution.py
+python scripts/make_interactive_map.py
 ```
 
 - Analysis layer: `src/` (module map in [src/README.md](src/README.md)); the
@@ -114,6 +130,13 @@ python scripts/fig3_framework.py
 - The shared style module is `style/ming_style.py`.
 - Design rationale: [docs/design_notes.md](docs/design_notes.md).
 - Figure contracts and style rules: [docs/figure_plan.md](docs/figure_plan.md).
+- Figure QA and colour-blind checks: [docs/figure_qa.md](docs/figure_qa.md).
+- Reproducibility fixes (row order, colour limits, grid bounds):
+  [docs/reproducibility_fixes.md](docs/reproducibility_fixes.md).
+- Jinshi provenance / eligibility (pending author confirmation):
+  [docs/data_provenance.md](docs/data_provenance.md).
+- Interactive map notes: [web/README.md](web/README.md).
+- Zenodo DOI release steps: [docs/zenodo_release.md](docs/zenodo_release.md) — **DOI pending** the author's Zenodo release.
 - Data sources and transformations are recorded in the figure footnotes.
 
 ### Synthetic sample data
@@ -124,7 +147,8 @@ and figure layout without redistributing historical records or the CHGIS basemap
 
 ```bash
 python scripts/make_sample_data.py
-python scripts/run_sample_figures.py   # writes figures/sample/
+python scripts/run_sample_figures.py   # writes figures/sample/ (fig 1–4)
+python scripts/make_interactive_map.py --sample --output web/sample/interactive_map.html
 ```
 
 The sample figures carry a “synthetic sample” footnote. See
@@ -133,7 +157,9 @@ The sample figures carry a “synthetic sample” footnote. See
 ## Limitations
 
 - Historical records are **not a random sample**; reporting intensity varies by
-  region and period.
+  region and period. The Jinshi layer (911 records) is an author-compiled sample;
+  its source and inclusion rules are still marked **pending confirmation** in
+  [docs/data_provenance.md](docs/data_provenance.md).
 - Granger causality is **predictive**, not mechanistic; the “famine → Jinshi”
   language is shorthand for “famine history improves prediction of later Jinshi
   counts”.
@@ -161,5 +187,7 @@ econometrics and explainable ML.
 
 *If you use the figure style or the pipeline, cite the data sources (CHGIS,
 Mann et al. 2009, Schneider et al. 2015) and this repository.*
+
+
 
 

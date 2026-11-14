@@ -1,4 +1,4 @@
-﻿"""Run the three figure scripts against the synthetic sample data.
+"""Run the three figure scripts against the synthetic sample data.
 
 The real figures in `figures/` use the private Work_ming tables. This runner
 sets the sample paths and writes a separate gallery to `figures/sample/`, so
@@ -50,7 +50,7 @@ def main() -> int:
             "MING_SAMPLE": "1",
         }
     )
-    for script in ("fig1_patterns.py", "fig2_mechanism.py", "fig3_framework.py"):
+    for script in ("fig1_patterns.py", "fig2_mechanism.py", "fig3_framework.py", "fig4_distribution.py"):
         print(f"== {script}")
         subprocess.run(
             [sys.executable, str(ROOT / "scripts" / script)],
@@ -64,4 +64,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
 

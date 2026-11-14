@@ -1,4 +1,4 @@
-﻿"""Figure 3 — graphical abstract: from sparse historical records to
+"""Figure 3 — graphical abstract: from sparse historical records to
 spatially explicit causal evidence.
 
 This is the portfolio hero: it uses the real data objects (event points,
@@ -169,7 +169,10 @@ axB.annotate(
 
 # --- 3: GWR coefficient surface -------------------------------------------
 axC = axes[2]
-coef_norm = TwoSlopeNorm(vmin=-0.30, vcenter=0.0, vmax=2.20)
+coef = gwr["gwr_coef"].astype(float)
+coef_norm = TwoSlopeNorm(vmin=min(float(coef.min()), -0.05),
+                         vcenter=0.0,
+                         vmax=max(float(coef.max()), 0.05))
 sig = gwr["gwr_sig"].astype(bool).values
 axC.scatter(
     gwrpts.x[~sig],
@@ -277,6 +280,7 @@ fig.text(
 
 paths = ms.save(fig, "fig3_framework")
 print("\n".join(str(p) for p in paths))
+
 
 
 

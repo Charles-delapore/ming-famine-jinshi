@@ -1,4 +1,4 @@
-﻿"""Generate deterministic, synthetic sample data for the portfolio repo.
+"""Generate deterministic, synthetic sample data for the portfolio repo.
 
 The samples mirror the column names and dtypes of the Work_ming v5 result
 tables, but **no value is a real historical record**. They exist so that the

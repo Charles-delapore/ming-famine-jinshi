@@ -60,6 +60,31 @@ evidence through a transparent fuse → aggregate → infer pipeline.*
 The panels use real method objects: event points, a 1° grid, and a GWR
 coefficient surface — not generic boxes-and-arrows.
 
+## Figure 4 — Statistical companion
+
+**File**: `figures/fig4_distribution.{pdf,png,svg}`  
+**Script**: `scripts/fig4_distribution.py`
+
+**Core claim**: *The maps are not the whole story: GWR effects are mostly
+positive with a right tail, famine severity is concentrated in levels 2–4, and
+the Jinshi record is dominated by the 1523/1526 exams.*
+
+| Panel | Content | Encoding |
+|-------|---------|----------|
+| A | GWR coefficient distribution | histogram; zero line; median |
+| B | Famine severity composition | ordered bars, severity colours |
+| C | Jinshi records by exam year | bars; 1523/1526 highlighted |
+
+This is the S6 statistical companion; maps carry spatial pattern, this figure
+carries numeric comparison.
+
+## Interactive map
+
+`web/interactive_map.html` is a Folium map of the aggregated 1° cells: mean
+famine severity, Jinshi totals, GWR coefficients, and FDR-significant Granger
+cells. It includes a layer control, scale control, legend and north arrow. No
+individual records are embedded.
+
 ## Style contract
 
 | Item | Rule |
@@ -92,6 +117,11 @@ causality.
 spatially explicit evidence: fuse event, exam and climate data; aggregate to a
 1° × 114-year panel; estimate Granger, GWR and GeoDetector evidence.
 
+**Fig. 4.** The maps hide three distributions: GWR effects are mostly positive
+but right-skewed; famine severity is concentrated in levels 2–4; and 24.6% of
+the Jinshi records fall in the 1523/1526 exams, a sample-composition fact that
+must be explained in the data provenance.
+
 ## Acceptance checklist
 
 - [x] One claim per figure; caption states the conclusion.
@@ -101,7 +131,9 @@ spatially explicit evidence: fuse event, exam and climate data; aggregate to a
 - [x] No decorative 3D, no dual axes, no rainbow for ordered clusters.
 - [x] PDF/SVG/PNG exported; fonts embedded in PDF.
 - [x] Final-size preview at 7.2 in width.
-- [ ] Verify the target venue’s current figure requirements before submission.
+- [x] S4 scale bar / north arrow added to Fig. 1–2; S6 statistical companion Fig. 4 added.
+- [x] 8-standard QA checklist in `docs/figure_qa.md`; colour-blind outputs in `figures/qa/`.
+- [ ] Re-check venue-specific pt/width before submission.
 
 ## Sample data
 

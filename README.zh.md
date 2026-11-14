@@ -1,4 +1,4 @@
-# 明代灾荒与进士的时空分析（1521–1619）
+﻿# 明代灾荒与进士的时空分析（1521–1619）
 
 **5,736 条灾荒记录 + 911 位进士：从历史事件点，到格网级因果证据的可复现空间分析。**
 
@@ -45,6 +45,16 @@
 
 从稀疏事件记录到 1° 格网面板，再到空间显式证据。
 
+### 图 4 — 统计伴随图
+
+![图4](figures/fig4_distribution.png)
+
+GWR 系数分布（A）、灾荒等级构成（B）、进士按科年分布（C）。这是地图的数值伴随图（S6），1523/1526 的集中度被明确展示。
+
+### 交互地图
+
+[打开 1° 聚合地图](web/interactive_map.html) —— 灾荒强度、进士总量、GWR 系数、FDR 显著 Granger 格网；全部为格网级聚合，不含个体记录。
+
 ## 方法四步
 
 1. **融合**：统一 CHGIS、灾荒、进士、古气候数据，保留每条数据的来源与变换。
@@ -60,11 +70,16 @@ uv pip install -r requirements-viz.txt
 python scripts/fig1_patterns.py
 python scripts/fig2_mechanism.py
 python scripts/fig3_framework.py
+python scripts/fig4_distribution.py
+python scripts/make_interactive_map.py
 ```
 
 - 图件脚本从 `MING_OUTPUT`（默认 `output/`）读取结果表，输出 PDF + SVG + 600 dpi PNG。
 - 统一风格模块：`style/ming_style.py`。
 - 代码结构：[src/README.md](src/README.md)；图件规范：[docs/figure_plan.md](docs/figure_plan.md)。
+- 图件 QA 与色盲检查：[docs/figure_qa.md](docs/figure_qa.md)；可复现性修复：[docs/reproducibility_fixes.md](docs/reproducibility_fixes.md)。
+- 进士样本来源与入选标准：[docs/data_provenance.md](docs/data_provenance.md)（待作者确认）。
+- Zenodo DOI 待作者账号发布；步骤见 [docs/zenodo_release.md](docs/zenodo_release.md)。
 
 ### 合成样例数据
 
@@ -73,13 +88,14 @@ python scripts/fig3_framework.py
 ```bash
 python scripts/make_sample_data.py
 python scripts/run_sample_figures.py   # 输出到 figures/sample/
+python scripts/make_interactive_map.py --sample --output web/sample/interactive_map.html
 ```
 
 样例图会带“synthetic sample”标注；详见 [data/sample/README.md](data/sample/README.md)。
 
 ## 局限
 
-- 历史记录不是随机样本，地区与时期的记录强度差异很大。
+- 历史记录不是随机样本，地区与时期的记录强度差异很大；911 位进士的来源与入选标准仍待确认，见 [docs/data_provenance.md](docs/data_provenance.md)。
 - Granger 是**预测性**因果，不是机制性因果。
 - 1° 格网结果对分辨率敏感，项目另做了 0.5°/1°/2° 敏感性分析。
 - CCM 在零膨胀序列上不可识别；项目保留这一负结果。
@@ -88,3 +104,4 @@ python scripts/run_sample_figures.py   # 输出到 figures/sample/
 
 **Charles** — 空间数据科学、Python GIS 自动化、空间计量与可解释机器学习。  
 [GitHub](https://github.com/Charles-delapore) · delapore@163.com
+

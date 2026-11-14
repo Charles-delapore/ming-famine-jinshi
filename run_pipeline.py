@@ -61,6 +61,8 @@ def step1_data_loading():
     print(f"合并数据完成: {len(merged_data)} 条记录")
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
+    sort_cols = [c for c in ["year", "code", "x", "y"] if c in merged_data.columns]
+    merged_data = merged_data.sort_values(sort_cols, kind="mergesort").reset_index(drop=True)
     merged_data.to_excel(OUTPUT_PATHS["merged_data"], index=False, engine='openpyxl')
     print(f"合并数据已保存至 {OUTPUT_PATHS['merged_data']}")
 
@@ -78,6 +80,8 @@ def step2_zaihuang_clustering(zaihuang_data):
     print("灾荒聚类结果分布:")
     print(clustered['cluster'].value_counts())
 
+    sort_cols = [c for c in ["year", "code", "x", "y", "cluster"] if c in clustered.columns]
+    clustered = clustered.sort_values(sort_cols, kind="mergesort").reset_index(drop=True)
     clustered.to_excel(OUTPUT_PATHS["clustered_levels"], index=False, engine='openpyxl')
     print(f"灾荒聚类结果已保存至 {OUTPUT_PATHS['clustered_levels']}")
 
@@ -94,6 +98,8 @@ def step3_jinshi_clustering(jinshi_data):
     print("进士聚类结果分布:")
     print(clustered['cluster'].value_counts())
 
+    sort_cols = [c for c in ["EntryYear", "NameChn", "X", "Y", "cluster"] if c in clustered.columns]
+    clustered = clustered.sort_values(sort_cols, kind="mergesort").reset_index(drop=True)
     clustered.to_excel(OUTPUT_PATHS["clustered_jinshi"], index=False, engine='openpyxl')
     print(f"进士聚类结果已保存至 {OUTPUT_PATHS['clustered_jinshi']}")
 
@@ -355,3 +361,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

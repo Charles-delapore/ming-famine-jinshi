@@ -58,6 +58,8 @@ OUTPUT_PATHS = {
 }
 
 CLUSTER_PARAMS = {
+    # NOTE: max_cluster_size caps dense clusters; labels are exploratory partitions,
+    # not natural clusters. Do not use them as inferential evidence.
     "zaihuang_ssdbcan": {
         "eps": 0.7,
         "min_samples": 9,
@@ -65,6 +67,7 @@ CLUSTER_PARAMS = {
         "max_cluster_size": 100,
         "important_levels": [4, 5],
     },
+    # NOTE: same cap as above; see docs/reproducibility_fixes.md.
     "jinshi_ssdbcan": {
         "eps": 0.7,
         "min_samples": 3,
@@ -102,13 +105,13 @@ COMPARE_PARAMS = {
     "significance_level": 0.05,
 }
 
-# NOTE: these legacy bounds are kept as published; y_max looks like an invalid
-# latitude (120.257776). Verify before re-running grid_integrator on new data.
+# NOTE: y_max was corrected from 120.257776 (invalid latitude) to 50.257776.
+# Verify grid bounds before re-running grid_integrator on new data.
 GRID_PARAMS = {
     "x_min": 40.850080,
     "x_max": 124.850080,
     "y_min": 18.257776,
-    "y_max": 120.257776,
+    "y_max": 50.257776,  # corrected from 120.257776 (not a valid latitude)
     "grid_size": 1,
     "year_start": 1512,
     "year_end": 1532,
@@ -121,3 +124,5 @@ VISUALIZATION = {
     "figsize_3d": (14, 10),
     "dpi": 300,
 }
+
+

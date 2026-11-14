@@ -1,4 +1,4 @@
-cff-version: 1.2.0
+﻿cff-version: 1.2.0
 message: "If you use this code or the figures, please cite this repository and the underlying data sources."
 title: "Famines and Imperial Exams in Ming China, 1521-1619: a spatially explicit panel analysis"
 abstract: "A reproducible spatiotemporal analysis of 5,736 famine records and 911 Jinshi graduates on a 1-degree, 114-year grid panel."
@@ -7,7 +7,8 @@ authors:
     given-names: "Charles"
     alias: "Charles-delapore"
     website: "https://github.com/Charles-delapore"
-date-released: "2026-11-13"
+version: "0.2.0"
+date-released: "2026-11-14"
 url: "https://github.com/Charles-delapore/ming-famine-jinshi"
 license: "MIT"
 keywords:
@@ -18,3 +19,4 @@ keywords:
   - GeoDetector
   - Ming dynasty
   - digital humanities
+
