@@ -1,0 +1,12 @@
+metric,v0.2,v0.3
+grids,160,160.0
+mean_var_trend,0.18488138667662918,0.18488138667662918
+mean_var_seasonal,0.3089467826347503,0.3089467826347502
+mean_var_resid,0.9771406189014595,0.9771406189014595
+sig_trend,26,18.0
+sig_resid,14,14.0
+sig_trend_pct,0.1625,0.1125
+sig_resid_pct,0.0875,0.0875
+common_grids,,160.0
+var_trend_pearson_common,,0.9999999999999998
+sig_resid_agreement_common,,1.0

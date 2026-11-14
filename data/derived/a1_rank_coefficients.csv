@@ -1,0 +1,2 @@
+term,coef,std_err,ci_low,ci_high,p_value,standardized_beta,n_units,n_grids,n_exam_years,r_squared,permutation_reps,permutation_p,verdict
+famine_1_5,0.0002828499388050405,0.0031550912789109335,-0.005901015335796808,0.006466715213406889,0.9285663561584578,0.003258193425631453,1298,81,34,0.23510881424253505,200,0.935,NULL (zero result; stop expansion)

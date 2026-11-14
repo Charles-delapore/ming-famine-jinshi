@@ -1,0 +1,8 @@
+proxy,level,n,fdr_rate
+B administrative density,1,100,0.32
+B administrative density,2,26,0.5
+B administrative density,3+,9,0.3333333333333333
+A famine count,Q1,34,0.35294117647058826
+A famine count,Q2,34,0.29411764705882354
+A famine count,Q3,33,0.3333333333333333
+A famine count,Q4,34,0.4411764705882353

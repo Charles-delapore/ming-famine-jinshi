@@ -1,0 +1,3 @@
+proxy,median_nonzero,n_high,n_low,fdr_rate_high,fdr_rate_low,gap_pp,meets_10pp
+A endogenous record density,99.0,67,68,0.3880597014925373,0.3235294117647059,6.453028972783143,False
+B exogenous administrative density,1.0,35,100,0.45714285714285713,0.32,13.714285714285712,True
