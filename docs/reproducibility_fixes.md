@@ -1,4 +1,4 @@
-# Reproducibility fixes
+﻿# Reproducibility fixes
 
 This file records the three reproducibility issues flagged in the 2026-11-14
 digital-humanities review, plus the changes made in this repository.
@@ -64,7 +64,7 @@ does not claim a DOI until that step is complete.
 The 911-record layer is not a rank-complete sample: the old filter
 `EntryRank.str.contains("第1甲|第2甲")` matched only Arabic-numeral ranks
 (`第1甲`), dropping Chinese-numeral ranks (`第一甲`). The corrected elite
-denominator for 1521–1619 is **2,853 records (2,841 with coordinates)**.
+denominator for 1521–1619 is **2,855 confirmed lower bound** (2,853 strict regex; 2,841 with coordinates).
 The 1523/1526 concentration is an encoding artefact, not a historical cohort.
 See `docs/jinshi_provenance.md`, `docs/jinshi_encoding_audit.md`, and
 `scripts/audit_jinshi_encoding.py`.
@@ -73,4 +73,5 @@ See `docs/jinshi_provenance.md`, `docs/jinshi_encoding_audit.md`, and
 normalizes both numeral systems; `loader.py` and `ss_dbscan.py` use it. Figures
 1–5 are regenerated from the normalized elite (2,841). The direct sensitivity
 check is `docs/corrected_robustness.md` and `figures/fig5_correction.*`.
+
 

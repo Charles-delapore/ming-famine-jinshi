@@ -1,0 +1,18 @@
+﻿metric,v02,v03,note
+jinshi_records_in_panel,"4,806","5,401",ming_general + elite extension
+granger_tested,135,135,grids with enough non-zero years
+granger_causal_z_to_j,71,67,p < 0.05 before FDR
+granger_fdr_sig,56,48,Benjamini-Hochberg q < 0.05
+granger_median_lag,11.0,6.5,"years, among FDR-significant grids"
+gwr_cells,158,159,grids with both variables > 0
+gwr_sig,125,123,|t| > 1.96
+gwr_median_coef,0.4559,0.4418,median local coefficient
+gwr_global_r2,0.7571,0.7588,global GWR R²
+multiscale_short_fdr,,8,1–5 years
+multiscale_medium_fdr,,0,6–10 years
+multiscale_long_fdr,,0,11–20 years
+geodetector_q_severity,,0.3368,famine severity
+geodetector_q_longitude,,0.1857,longitude
+geodetector_q_latitude,,0.1284,latitude
+coef_pearson_v02_v03,,0.991368,common GWR grids
+sig_overlap_v02_v03,,122,of 125 v0.2 significant grids

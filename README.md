@@ -162,6 +162,10 @@ python scripts/make_interactive_map.py
   [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md).
 - Data provenance overview: [docs/data_provenance.md](docs/data_provenance.md).
 - Corrected Jinshi aggregates (counts only): [data/derived/](data/derived/README.md).
+- v0.3 model metrics and unparsed-rank audit:
+  [docs/v03_model_outputs.md](docs/v03_model_outputs.md),
+  [docs/jinshi_unparsed_audit.md](docs/jinshi_unparsed_audit.md),
+  [docs/data_boundary_audit.md](docs/data_boundary_audit.md).
 - Interactive map notes: [web/README.md](web/README.md).
 - Zenodo DOI release steps: [docs/zenodo_release.md](docs/zenodo_release.md) — **DOI pending** the author's Zenodo release.
 - Data sources and transformations are recorded in the figure footnotes.
@@ -221,6 +225,7 @@ econometrics and explainable ML.
 
 *If you use the figure style or the pipeline, cite the data sources (CHGIS,
 Mann et al. 2009, Schneider et al. 2015) and this repository.*
+
 
 
 

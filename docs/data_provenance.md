@@ -16,13 +16,16 @@ archive. The earlier "pending author confirmation" version is superseded by
 
 ## Jinshi in one paragraph
 
-The raw CBDB export contains 1甲, 2甲 and 3甲 records. The published figures use
-**911 records** produced by filtering `EntryRank` with `第1甲|第2甲`. Because
-CBDB writes ranks in both Arabic (`第1甲`) and Chinese (`第一甲`) numerals, that
-filter kept only the Arabic-coded third of the elite. The 1523/1526 spike and the
-absence of 3甲 are artefacts of this filter. Corrected elite denominator for
-1521–1619: **2,853 records (2,841 with coordinates)**. Details, counts and the
-normalization rule are in [`jinshi_provenance.md`](jinshi_provenance.md).
+The raw CBDB export contains 1甲, 2甲 and 3甲 records. The earlier v0.2
+figures used **911 records** produced by filtering `EntryRank` with
+`第1甲|第2甲`. Because CBDB writes ranks in both Arabic (`第1甲`) and Chinese
+(`第一甲`) numerals, that filter kept only the Arabic-coded third of the elite.
+The 1523/1526 spike and the absence of 3甲 are artefacts of this filter.
+Corrected elite denominator for 1521–1619: **2,855 confirmed lower bound**
+(2,853 strict regex; 2,841 with coordinates). Details, counts and the
+normalization rule are in [`jinshi_provenance.md`](jinshi_provenance.md),
+[`jinshi_unparsed_audit.md`](jinshi_unparsed_audit.md) and
+[`data_boundary_audit.md`](data_boundary_audit.md).
 
 **The 911 layer is retained only as an audit.** The v0.3 figures and grid
 models use the normalized elite extension; the v0.2/v0.3 sensitivity check is in

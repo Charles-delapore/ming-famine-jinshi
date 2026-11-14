@@ -1,4 +1,4 @@
-# Jinshi data: source, selection and known defect
+﻿# Jinshi data: source, selection and known defect
 
 Status: **confirmed from the 2024 graduation-project archive**
 (`I:\G\001\000\000毕设`, final thesis + code + raw CBDB export). This replaces
@@ -21,6 +21,18 @@ The thesis reports 25,188 cleaned Jinshi records; the attached
 `table_general.xlsx` has 25,187 (one-record export difference). The full CBDB
 export is **not redistributed**; only aggregate counts are published.
 
+**Version note (2026-11-14):** the xlsx was created 2023-12-09; 209 of the
+27,711 `PersonID`s are absent from the 2026-11-07 CBDB build (664,158 persons).
+The export version is therefore unresolved (likely an older/merged release).
+This is a data-version caveat, not a conclusion about redistribution; raw
+records remain private.
+
+**Boundary note:** the thesis states 25,188 cleaned records, 1甲 297, 2甲 5,812
+and a 12.3% deletion rate. Those figures do **not** reconcile with the export
+(25,187 / 260 / 6,500 / 0.45%). Use the archive for the intended rules, and the
+actual export for counts. Full reconciliation:
+[`data_boundary_audit.md`](data_boundary_audit.md).
+
 ## 2. Coverage
 
 Aggregate tables are published in
@@ -34,9 +46,39 @@ and `jinshi_rank_summary.csv`. They contain counts only, no individual records.
 | 1甲 | 263 | 101 |
 | 2甲 | 6,587 | 2,752 |
 | 3甲 | 17,874 | 8,575 |
-| Rank unparsed | 4,037 | — |
-| Elite (1甲 + 2甲) | — | 2,853 |
+| Rank unparsed | 4,037 | 260 (244 missing + 16 malformed) |
+| Elite (1甲 + 2甲, strict regex, civil) | — | 2,853 |
 | Elite with coordinates | — | 2,841 |
+
+### 2.1 Unparsed ranks and 武舉
+
+The 260 unparsed window rows are not all unknown ranks:
+
+| Group | Rows | With coordinates |
+|---|---:|---:|
+| Missing `EntryRank` | 244 | 225 |
+| `0` placeholder | 11 | 11 |
+| `第1/2/3名` | 3 | 3 |
+| Prose containing `二甲` | 2 | 1 |
+
+Malformed strings are only six distinct values (`0`, `第1/2/3名`, two prose
+`二甲` forms). 武舉: 64 rows in the export, 9 in 1521–1619, **0 elite in the
+window**; one 2甲 武舉 is dated 1637, outside the window. The 2,853 layer is
+civil-only.
+
+Civil elite bounds:
+
+| Definition | Rows |
+|---|---:|
+| Strict regex, civil 1甲/2甲 | 2,853 |
+| + 2 prose `二甲` (confirmed) | **2,855** |
+| + 2 civil `第1/2/3名` (probable 1甲) | 2,857 |
+| Upper bound: all civil unparsed treated as elite | 3,104 |
+
+Use **2,855** as the confirmed lower bound and 3,104 as the civil-only upper
+bound. The published 2,841 is the strict-with-coordinates layer; adding the one
+prose `二甲` with coordinates gives 2,842. The difference is 1–3 records, so the
+models are not re-run. Full audit: [`jinshi_unparsed_audit.md`](jinshi_unparsed_audit.md).
 
 ## 3. Selection used for the published 911 layer
 
@@ -103,9 +145,9 @@ published layer starts in 1523.
 
 ## 6. Corrected denominator
 
-Use **2,853 elite records (2,841 with coordinates)** for 1521–1619, or
-**11,688 records** for all Jinshi in the window. Normalize the rank field
-before filtering:
+Use **2,855 elite records as the confirmed lower bound** (2,853 strict regex;
+2,841 with coordinates), or **11,688 records** for all Jinshi in the window.
+Normalize the rank field before filtering:
 
 ```python
 RANK_RE = re.compile(r"^\s*(?:第)?\s*([一二三123])\s*甲")
@@ -131,5 +173,7 @@ git-ignored). The private graduation-project archive remains at
 > Jinshi records: CBDB `入仕查询结果` export (28,761 rows; 11,688 in
 > 1521–1619). The 911-record figure layer is an **Arabic-numeral-coded subset**
 > of the 1甲/2甲 elite, not a representative sample; see
-> `docs/jinshi_encoding_audit.md`. Corrected elite denominator: 2,853 records
-> (2,841 with coordinates). Individual records are not redistributed.
+> `docs/jinshi_encoding_audit.md`. Corrected elite denominator: 2,855 confirmed
+> lower bound (2,853 strict regex; 2,841 with coordinates). Individual records
+> are not redistributed.
+

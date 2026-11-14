@@ -126,7 +126,10 @@ step, not a rank filter.
 
 ## 6. Corrected numbers to use
 
-- Elite Jinshi in 1521–1619: **2,853** records (2,841 with coordinates).
+- Elite Jinshi in 1521–1619: **2,855 confirmed lower bound** (2,853 strict
+  regex; 2,841 with coordinates). 武舉 rows in the window are all unparsed, so
+  the layer is civil-only; see
+  [`jinshi_unparsed_audit.md`](jinshi_unparsed_audit.md).
 - The 911 layer is **not** a random sample and **not** a rank-complete sample.
 - It is retained only as an audit; the v0.3 figures use the normalized elite
   (2,841). The direct sensitivity check is in
