@@ -20,11 +20,11 @@ heterogeneous rather than uniform.*
 | Panel | Content | Encoding | Data |
 |-------|---------|----------|------|
 | A | Famine events 1522–1619 | position; colour = severity 1–5 (`YlOrRd`); fixed size | famine event table |
-| B | Jinshi 1523–1619 | position; single blue; fixed size | Jinshi table |
+| B | Jinshi 1523–1619 (Arabic-coded subset) | position; single blue; fixed size | Jinshi table |
 | C | Temporal context | top: annual severity + 5-year moving average; bottom: Jinshi at exam years only | derived from A/B |
 | D | GWR coefficient surface | signed coefficient (`RdBu_r`, centred at 0); significant cells opaque | GWR grid results |
 
-**On figure**: n = 5,736 famine events; n = 911 Jinshi; 125/158 GWR grids
+**On figure**: n = 5,736 famine events; n = 911 Jinshi (provisional subset); 125/158 GWR grids
 significant at p < 0.05; moving average labelled descriptive.
 
 ## Figure 2 — Mechanism
@@ -67,7 +67,8 @@ coefficient surface — not generic boxes-and-arrows.
 
 **Core claim**: *The maps are not the whole story: GWR effects are mostly
 positive with a right tail, famine severity is concentrated in levels 2–4, and
-the Jinshi record is dominated by the 1523/1526 exams.*
+the 911-record Jinshi subset is dominated by 1523/1526 because of the old
+Arabic-only rank filter.*
 
 | Panel | Content | Encoding |
 |-------|---------|----------|
@@ -118,9 +119,12 @@ spatially explicit evidence: fuse event, exam and climate data; aggregate to a
 1° × 114-year panel; estimate Granger, GWR and GeoDetector evidence.
 
 **Fig. 4.** The maps hide three distributions: GWR effects are mostly positive
-but right-skewed; famine severity is concentrated in levels 2–4; and 24.6% of
-the Jinshi records fall in the 1523/1526 exams, a sample-composition fact that
-must be explained in the data provenance.
+but right-skewed; famine severity is concentrated in levels 2–4; and the 911
+Jinshi subset is dominated by the 1523/1526 exams. Panel C is an **encoding
+audit**: the old filter matched `第1甲`/`第2甲` but not `第一甲`/`第二甲`, so the
+concentration is a selection artefact, not a historical cohort. Corrected elite
+denominator: 2,853 records (2,841 with coordinates). See
+`docs/jinshi_provenance.md`.
 
 ## Acceptance checklist
 

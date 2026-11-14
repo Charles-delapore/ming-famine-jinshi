@@ -49,7 +49,7 @@
 
 ![图4](figures/fig4_distribution.png)
 
-GWR 系数分布（A）、灾荒等级构成（B）、进士按科年分布（C）。这是地图的数值伴随图（S6），1523/1526 的集中度被明确展示。
+GWR 系数分布（A）、灾荒等级构成（B）、进士按科年分布（C）。C 面板是**编码审计**而非历史结论：1523/1526 的集中度来自旧的“仅阿拉伯数字名次”筛选，见 [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md)。
 
 ### 交互地图
 
@@ -95,7 +95,7 @@ python scripts/make_interactive_map.py --sample --output web/sample/interactive_
 
 ## 局限
 
-- 历史记录不是随机样本，地区与时期的记录强度差异很大；911 位进士的来源与入选标准仍待确认，见 [docs/data_provenance.md](docs/data_provenance.md)。
+- 历史记录不是随机样本，地区与时期的记录强度差异很大。911 位进士是 CBDB 一甲/二甲精英中**仅阿拉伯数字名次编码**的子集，不是代表性样本；修正后的一甲/二甲总数为 2,853 条（2,841 条有坐标），1523/1526 峰值是编码筛选造成的假象。详见 [docs/jinshi_provenance.md](docs/jinshi_provenance.md) 与 [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md)。使用 911 层的图件与模型均为暂定结果。
 - Granger 是**预测性**因果，不是机制性因果。
 - 1° 格网结果对分辨率敏感，项目另做了 0.5°/1°/2° 敏感性分析。
 - CCM 在零膨胀序列上不可识别；项目保留这一负结果。

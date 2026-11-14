@@ -59,3 +59,17 @@ Jinshi layer as a non-random compiled sample.
 Metadata is prepared in `.zenodo.json` and `docs/zenodo_release.md`. Minting the
 DOI requires the author's Zenodo account and a GitHub release; the repository
 does not claim a DOI until that step is complete.
+
+## 7. Jinshi rank encoding (2026-11-14)
+
+The 911-record layer is not a rank-complete sample: the old filter
+`EntryRank.str.contains("第1甲|第2甲")` matched only Arabic-numeral ranks
+(`第1甲`), dropping Chinese-numeral ranks (`第一甲`). The corrected elite
+denominator for 1521–1619 is **2,853 records (2,841 with coordinates)**.
+The 1523/1526 concentration is an encoding artefact, not a historical cohort.
+See `docs/jinshi_provenance.md`, `docs/jinshi_encoding_audit.md`, and
+`scripts/audit_jinshi_encoding.py`.
+
+**Status:** documented, not yet re-run. Figures and models that use the 911
+layer are provisional until the pipeline is re-run with a normalized rank field.
+

@@ -72,11 +72,11 @@ colors = [ms.VERMILION if y in (1523, 1526) else "#B9C4CC" for y in year_counts.
 axC.bar(year_counts.index, year_counts.values, color=colors, width=0.85,
         edgecolor="none")
 share = (year_counts.get(1523, 0) + year_counts.get(1526, 0)) / len(j) * 100
-axC.text(0.98, 0.95, f"1523 + 1526 = {int(year_counts.get(1523, 0) + year_counts.get(1526, 0))}\n({share:.1f}% of records)",
+axC.text(0.98, 0.95, f"1523 + 1526 = {int(year_counts.get(1523, 0) + year_counts.get(1526, 0))}\n({share:.1f}% of records)\nArabic-only rank filter",
          transform=axC.transAxes, ha="right", va="top", fontsize=6, color="#555555")
 axC.set_xlabel("Exam year (CE)", fontsize=7)
 axC.set_ylabel("Jinshi records", fontsize=7)
-axC.set_title("Exam-year composition", loc="left", pad=4)
+axC.set_title("Exam-year composition (artefact)", loc="left", pad=4)
 axC.set_xlim(1520, 1620)
 axC.set_xticks(np.arange(1520, 1621, 20))
 ms.panel_label(axC, "C")
@@ -84,8 +84,9 @@ ms.panel_label(axC, "C")
 if os.environ.get("MING_SAMPLE") == "1":
     note = "Synthetic sample data for code verification — not historical records."
 else:
-    note = ("Data: Work_ming v5 result tables. GWR n=158; famine n=5,736; Jinshi n=911. "
-            "Descriptive distributions only; see docs/data_provenance.md.")
+    note = ("Data: Work_ming v5 result tables. GWR n=158; famine n=5,736; "
+            "Jinshi n=911 (Arabic-coded 1甲/2甲 subset, provisional; "
+            "see docs/jinshi_provenance.md). Descriptive distributions only.")
 fk.footer(fig, note, y=0.01, fontsize=6)
 
 paths = ms.save(fig, "fig4_distribution")

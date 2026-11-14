@@ -1,7 +1,9 @@
 ﻿# Famines and Imperial Exams in Ming China, 1521–1619
 
 **A reproducible spatiotemporal analysis of 5,736 famine records and 911 Jinshi
-(metropolitan exam) graduates — from event points to grid-level causal evidence.**
+(metropolitan exam) records — from event points to grid-level causal evidence.**
+The 911-record Jinshi layer is an Arabic-numeral-coded 1甲/2甲 subset
+(provisional; see [docs/jinshi_provenance.md](docs/jinshi_provenance.md)).
 
 ![Graphical abstract](figures/fig3_framework.png)
 
@@ -87,8 +89,9 @@ From sparse event records to a 1° grid panel and spatially explicit evidence.
 ![Figure 4](figures/fig4_distribution.png)
 
 GWR coefficient distribution (A), famine severity composition (B), and Jinshi
-records by exam year (C). This is the numeric companion to the maps (S6); the
-1523/1526 concentration is visible rather than hidden in a trend line.
+records by exam year (C). **Panel C is an encoding audit, not a historical
+claim**: the 1523/1526 concentration comes from the old Arabic-only rank filter
+(see [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md)).
 
 ### Interactive map
 
@@ -133,8 +136,11 @@ python scripts/make_interactive_map.py
 - Figure QA and colour-blind checks: [docs/figure_qa.md](docs/figure_qa.md).
 - Reproducibility fixes (row order, colour limits, grid bounds):
   [docs/reproducibility_fixes.md](docs/reproducibility_fixes.md).
-- Jinshi provenance / eligibility (pending author confirmation):
-  [docs/data_provenance.md](docs/data_provenance.md).
+- Jinshi provenance (confirmed 2026-11-14):
+  [docs/jinshi_provenance.md](docs/jinshi_provenance.md).
+- Jinshi rank-encoding audit (why the 911 layer is a subset):
+  [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md).
+- Data provenance overview: [docs/data_provenance.md](docs/data_provenance.md).
 - Interactive map notes: [web/README.md](web/README.md).
 - Zenodo DOI release steps: [docs/zenodo_release.md](docs/zenodo_release.md) — **DOI pending** the author's Zenodo release.
 - Data sources and transformations are recorded in the figure footnotes.
@@ -157,9 +163,13 @@ The sample figures carry a “synthetic sample” footnote. See
 ## Limitations
 
 - Historical records are **not a random sample**; reporting intensity varies by
-  region and period. The Jinshi layer (911 records) is an author-compiled sample;
-  its source and inclusion rules are still marked **pending confirmation** in
-  [docs/data_provenance.md](docs/data_provenance.md).
+  region and period. The 911-record Jinshi layer is a **format-selected subset**
+  of the CBDB 1甲/2甲 elite (Arabic-numeral ranks only), not a representative
+  sample. Corrected elite denominator: 2,853 records (2,841 with coordinates);
+  the 1523/1526 peak is an encoding artefact. See
+  [docs/jinshi_provenance.md](docs/jinshi_provenance.md) and
+  [docs/jinshi_encoding_audit.md](docs/jinshi_encoding_audit.md). Figures and
+  models using the 911 layer are provisional.
 - Granger causality is **predictive**, not mechanistic; the “famine → Jinshi”
   language is shorthand for “famine history improves prediction of later Jinshi
   counts”.
