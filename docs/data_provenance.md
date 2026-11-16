@@ -37,3 +37,19 @@ models use the normalized elite extension; the v0.2/v0.3 sensitivity check is in
 - Famine and Jinshi raw tables stay outside the repository.
 - The public repository ships synthetic sample data plus aggregate audits only.
 - Aggregate counts in `docs/jinshi_*.md` may be cited with attribution to CBDB.
+
+## Route A sources (2026-11-14/15)
+
+- **A9**: CBDB SQLite address dictionary, historical urban population workbook,
+  late-Ming Jinshi table and CHGIS county points. Read-only, private.
+- **A12**: independent famine source (`灾荒数据.zip` / `table_level.json`,
+  69,276 city-year rows); licence not confirmed, so event rows and the derived
+  panel are not redistributed.
+- **A14/A17/A18**: CBDB `KIN_DATA` / `ASSOC_DATA` network tables. Person-level
+  edges and ego degrees stay private; only coverage and summary aggregates are
+  published.
+- **A10**: the coordinate-tier assignment joins `PersonID` to coordinates and
+  is private; only tier counts and sensitivity aggregates are published.
+
+The published aggregates are described in
+[`data_dictionary.md`](data_dictionary.md).

@@ -1,4 +1,4 @@
-# Project notes
+﻿# Project notes
 
 Technical details moved out of the README: data scope, reproducibility,
 documentation index, synthetic sample, extended limitations and next steps.
@@ -33,6 +33,7 @@ documentation index, synthetic sample, extended limitations and next steps.
 - Jinshi provenance: [`jinshi_provenance.md`](jinshi_provenance.md)
 - Jinshi rank-encoding audit: [`jinshi_encoding_audit.md`](jinshi_encoding_audit.md)
 - Data provenance overview: [`data_provenance.md`](data_provenance.md)
+- Data dictionary for published aggregates: [`data_dictionary.md`](data_dictionary.md)
 - Corrected Jinshi aggregates: [`../data/derived/`](../data/derived/README.md)
 - v0.3 model metrics and unparsed-rank audit:
   [`v03_model_outputs.md`](v03_model_outputs.md),
@@ -112,3 +113,4 @@ limitations.
 - Multi-resolution sensitivity surface (0.5°/1°/2°) and stability of the
   significant cells.
 - Reporting-bias and coordinate-confidence sensitivity for the v0.3 panel.
+
