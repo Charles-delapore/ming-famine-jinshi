@@ -44,7 +44,8 @@ The FDR count stays within the frozen ±50% band, so the descriptive spatial con
 
 | Output | Path |
 |---|---|
-| tier assignment | `data/derived/a10_coordinate_tiers.csv` |
+| tier assignment | `data/derived/a10_coordinate_tiers_summary.csv` (aggregate; person-level assignment kept private) |
 | sensitivity summary | `data/derived/a10_coordinate_sensitivity.csv` |
 
-Private inputs; aggregate outputs only.
+Private inputs; aggregate outputs only. The person-level tier assignment is not
+distributed because it joins CBDB `PersonID` to coordinates.

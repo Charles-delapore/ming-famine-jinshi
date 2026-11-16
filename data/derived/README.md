@@ -9,7 +9,7 @@
 | `a1_rank_coefficients.csv`, `a1_rank_units.csv` | A1 秩次份额模型系数与格网×科年单元 |
 | `a2_spillover_coefficients.csv`, `a2_spillover_units.csv` | A2 空间溢出系数与单元 |
 | `a3_main_results.csv` | A3 主结果表（脚本 → 表 → 文档） |
-| `a10_*.csv` | 坐标置信度敏感性、层级、晚明地理、外部城市对照 |
+| `a10_*.csv` | 坐标置信度敏感性、层级汇总、晚明地理、外部城市对照 |
 | `a12_full_ming_cities.csv`, `a12_full_ming_fixed_lag.csv`, `a12_full_ming_lag_window.csv` | 全明复制的城市汇总、固定窗与滞后窗结果 |
 | `a13_admin_density_dose.csv` | 行政密度剂量反应 |
 | `a14_network_coverage.csv` | 网络覆盖审计汇总 |
@@ -30,6 +30,7 @@
 | CBDB 个人-地址链接 | 个人级标识 |
 | 晚明进士 1627–1644 明细 | 个人级记录（姓名、坐标） |
 | CBDB 地址字典、CHGIS 县点 | 第三方数据库批量内容，再分发许可不明 |
+| 坐标层级个人表（PersonID + 坐标） | 个人级标识 |
 | 外部明城/明面 GeoJSON | 第三方集合，来源许可未确认 |
 | 全明灾荒事件表与面板 | 外部灾荒数据，许可未确认 |
 | 网络边表（PersonID + 关系） | 个人级关系数据 |
