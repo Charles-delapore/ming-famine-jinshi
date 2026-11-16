@@ -1,8 +1,9 @@
 {
   "title": "Famines and Imperial Exams in Ming China, 1521-1619: a spatially explicit panel analysis",
-  "description": "Reproducible code and figures for a spatiotemporal analysis of 5,736 Ming famine records and 2,841 normalized 1甲/2甲 Jinshi records on a 1-degree, 114-year grid panel. Includes FDR-controlled Granger causality, GWR, GeoDetector, SHAP/GeoShapley, and a documented CCM negative result.",
+  "description": "Reproducible code, aggregate tables and figures for a spatiotemporal analysis of 5,736 Ming famine records and 2,841 normalized 1甲/2甲 Jinshi records on a 1-degree, 114-year grid panel. Includes fixed 1-5 year joint Granger tests, GWR, GeoDetector, an explicit lag-search diagnostic, and a Jinshi rank-encoding audit.",
+  "version": "0.4.0",
   "upload_type": "software",
-  "publication_date": "2026-11-14",
+  "publication_date": "2026-11-16",
   "creators": [
     {
       "name": "Delapore, Charles"
