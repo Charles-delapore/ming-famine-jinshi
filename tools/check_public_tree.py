@@ -24,6 +24,10 @@ TEXT_SUFFIXES = {".md", ".py", ".html", ".yml", ".yaml", ".toml", ".cff",
 ABS_PATH = re.compile(r"(?<![A-Za-z])(?:[IDEFGH]):\\|C:\\Users", re.IGNORECASE)
 PROCESS = re.compile(r"local only|no push", re.IGNORECASE)
 PRIVATE_COLUMNS = {"personid", "person_id", "c_personid", "namechn"}
+SKIP = {
+    "tools/check_public_tree.py",
+    "tests/test_public_tree.py",
+}
 FORBIDDEN_NAMES = {
     "a14_network_edges.csv",
     "a18_ego_degrees.csv",
@@ -47,6 +51,8 @@ def check_file(path: Path) -> list[str]:
         rel = path.relative_to(ROOT).as_posix()
     except ValueError:
         rel = str(path)
+    if rel in SKIP:
+        return problems
     if path.name in FORBIDDEN_NAMES:
         problems.append(f"{rel}: file must not be published")
         return problems
