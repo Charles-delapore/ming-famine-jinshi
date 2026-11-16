@@ -43,6 +43,32 @@ documentation index, synthetic sample, extended limitations and next steps.
 
 Data sources and transformations are also recorded in the figure footnotes.
 
+## Route A analyses (2026-11-14/15)
+
+- **Claims and freeze**: [`a0_claims_audit.md`](a0_claims_audit.md),
+  [`a0_apply_report.md`](a0_apply_report.md), [`a8_freeze_review.md`](a8_freeze_review.md)
+- **Main results**: [`a3_main_results.md`](a3_main_results.md) — fixed 1–5 year
+  joint test, multiscale horizons, GWR and GeoDetector in one table
+- **Rank and spillover (nulls)**: [`a1_rank_results.md`](a1_rank_results.md),
+  [`a2_spillover_results.md`](a2_spillover_results.md)
+- **Lag-search diagnostics**: [`long_tail_analysis.md`](long_tail_analysis.md),
+  [`p0_3b_salvage.md`](p0_3b_salvage.md)
+- **Data and replication**: [`a9_new_data_inventory.md`](a9_new_data_inventory.md),
+  [`a10_coordinate_confidence_results.md`](a10_coordinate_confidence_results.md),
+  [`a12_full_ming_replication.md`](a12_full_ming_replication.md),
+  [`a13_admin_density_proxy.md`](a13_admin_density_proxy.md),
+  [`a15_external_famine_crosscheck.md`](a15_external_famine_crosscheck.md)
+- **Network and early Ming**: [`a17_cbdb_network_coverage.md`](a17_cbdb_network_coverage.md),
+  [`a18_ego_network_results.md`](a18_ego_network_results.md),
+  [`a19_early_ming_decomposition.md`](a19_early_ming_decomposition.md)
+- **Planning**: [`a6_paper_outline.md`](a6_paper_outline.md),
+  [`a7_reproducibility_pack.md`](a7_reproducibility_pack.md),
+  [`b_feasibility_memo.md`](b_feasibility_memo.md)
+
+The published aggregate tables are listed in
+[`../data/derived/README.md`](../data/derived/README.md); person-level and
+unlicensed external tables are kept private.
+
 ## Synthetic sample data
 
 The real event tables are private. `data/sample/` contains synthetic tables with
