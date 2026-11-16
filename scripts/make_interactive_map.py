@@ -7,7 +7,8 @@ Layers
   1. Mean famine severity per 1-degree cell
   2. Jinshi records aggregated to the same cells
   3. GWR coefficient per estimable cell
-  4. Famine->Jinshi Granger cells that survive FDR
+  4. Fixed 1-5 year joint Granger cells that survive FDR (headline)
+  5. 20-lag max-F FDR cells (diagnostic; not the headline)
 
 Usage
   MING_OUTPUT=/path/to/output python scripts/make_interactive_map.py
@@ -40,6 +41,11 @@ OUT.parent.mkdir(parents=True, exist_ok=True)
 grid = pd.read_csv(OUTPUT / "grid_data_enriched.csv")
 gwr = pd.read_excel(OUTPUT / "gwr_coefficients.xlsx")
 gg = pd.read_excel(OUTPUT / "grid_granger_causality.xlsx")
+fixed = pd.read_csv(
+    ROOT / "data" / "derived" / "long_tail_fixed_lag_grids.csv"
+)[["grid_x", "grid_y", "fdr_sig", "qval"]].rename(
+    columns={"fdr_sig": "fixed_fdr", "qval": "fixed_q"}
+)
 
 cells = (
     grid.groupby(["grid_x", "grid_y"])
@@ -56,6 +62,10 @@ cells = cells.merge(
     how="left",
 ).merge(
     gg[["grid_x", "grid_y", "gc_z_to_j_qval", "gc_z_to_j_fdr_sig"]],
+    on=["grid_x", "grid_y"],
+    how="left",
+).merge(
+    fixed,
     on=["grid_x", "grid_y"],
     how="left",
 )
@@ -90,7 +100,12 @@ m = folium.Map(
 severity_layer = folium.FeatureGroup(name="Famine severity (1° mean)", show=True)
 jinshi_layer = folium.FeatureGroup(name="Jinshi records (1° sum)", show=False)
 gwr_layer = folium.FeatureGroup(name="GWR coefficient (famine → Jinshi)", show=False)
-granger_layer = folium.FeatureGroup(name="Granger FDR-significant cells", show=False)
+granger_layer = folium.FeatureGroup(
+    name="Granger FDR cells (20-lag search; diagnostic)", show=False
+)
+fixed_layer = folium.FeatureGroup(
+    name="Fixed 1–5 yr joint test (FDR)", show=True
+)
 
 for _, row in cells.iterrows():
     x, y = float(row["grid_x"]), float(row["grid_y"])
@@ -152,9 +167,24 @@ for _, row in cells.iterrows():
             ),
         ).add_to(granger_layer)
 
+    if pd.notna(row.get("fixed_fdr", False)) and bool(row.get("fixed_fdr")):
+        folium.CircleMarker(
+            location=[y, x],
+            radius=7,
+            color="#FFFFFF",
+            weight=1.0,
+            fill=True,
+            fill_color="#009E73",
+            fill_opacity=0.95,
+            tooltip=folium.Tooltip(
+                f"Fixed 1–5 yr joint Granger (FDR)<br>q = {float(row['fixed_q']):.3f}"
+            ),
+        ).add_to(fixed_layer)
+
 severity_layer.add_to(m)
 jinshi_layer.add_to(m)
 gwr_layer.add_to(m)
+fixed_layer.add_to(m)
 granger_layer.add_to(m)
 folium.LayerControl(collapsed=False, position="topright").add_to(m)
 
