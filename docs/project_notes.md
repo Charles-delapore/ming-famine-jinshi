@@ -40,7 +40,7 @@ documentation index, synthetic sample, extended limitations and next steps.
   [`jinshi_unparsed_audit.md`](jinshi_unparsed_audit.md),
   [`data_boundary_audit.md`](data_boundary_audit.md)
 - Interactive map notes: [`../web/README.md`](../web/README.md)
-- Zenodo release steps: [`zenodo_release.md`](zenodo_release.md) (DOI pending)
+- Zenodo release steps: [`zenodo_release.md`](zenodo_release.md) (DOI pending)`n- Release checklist: [`release_checklist.md`](release_checklist.md)
 
 Data sources and transformations are also recorded in the figure footnotes.
 
@@ -113,4 +113,5 @@ limitations.
 - Multi-resolution sensitivity surface (0.5°/1°/2°) and stability of the
   significant cells.
 - Reporting-bias and coordinate-confidence sensitivity for the v0.3 panel.
+
 
