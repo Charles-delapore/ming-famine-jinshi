@@ -11,7 +11,8 @@ static figures because every layer is a grid-level summary.
 | Famine severity | mean severity per 1° cell (all years) |
 | Jinshi records | summed Jinshi records per 1° cell |
 | GWR coefficient | local famine→Jinshi coefficient (estimable cells) |
-| Granger FDR | cells where famine→Jinshi Granger survives FDR (q < 0.05) |
+| Fixed 1–5 yr joint test | cells where the pre-specified joint test survives FDR (headline, 2 cells) |
+| Granger FDR (20-lag search) | cells where the 20-lag max-F search survives FDR (diagnostic, not the headline) |
 
 The map includes a layer control, a scale control, a legend, a north arrow, and
 a static fallback link to `figures/fig1_patterns.png`.
