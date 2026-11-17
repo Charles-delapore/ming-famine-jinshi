@@ -1,0 +1,39 @@
+name: Data correction
+description: Report a wrong value in a published table or figure
+title: "[data] "
+labels: ["data"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Where
+      description: File, table, figure or map cell
+      placeholder: "data/derived/a3_main_results.csv, row fixed_1_5_joint_FDR_grids"
+    validations:
+      required: true
+  - type: input
+    id: published
+    attributes:
+      label: Published value
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Expected value
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Source, command or calculation that supports the correction
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Which figures or claims would change
+    validations:
+      required: false
