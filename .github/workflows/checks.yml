@@ -20,7 +20,10 @@ jobs:
       - name: install test dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install numpy pandas scipy scikit-learn statsmodels pytest pyyaml
+          python -m pip install numpy pandas scipy scikit-learn statsmodels pytest pyyaml ruff
+
+      - name: lint
+        run: ruff check .
 
       - name: check the public tree
         run: python tools/check_public_tree.py
