@@ -1,4 +1,4 @@
-name: Public checks
+﻿name: Public checks
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       - name: install test dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install numpy pandas scipy scikit-learn statsmodels pytest pyyaml ruff
+          python -m pip install numpy pandas scipy scikit-learn statsmodels pytest pyyaml ruff openpyxl
 
       - name: lint
         run: ruff check .
@@ -33,3 +33,4 @@ jobs:
 
       - name: run tests
         run: pytest -q
+
