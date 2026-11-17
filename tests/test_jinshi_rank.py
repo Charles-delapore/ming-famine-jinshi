@@ -29,3 +29,26 @@ def test_unknown_values():
 
 def test_rank_level_alias():
     assert rank_level("第一甲第一名") == 1
+
+
+def test_whitespace_and_spacing_variants():
+    assert rank_class("  第二甲第三名  ") == 2
+    assert rank_class("第 1 甲 第 2 名") == 1
+    assert rank_class("第2甲") == 2
+
+
+def test_empty_and_out_of_range():
+    assert rank_class("") is None
+    assert rank_class("第4甲第1名") is None
+    assert rank_class("第一") is None
+
+
+def test_normalize_rank_keeps_rows():
+    import pandas as pd
+    from src.data_processing.jinshi_rank import normalize_rank
+
+    df = pd.DataFrame({"EntryRank": ["第一甲第一名", "第2甲第3名", None]})
+    out = normalize_rank(df)
+    assert len(out) == 3
+    assert out["rank_class"].tolist()[:2] == [1, 2]
+    assert out["level"].isna().sum() == 1
