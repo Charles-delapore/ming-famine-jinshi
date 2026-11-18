@@ -12,7 +12,7 @@ tqdm>=4.66
 openpyxl>=3.1
 
 # Geospatial
-geopandas>=1.0
+geopandas>=1.2.0
 pyproj>=3.6
 
 # Spatial statistics / explainability
