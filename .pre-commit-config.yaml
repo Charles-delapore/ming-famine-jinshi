@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.5
+    hooks:
+      - id: ruff
+        args: ["check"]
+
+  - repo: local
+    hooks:
+      - id: public-tree
+        name: public-tree checker
+        entry: python tools/check_public_tree.py
+        language: system
+        pass_filenames: false
