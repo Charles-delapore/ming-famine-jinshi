@@ -35,17 +35,26 @@ args = parser.parse_args()
 OUTPUT = Path(os.environ.get("MING_OUTPUT", ROOT / "output"))
 OUT = args.output or Path(os.environ.get("MING_MAP_OUT", ROOT / "web" / "interactive_map.html"))
 SAMPLE = args.sample or os.environ.get("MING_SAMPLE") == "1"
+if SAMPLE and "MING_OUTPUT" not in os.environ:
+    OUTPUT = ROOT / "data" / "sample"
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 
 grid = pd.read_csv(OUTPUT / "grid_data_enriched.csv")
 gwr = pd.read_excel(OUTPUT / "gwr_coefficients.xlsx")
 gg = pd.read_excel(OUTPUT / "grid_granger_causality.xlsx")
-fixed = pd.read_csv(
-    ROOT / "data" / "derived" / "long_tail_fixed_lag_grids.csv"
-)[["grid_x", "grid_y", "fdr_sig", "qval"]].rename(
-    columns={"fdr_sig": "fixed_fdr", "qval": "fixed_q"}
-)
+if SAMPLE:
+    # The fixed-window layer comes from the real panel; never mix it into the
+    # synthetic sample map.
+    fixed = pd.DataFrame(
+        columns=["grid_x", "grid_y", "fixed_fdr", "fixed_q"]
+    )
+else:
+    fixed = pd.read_csv(
+        ROOT / "data" / "derived" / "long_tail_fixed_lag_grids.csv"
+    )[["grid_x", "grid_y", "fdr_sig", "qval"]].rename(
+        columns={"fdr_sig": "fixed_fdr", "qval": "fixed_q"}
+    )
 
 cells = (
     grid.groupby(["grid_x", "grid_y"])
@@ -103,9 +112,10 @@ gwr_layer = folium.FeatureGroup(name="GWR coefficient (famine → Jinshi)", show
 granger_layer = folium.FeatureGroup(
     name="Granger FDR cells (20-lag search; diagnostic)", show=False
 )
-fixed_layer = folium.FeatureGroup(
-    name="Fixed 1–5 yr joint test (FDR)", show=True
-)
+if not SAMPLE:
+    fixed_layer = folium.FeatureGroup(
+        name="Fixed 1–5 yr joint test (FDR)", show=True
+    )
 
 for _, row in cells.iterrows():
     x, y = float(row["grid_x"]), float(row["grid_y"])
@@ -184,7 +194,8 @@ for _, row in cells.iterrows():
 severity_layer.add_to(m)
 jinshi_layer.add_to(m)
 gwr_layer.add_to(m)
-fixed_layer.add_to(m)
+if not SAMPLE:
+    fixed_layer.add_to(m)
 granger_layer.add_to(m)
 folium.LayerControl(collapsed=False, position="topright").add_to(m)
 
