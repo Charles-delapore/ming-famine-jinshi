@@ -1,6 +1,6 @@
 import numpy as np
-from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import DBSCAN
+from sklearn.preprocessing import StandardScaler
 
 from src.data_processing.jinshi_rank import rank_level
 

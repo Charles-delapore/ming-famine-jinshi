@@ -1,15 +1,17 @@
-import pandas as pd
-import numpy as np
-from sklearn.linear_model import LinearRegression, Ridge
-from scipy import stats
 import os
 import sys
 import warnings
 
+import numpy as np
+import pandas as pd
+from scipy import stats
+from sklearn.linear_model import LinearRegression, Ridge
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 from src.config import OUTPUT_DIR
 from src.data_processing.paleoclimate_loader import (
-    load_all_paleoclimate_data, merge_paleoclimate_with_grid,
+    load_all_paleoclimate_data,
+    merge_paleoclimate_with_grid,
 )
 
 

@@ -1,8 +1,9 @@
-import pandas as pd
-import numpy as np
-from tqdm import tqdm
-import sys
 import os
+import sys
+
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 from src.config import COMPARE_PARAMS, OUTPUT_PATHS

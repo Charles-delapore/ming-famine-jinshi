@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
+from scipy import stats
 from shapely.geometry import MultiPoint
 from sklearn.linear_model import LinearRegression
-from scipy import stats
 
 
 def preprocess_zaihuang(df_jinshi, df_zaihuang):

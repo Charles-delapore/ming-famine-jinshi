@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
+from sklearn.metrics import calinski_harabasz_score, davies_bouldin_score, silhouette_score
 from sklearn.preprocessing import StandardScaler
 
 
@@ -28,8 +28,8 @@ def evaluate_clustering(X, labels):
 
 
 def bayesian_optimize_ssdbcan(data, cluster_func, param_ranges, n_iterations=30):
-    from scipy.stats import norm
     from scipy.spatial.distance import cdist
+    from scipy.stats import norm
 
     param_names = list(param_ranges.keys())
     param_bounds = [(param_ranges[k][0], param_ranges[k][1]) for k in param_names]

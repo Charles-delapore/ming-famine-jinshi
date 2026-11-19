@@ -27,8 +27,9 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
-from src.analysis.grid_analysis import fdr_correction  # noqa: E402
 from long_tail_analysis import fixed_lag_pvalue  # noqa: E402
+
+from src.analysis.grid_analysis import fdr_correction  # noqa: E402
 
 PANEL = ROOT / "data" / "derived" / "a12_full_ming_panel.csv.gz"
 OUT = ROOT / "data" / "derived" / "a19_early_ming_decomposition.csv"

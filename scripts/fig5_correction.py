@@ -19,8 +19,8 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "style"))
-import ming_style as ms  # noqa: E402
 import figure_kit as fk  # noqa: E402
+import ming_style as ms  # noqa: E402
 
 ms.apply_style()
 

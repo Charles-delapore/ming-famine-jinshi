@@ -22,12 +22,12 @@ RAW = Path(os.environ.get("MING_JINSHI_RAW", ROOT / "data" / "raw" / "明进士.
 
 sys.path.insert(0, str(ROOT))
 from src.algorithms.ss_dbscan import SSDBSCAN  # noqa: E402
-from src.data_processing.jinshi_rank import rank_level  # noqa: E402
 from src.analysis.grid_analysis import (  # noqa: E402
     MultiScaleCausalModel,
     compute_grid_derived_features,
 )
 from src.analysis.sensitivity_analysis import run_geodetector  # noqa: E402
+from src.data_processing.jinshi_rank import rank_level  # noqa: E402
 
 
 def build_corrected_jinshi() -> pd.DataFrame:

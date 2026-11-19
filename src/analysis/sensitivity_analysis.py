@@ -1,17 +1,20 @@
-import numpy as np
-import pandas as pd
-from scipy import stats
-from sklearn.linear_model import LinearRegression, Ridge
 import os
 import sys
 import warnings
 
+import numpy as np
+import pandas as pd
+from scipy import stats
+from sklearn.linear_model import LinearRegression, Ridge
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-from src.config import OUTPUT_DIR, DATA_PATHS
 from src.analysis.grid_analysis import (
-    build_full_grid_data, compute_grid_derived_features,
-    fdr_correction, MultiScaleCausalModel,
+    MultiScaleCausalModel,
+    build_full_grid_data,
+    compute_grid_derived_features,
+    fdr_correction,
 )
+from src.config import DATA_PATHS, OUTPUT_DIR
 
 
 def sensitivity_grid_resolution(grid_sizes=None):

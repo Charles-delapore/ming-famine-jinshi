@@ -1,11 +1,12 @@
-import numpy as np
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import DBSCAN
-from sklearn.linear_model import LinearRegression, Ridge
-from scipy import stats
 import os
 import sys
+
+import numpy as np
+import pandas as pd
+from scipy import stats
+from sklearn.cluster import DBSCAN
+from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.preprocessing import StandardScaler
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 from src.config import DATA_PATHS, OUTPUT_DIR
@@ -27,7 +28,7 @@ def load_grid_data(grid_file=None):
 
 
 def build_full_grid_data(zaihuang_file=None, jinshi_file=None, grid_size=1.0, use_extended=True):
-    from src.data_processing.loader import load_extended_zaihuang, load_extended_jinshi
+    from src.data_processing.loader import load_extended_jinshi, load_extended_zaihuang
 
     if use_extended:
         print("  使用扩展时间序列 (1521-1619年灾荒+进士)...")

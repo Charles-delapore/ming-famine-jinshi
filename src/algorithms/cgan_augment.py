@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
-from sklearn.mixture import GaussianMixture
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import pairwise_distances
+from sklearn.mixture import GaussianMixture
+from sklearn.preprocessing import StandardScaler
 
 
 class TabSynDex:
@@ -95,9 +95,9 @@ class TabSynDex:
         if real_labels is None:
             return 0.5
 
-        from sklearn.model_selection import train_test_split
         from sklearn.ensemble import RandomForestClassifier
         from sklearn.metrics import accuracy_score
+        from sklearn.model_selection import train_test_split
 
         try:
             X_train_real, X_test, y_train_real, y_test = train_test_split(

@@ -1,12 +1,14 @@
 import matplotlib
+
 matplotlib.use('Agg')
+import os
+import sys
+
 import matplotlib.pyplot as plt
 import numpy as np
-import sys
-import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-from src.config import VISUALIZATION, OUTPUT_DIR
+from src.config import OUTPUT_DIR, VISUALIZATION
 
 
 def setup_chinese_font():

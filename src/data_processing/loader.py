@@ -1,9 +1,10 @@
-import pandas as pd
-import sys
 import os
+import sys
+
+import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-from src.config import DATA_PATHS, OUTPUT_PATHS, DATA_PROCESSED_DIR
+from src.config import DATA_PATHS, DATA_PROCESSED_DIR, OUTPUT_PATHS
 from src.data_processing.jinshi_rank import normalize_rank
 
 

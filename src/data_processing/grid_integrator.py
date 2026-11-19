@@ -1,10 +1,11 @@
-import pandas as pd
-import numpy as np
-import sys
 import os
+import sys
+
+import numpy as np
+import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-from src.config import DATA_PATHS, OUTPUT_PATHS, GRID_PARAMS
+from src.config import DATA_PATHS, GRID_PARAMS, OUTPUT_PATHS
 
 
 def integrate_grid_data(general_csv=None, merged_csv=None, params=None):

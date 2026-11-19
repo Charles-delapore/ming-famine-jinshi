@@ -7,6 +7,7 @@ Adapted from the 2026-11-14 geography research bundle (08 prototype).\nUsage: py
 Outputs: <name>_protanopia.png, <name>_deuteranopia.png next to the input.
 """
 import sys
+
 import numpy as np
 from PIL import Image
 

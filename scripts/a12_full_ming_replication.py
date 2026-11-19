@@ -30,9 +30,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
-from src.data_processing.jinshi_rank import rank_class  # noqa: E402
-from src.analysis.grid_analysis import GridGrangerCausality, fdr_correction  # noqa: E402
 from long_tail_analysis import fixed_lag_pvalue  # noqa: E402
+
+from src.analysis.grid_analysis import GridGrangerCausality, fdr_correction  # noqa: E402
+from src.data_processing.jinshi_rank import rank_class  # noqa: E402
 
 FAMINE = ROOT / "data" / "derived" / "a12_full_ming_famine.csv"
 RAW = Path(os.environ.get("MING_JINSHI_RAW", r"data/private/明进士.xlsx"))

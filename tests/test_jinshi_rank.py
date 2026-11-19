@@ -45,6 +45,7 @@ def test_empty_and_out_of_range():
 
 def test_normalize_rank_keeps_rows():
     import pandas as pd
+
     from src.data_processing.jinshi_rank import normalize_rank
 
     df = pd.DataFrame({"EntryRank": ["第一甲第一名", "第2甲第3名", None]})

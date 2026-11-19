@@ -9,41 +9,47 @@ The pipeline is intentionally explicit (14 steps) so each stage can be audited
 separately. Steps 8-9 are retained as documented no-ops (the clustering metrics
 were negative, so the analysis moved to the grid level).
 """
-import sys
 import os
+import sys
+
 import numpy as np
 import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from src.config import DATA_PATHS, OUTPUT_PATHS, CLUSTER_PARAMS, OUTPUT_DIR
-from src.data_processing.loader import (
-    load_zaihuang_data, load_zaihuang_data_full,
-    load_jinshi_data, load_jinshi_important,
-    merge_level_city, save_processed,
-)
-from src.algorithms.ss_dbscan import cluster_zaihuang, cluster_jinshi
+from src.algorithms.dynamic_weight_dbscan import cluster_jinshi_dynamic, cluster_zaihuang_dynamic
+from src.algorithms.gmm_cluster import cluster_jinshi_gmm, cluster_zaihuang_gmm
+from src.algorithms.ss_dbscan import cluster_jinshi, cluster_zaihuang
 from src.algorithms.st_dbscan import cluster_zaihuang_st
-from src.algorithms.gmm_cluster import cluster_zaihuang_gmm, cluster_jinshi_gmm
-from src.algorithms.dynamic_weight_dbscan import cluster_zaihuang_dynamic, cluster_jinshi_dynamic
-from src.algorithms.st_graph import build_zaihuang_graph, build_jinshi_graph
-from src.analysis.similarity import (
-    compute_similarity_matrix, preprocess_zaihuang,
-    fdr_correction,
-)
-from src.analysis.cluster_compare import compare_clusters_lagged
+from src.algorithms.st_graph import build_jinshi_graph, build_zaihuang_graph
 from src.analysis.bayesian_optimize import evaluate_clustering
+from src.analysis.ccm_analysis import ConvergentCrossMapping
+from src.analysis.cluster_compare import compare_clusters_lagged
 from src.analysis.grid_analysis import run_grid_analysis
 from src.analysis.paleoclimate_analysis import run_paleoclimate_analysis
-from src.analysis.ccm_analysis import ConvergentCrossMapping
-from src.analysis.spatial_regression import run_spatial_analysis
 from src.analysis.sensitivity_analysis import run_sensitivity_and_decomposition
-from src.visualization.plot_3d import plot_zaihuang_3d, plot_jinshi_3d, plot_comparison_3d
-from src.visualization.plot_2d import (
-    plot_lagged_similarity_scatter, plot_similarity_heatmap,
-    plot_cluster_comparison_2d,
+from src.analysis.similarity import (
+    compute_similarity_matrix,
+    fdr_correction,
+    preprocess_zaihuang,
+)
+from src.analysis.spatial_regression import run_spatial_analysis
+from src.config import CLUSTER_PARAMS, DATA_PATHS, OUTPUT_DIR, OUTPUT_PATHS
+from src.data_processing.loader import (
+    load_jinshi_data,
+    load_jinshi_important,
+    load_zaihuang_data,
+    load_zaihuang_data_full,
+    merge_level_city,
+    save_processed,
 )
 from src.visualization.dual_axis import plot_dual_axis, plot_dual_axis_with_fit
+from src.visualization.plot_2d import (
+    plot_cluster_comparison_2d,
+    plot_lagged_similarity_scatter,
+    plot_similarity_heatmap,
+)
+from src.visualization.plot_3d import plot_comparison_3d, plot_jinshi_3d, plot_zaihuang_3d
 
 
 def step1_data_loading():
@@ -203,6 +209,7 @@ def step7_dynamic_weight_clustering(zaihuang_data, jinshi_data):
     print("  仅保留SSDBSCAN固定权重聚类用于全局可视化")
 
     from sklearn.preprocessing import StandardScaler
+
     from src.analysis.bayesian_optimize import evaluate_clustering
 
     data_z = zaihuang_data.dropna(subset=['x', 'y', 'year', 'level'])
