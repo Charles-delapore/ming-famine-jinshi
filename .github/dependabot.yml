@@ -8,6 +8,10 @@ updates:
     groups:
       python-dependencies:
         patterns: ["*"]
+    ignore:
+      # Keep Python 3.9/3.10 support: major bumps (numpy 2, pandas 3) drop it.
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
     labels:
       - "dependencies"
 
