@@ -40,10 +40,17 @@ jobs:
         run: python tools/check_docs_links.py
 
       - name: run tests
-        run: pytest -q --cov=src --cov=tools --cov-report=term-missing
+        run: pytest -q --cov=src --cov=tools --cov-report=term-missing --cov-report=xml
 
       - name: check release metadata
         run: python tools/check_release.py
+
+      - name: upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.python-version }}
+          path: coverage.xml
+
 
 
 
