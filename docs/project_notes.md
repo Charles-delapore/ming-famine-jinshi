@@ -24,7 +24,9 @@ documentation index, synthetic sample, extended limitations and next steps.
 
 ## Documentation index
 
-- Architecture and data flow: [`architecture.md`](architecture.md)`n- FAQ: [`faq.md`](faq.md)`n- Design rationale: [`design_notes.md`](design_notes.md)
+- Architecture and data flow: [`architecture.md`](architecture.md)`n- FAQ: [`faq.md`](faq.md)
+- Glossary: [`glossary.md`](glossary.md)
+- Known issues: [`known_issues.md`](known_issues.md)`n- Design rationale: [`design_notes.md`](design_notes.md)
 - Figure contracts and style rules: [`figure_plan.md`](figure_plan.md)
 - Figure QA and colour-blind checks: [`figure_qa.md`](figure_qa.md)
 - Reproducibility fixes: [`reproducibility_fixes.md`](reproducibility_fixes.md)
