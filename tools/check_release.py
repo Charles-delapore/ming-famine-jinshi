@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -13,10 +14,12 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main() -> int:
-    citation = yaml.safe_load((ROOT / "CITATION.cff").read_text(encoding="utf-8"))
-    zenodo = json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
-    changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+def check(root: Path) -> list[str]:
+    problems = []
+    citation = yaml.safe_load((root / "CITATION.cff").read_text(encoding="utf-8"))
+    zenodo = json.loads((root / ".zenodo.json").read_text(encoding="utf-8"))
+    changelog = (root / "CHANGELOG.md").read_text(encoding="utf-8")
+    readme = (root / "README.md").read_text(encoding="utf-8")
 
     versions = {
         "CITATION.cff": str(citation.get("version", "")),
@@ -24,22 +27,30 @@ def main() -> int:
     }
     unique = set(versions.values())
     if len(unique) != 1:
-        print("version mismatch:", versions)
-        return 1
+        problems.append(f"version mismatch: {versions}")
+        return problems
     version = unique.pop()
     if not re.search(rf"^## {re.escape(version)}\b", changelog, re.MULTILINE):
-        print(f"CHANGELOG.md has no section for {version}")
-        return 1
+        problems.append(f"CHANGELOG.md has no section for {version}")
 
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
     if "2/135" not in readme:
-        print("README.md does not state the fixed-window result")
-        return 1
+        problems.append("README.md does not state the fixed-window result")
     if "48/135" in readme and "artefact" not in readme.lower():
-        print("README.md mentions 48/135 without the artefact note")
-        return 1
+        problems.append("README.md mentions 48/135 without the artefact note")
+    return problems
 
-    print(f"release metadata ok ({version})")
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", type=Path, default=ROOT)
+    args = parser.parse_args()
+    problems = check(args.root)
+    if problems:
+        print("release check failed:")
+        for item in problems:
+            print("  -", item)
+        return 1
+    print("release metadata ok")
     return 0
 
 
