@@ -39,6 +39,9 @@ jobs:
       - name: check documentation links
         run: python tools/check_docs_links.py
 
+      - name: check figure hashes
+        run: python tools/check_figure_hashes.py
+
       - name: run tests
         run: pytest -q --cov=src --cov=tools --cov-report=term-missing --cov-report=xml
 
