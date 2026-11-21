@@ -11,3 +11,6 @@ raw/
 *.log
 _internal/
 
+.coverage
+coverage.xml
+htmlcov/
