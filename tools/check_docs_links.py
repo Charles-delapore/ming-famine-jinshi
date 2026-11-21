@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import re
 import sys
 from pathlib import Path
@@ -13,31 +14,37 @@ ROOT_FILES = ["README.md", "README.zh.md", "CONTRIBUTING.md",
               "DATA_AVAILABILITY.md", "CHANGELOG.md"]
 
 
-def files() -> list[Path]:
-    out = [ROOT / name for name in ROOT_FILES if (ROOT / name).exists()]
-    out.extend(sorted((ROOT / "docs").glob("*.md")))
+def files(root: Path) -> list[Path]:
+    out = [root / name for name in ROOT_FILES if (root / name).exists()]
+    out.extend(sorted((root / "docs").glob("*.md")))
     return out
 
 
-def main() -> int:
+def check(root: Path) -> list[str]:
     missing = []
-    total = 0
-    for path in files():
+    for path in files(root):
         text = path.read_text(encoding="utf-8")
         for target in LINK.findall(text):
             if target.startswith(("http://", "https://", "mailto:", "#",
                                   "sandbox://")):
                 continue
-            total += 1
             resolved = (path.parent / target.split("#", 1)[0]).resolve()
             if not resolved.exists():
-                missing.append(f"{path.relative_to(ROOT)} -> {target}")
+                missing.append(f"{path.relative_to(root)} -> {target}")
+    return missing
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", type=Path, default=ROOT)
+    args = parser.parse_args()
+    missing = check(args.root)
     if missing:
         print("broken links:")
         for item in missing:
             print("  -", item)
         return 1
-    print(f"doc links ok ({total} relative links)")
+    print("doc links ok")
     return 0
 
 
