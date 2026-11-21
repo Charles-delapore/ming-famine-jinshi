@@ -2,6 +2,8 @@
 
 **Spatial inequality in Ming elite production, and the short-window predictive signal of famine.**
 
+[![Public checks](https://github.com/Charles-delapore/ming-famine-jinshi/actions/workflows/checks.yml/badge.svg)](https://github.com/Charles-delapore/ming-famine-jinshi/actions/workflows/checks.yml)
+
 [Gallery](https://charles-delapore.github.io/ming-famine-jinshi/) · [Interactive map](web/interactive_map.html) · [中文](README.zh.md) · [Technical notes](docs/project_notes.md) · [Citation](CITATION.cff)
 
 ![Overview](figures/fig3_framework.png)
